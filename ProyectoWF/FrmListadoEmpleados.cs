@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ProyectoWF
 {
-    public partial class Form1 : Form
+    public partial class FrmListadoEmpleados : Form
     {
-        public Form1()
+        public FrmListadoEmpleados()
         {
             InitializeComponent();
         }
