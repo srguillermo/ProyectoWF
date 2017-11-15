@@ -424,6 +424,7 @@
             this.cbNombreCliente.Name = "cbNombreCliente";
             this.cbNombreCliente.Size = new System.Drawing.Size(328, 21);
             this.cbNombreCliente.TabIndex = 6;
+            this.cbNombreCliente.SelectedIndexChanged += new System.EventHandler(this.cbNombreCliente_SelectedIndexChanged);
             this.cbNombreCliente.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbNombreCliente_KeyDown);
             this.cbNombreCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbNombreCliente_KeyPress);
             this.cbNombreCliente.Validating += new System.ComponentModel.CancelEventHandler(this.cbNombreCliente_Validating);
@@ -602,6 +603,9 @@
             // dgProductos
             // 
             this.dgProductos.AllowUserToAddRows = false;
+            this.dgProductos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idProducto,
@@ -613,7 +617,7 @@
             this.dgProductos.Location = new System.Drawing.Point(15, 32);
             this.dgProductos.Margin = new System.Windows.Forms.Padding(15, 3, 0, 5);
             this.dgProductos.Name = "dgProductos";
-            this.dgProductos.Size = new System.Drawing.Size(882, 280);
+            this.dgProductos.Size = new System.Drawing.Size(882, 308);
             this.dgProductos.TabIndex = 3;
             // 
             // lPrecioTotal

@@ -113,7 +113,7 @@ namespace ProyectoWF {
         private void cbNombreCliente_Validating(object sender, CancelEventArgs e)
         {
 
-            colocarDatosCliente();
+            borrarDatosCliente();
         }
 
 
@@ -147,11 +147,25 @@ namespace ProyectoWF {
 
             if (e.KeyCode.Equals(Keys.Return))
             {
-                colocarDatosCliente();
+                borrarDatosCliente();
             }
 
         }
 
+
+        private void borrarDatosCliente()
+        {
+            if (cbNombreCliente.SelectedItem == null)
+            {
+                tbDireccion.Text = "";
+                tbCiudad.Text = "";
+                tbRegion.Text = "";
+                tbPais.Text = "";
+                tbCodigoPostal.Text = "";
+                tbTelefono.Text = "";
+            }
+
+        }
         private void btMas_Click(object sender, EventArgs e)
         {
             dgProductos.Rows.Insert(0);
@@ -161,5 +175,12 @@ namespace ProyectoWF {
             }
 
         }
+
+        private void cbNombreCliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            colocarDatosCliente();
+        }
+
+
     }
 }
