@@ -576,7 +576,7 @@
 			this.ClientSize = new System.Drawing.Size(645, 377);
 			this.Controls.Add(this.tableLayoutPanel1);
 			this.Name = "FormProveedores";
-			this.Text = "FormProveedores";
+			this.Text = "Proveedores";
 			this.tableLayoutPanel1.ResumeLayout(false);
 			this.groupBox3.ResumeLayout(false);
 			this.tableLayoutPanel4.ResumeLayout(false);
