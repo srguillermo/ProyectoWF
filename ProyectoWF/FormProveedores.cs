@@ -8,13 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ProyectoWF
-{
-    public partial class Form1 : Form
-    {
-        public Form1()
-        {
-            InitializeComponent();
-        }
-    }
+namespace ProyectoWF {
+	public partial class FormProveedores : Form {
+		public FormProveedores() {
+			InitializeComponent();
+		}
+	}
 }
