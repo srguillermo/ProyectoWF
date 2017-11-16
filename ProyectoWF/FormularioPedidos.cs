@@ -17,6 +17,7 @@ namespace ProyectoWF {
         ArrayList idCAgenciaSegunPosicion;
         ArrayList idProductoSegunPosicion;
         int idEmpleado;
+        int numeroFilaSeleccionado;
 
         public FormularioPedidos(int idEmpleado)
         {
@@ -33,7 +34,7 @@ namespace ProyectoWF {
             }
             this.idEmpleado = idEmpleado;
 
-            comando = "Select concat(Nombre ,' ',Apellidos) as 'nombreCompleto' from dbo.Empleados where EmpleadoID=2";
+            comando = "Select concat(Nombre ,' ',Apellidos) as 'nombreCompleto' from dbo.Empleados where EmpleadoID=3";
             adapter = new SqlDataAdapter(comando, Conexion.getConexion());
             cuenta = new DataSet();
             adapter.Fill(cuenta);
@@ -207,35 +208,56 @@ namespace ProyectoWF {
             SqlDataAdapter adapter = new SqlDataAdapter(comando, Conexion.getConexion());
             DataSet cuenta = new DataSet();
             adapter.Fill(cuenta);
-            dgProductos.Rows[0].Cells["precioUnidad"].Value = cuenta.Tables[0].Rows[0]["PrecioUnidad"].ToString();
+            dgProductos.CurrentRow.Cells["precioUnidad"].Value = cuenta.Tables[0].Rows[0]["PrecioUnidad"].ToString();
+            calculoCeldaPrecio();
         }
 
 
 
 
-        private void tb_TextChanged(object sender, EventArgs e)
+        private void tb_Validating(object sender, EventArgs e)
         {
-            if (dgProductos.Rows[0].Cells["cantidad"].Value != null)
-            {
-                double prue = ((Convert.ToDouble(dgProductos.Rows[dgProductos.CurrentRow.Index].Cells["descuento"].Value) > 0 || dgProductos.Rows[dgProductos.CurrentRow.Index].Cells["descuento"].Value!=null) ? Convert.ToDouble(dgProductos.Rows[dgProductos.CurrentRow.Index].Cells["cantidad"].Value)*(Convert.ToDouble(dgProductos.Rows[dgProductos.CurrentRow.Index].Cells["descuento"].Value) / 100) : 0);
-                double prueba = (Convert.ToDouble(dgProductos.Rows[dgProductos.CurrentRow.Index].Cells["cantidad"].Value)- prue) *Convert.ToDouble(dgProductos.Rows[dgProductos.CurrentRow.Index].Cells["precioUnidad"].Value);
-                dgProductos.Rows[0].Cells["precio"].Value = prueba;
-            }
 
+            calculoCeldaPrecio();
+
+        }
+        private void tb_prueba(object sender, EventArgs e)
+        {
+
+            MessageBox.Show(this, "hola");
 
         }
 
+        public void calculoCeldaPrecio()
+        {
+            if (dgProductos.CurrentRow.Cells["cantidad"].Value != null)
+            {
+                double descuento = ((Convert.ToDouble(dgProductos.Rows[dgProductos.CurrentRow.Index].Cells["descuento"].Value) > 0 || dgProductos.Rows[dgProductos.CurrentRow.Index].Cells["descuento"].Value != null) ? Convert.ToDouble(dgProductos.Rows[dgProductos.CurrentRow.Index].Cells["cantidad"].Value) * (Convert.ToDouble(dgProductos.Rows[dgProductos.CurrentRow.Index].Cells["descuento"].Value) / 100) : 0);
+                double precioConDescuentoAplicado = (Convert.ToDouble(dgProductos.Rows[dgProductos.CurrentRow.Index].Cells["cantidad"].Value) - descuento) * Convert.ToDouble(dgProductos.Rows[dgProductos.CurrentRow.Index].Cells["precioUnidad"].Value);
+                dgProductos.CurrentRow.Cells["precio"].Value = precioConDescuentoAplicado;
+            }
+        }
 
         private void dgProductos_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
 
-            if (this.dgProductos.CurrentCellAddress.X == dgProductos.Columns[2].DisplayIndex)
+
+            if (this.dgProductos.CurrentCellAddress.X == dgProductos.Columns[3].DisplayIndex)
             {
                 TextBox tb = (TextBox)e.Control;
                 if (tb != null)
                 {
-                    tb.Validating -= new CancelEventHandler(tb_TextChanged);
-                    tb.Validating += new CancelEventHandler(tb_TextChanged);
+                    tb.Validating -= new CancelEventHandler(tb_Validating);
+                    tb.Validating += new CancelEventHandler(tb_Validating);
+                }
+            }
+            else if (this.dgProductos.CurrentCellAddress.X == dgProductos.Columns[2].DisplayIndex)
+            {
+                TextBox tb = (TextBox)e.Control;
+                if (tb != null)
+                {
+                    tb.Validating -= new CancelEventHandler(tb_Validating);
+                    tb.Validating += new CancelEventHandler(tb_Validating);
                 }
             }
             else if (this.dgProductos.CurrentCellAddress.X == dgProductos.Columns[1].DisplayIndex)
@@ -247,6 +269,29 @@ namespace ProyectoWF {
                     cb.SelectedIndexChanged -= new EventHandler(cb_SelectedIndexChanged);
                     cb.SelectedIndexChanged += new EventHandler(cb_SelectedIndexChanged);
                 }
+            }
+        }
+
+        private void btEditar_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (numeroFilaSeleccionado > 0)
+            {
+                dgProductos.CurrentRow.Cells["nombreProd"].ReadOnly = false;
+                dgProductos.CurrentRow.DefaultCellStyle.BackColor = Color.Aquamarine;
+                dgProductos.CurrentRow.Cells["descuento"].ReadOnly = false;
+                dgProductos.CurrentRow.Cells["cantidad"].ReadOnly = false;
+                numeroFilaSeleccionado = dgProductos.CurrentRow.Index;
+            }
+        }
+
+        private void dgProductos_RowLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            if (numeroFilaSeleccionado > 0)
+            {
+                dgProductos.CurrentRow.Cells["nombreProd"].ReadOnly = true;
+                dgProductos.Rows[numeroFilaSeleccionado].Cells["descuento"].ReadOnly = true;
+                dgProductos.Rows[numeroFilaSeleccionado].Cells["cantidad"].ReadOnly = true;
+                dgProductos.CurrentRow.DefaultCellStyle.BackColor = Color.Empty;
             }
         }
     }

@@ -66,18 +66,18 @@
             this.btMas = new System.Windows.Forms.Button();
             this.btEditar = new System.Windows.Forms.Button();
             this.dgProductos = new System.Windows.Forms.DataGridView();
-            this.lPrecioTotal = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.btDarAlta = new System.Windows.Forms.Button();
-            this.btCancelar = new System.Windows.Forms.Button();
-            this.textBox11 = new System.Windows.Forms.TextBox();
             this.idProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreProd = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precioUnidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lPrecioTotal = new System.Windows.Forms.Label();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.btDarAlta = new System.Windows.Forms.Button();
+            this.btCancelar = new System.Windows.Forms.Button();
+            this.textBox11 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -331,7 +331,7 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.80165F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.80165F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel4.Controls.Add(this.lNombreEntrega, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.lRegionEntrega, 3, 1);
             this.tableLayoutPanel4.Controls.Add(this.lDireccionEntrega, 3, 0);
@@ -371,7 +371,7 @@
             // 
             this.lRegionEntrega.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lRegionEntrega.AutoSize = true;
-            this.lRegionEntrega.Location = new System.Drawing.Point(455, 53);
+            this.lRegionEntrega.Location = new System.Drawing.Point(454, 53);
             this.lRegionEntrega.Name = "lRegionEntrega";
             this.lRegionEntrega.Size = new System.Drawing.Size(94, 13);
             this.lRegionEntrega.TabIndex = 1;
@@ -381,7 +381,7 @@
             // 
             this.lDireccionEntrega.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lDireccionEntrega.AutoSize = true;
-            this.lDireccionEntrega.Location = new System.Drawing.Point(455, 13);
+            this.lDireccionEntrega.Location = new System.Drawing.Point(454, 13);
             this.lDireccionEntrega.Name = "lDireccionEntrega";
             this.lDireccionEntrega.Size = new System.Drawing.Size(94, 13);
             this.lDireccionEntrega.TabIndex = 3;
@@ -391,7 +391,7 @@
             // 
             this.tbRegion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tbRegion.Enabled = false;
-            this.tbRegion.Location = new System.Drawing.Point(555, 50);
+            this.tbRegion.Location = new System.Drawing.Point(554, 50);
             this.tbRegion.Name = "tbRegion";
             this.tbRegion.Size = new System.Drawing.Size(112, 20);
             this.tbRegion.TabIndex = 9;
@@ -400,7 +400,7 @@
             // 
             this.tbCodigoPostal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tbCodigoPostal.Enabled = false;
-            this.tbCodigoPostal.Location = new System.Drawing.Point(773, 50);
+            this.tbCodigoPostal.Location = new System.Drawing.Point(772, 50);
             this.tbCodigoPostal.Name = "tbCodigoPostal";
             this.tbCodigoPostal.Size = new System.Drawing.Size(112, 20);
             this.tbCodigoPostal.TabIndex = 10;
@@ -409,7 +409,7 @@
             // 
             this.lCP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lCP.AutoSize = true;
-            this.lCP.Location = new System.Drawing.Point(673, 53);
+            this.lCP.Location = new System.Drawing.Point(672, 53);
             this.lCP.Name = "lCP";
             this.lCP.Size = new System.Drawing.Size(94, 13);
             this.lCP.TabIndex = 12;
@@ -423,7 +423,7 @@
             this.cbNombreCliente.FormattingEnabled = true;
             this.cbNombreCliente.Location = new System.Drawing.Point(103, 9);
             this.cbNombreCliente.Name = "cbNombreCliente";
-            this.cbNombreCliente.Size = new System.Drawing.Size(326, 21);
+            this.cbNombreCliente.Size = new System.Drawing.Size(325, 21);
             this.cbNombreCliente.TabIndex = 6;
             this.cbNombreCliente.SelectedIndexChanged += new System.EventHandler(this.cbNombreCliente_SelectedIndexChanged);
             this.cbNombreCliente.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbNombreCliente_KeyDown);
@@ -434,7 +434,7 @@
             // 
             this.lPais.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lPais.AutoSize = true;
-            this.lPais.Location = new System.Drawing.Point(455, 94);
+            this.lPais.Location = new System.Drawing.Point(454, 94);
             this.lPais.Name = "lPais";
             this.lPais.Size = new System.Drawing.Size(94, 13);
             this.lPais.TabIndex = 11;
@@ -446,7 +446,7 @@
             this.tbCiudad.Enabled = false;
             this.tbCiudad.Location = new System.Drawing.Point(103, 90);
             this.tbCiudad.Name = "tbCiudad";
-            this.tbCiudad.Size = new System.Drawing.Size(326, 20);
+            this.tbCiudad.Size = new System.Drawing.Size(325, 20);
             this.tbCiudad.TabIndex = 11;
             // 
             // lCiudadEntrega
@@ -474,7 +474,7 @@
             this.tbDireccion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel4.SetColumnSpan(this.tbDireccion, 3);
             this.tbDireccion.Enabled = false;
-            this.tbDireccion.Location = new System.Drawing.Point(555, 10);
+            this.tbDireccion.Location = new System.Drawing.Point(554, 10);
             this.tbDireccion.Name = "tbDireccion";
             this.tbDireccion.Size = new System.Drawing.Size(330, 20);
             this.tbDireccion.TabIndex = 7;
@@ -485,7 +485,7 @@
             this.tbTelefono.Enabled = false;
             this.tbTelefono.Location = new System.Drawing.Point(103, 50);
             this.tbTelefono.Name = "tbTelefono";
-            this.tbTelefono.Size = new System.Drawing.Size(326, 20);
+            this.tbTelefono.Size = new System.Drawing.Size(325, 20);
             this.tbTelefono.TabIndex = 8;
             // 
             // tbPais
@@ -493,7 +493,7 @@
             this.tbPais.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel4.SetColumnSpan(this.tbPais, 3);
             this.tbPais.Enabled = false;
-            this.tbPais.Location = new System.Drawing.Point(555, 90);
+            this.tbPais.Location = new System.Drawing.Point(554, 90);
             this.tbPais.Name = "tbPais";
             this.tbPais.Size = new System.Drawing.Size(330, 20);
             this.tbPais.TabIndex = 12;
@@ -600,6 +600,7 @@
             this.btEditar.Size = new System.Drawing.Size(30, 23);
             this.btEditar.TabIndex = 2;
             this.btEditar.UseVisualStyleBackColor = true;
+            this.btEditar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btEditar_MouseClick);
             // 
             // dgProductos
             // 
@@ -622,6 +623,45 @@
             this.dgProductos.Size = new System.Drawing.Size(882, 308);
             this.dgProductos.TabIndex = 3;
             this.dgProductos.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgProductos_EditingControlShowing);
+            this.dgProductos.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgProductos_RowLeave);
+            // 
+            // idProducto
+            // 
+            this.idProducto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.idProducto.HeaderText = "Id Producto";
+            this.idProducto.Name = "idProducto";
+            this.idProducto.ReadOnly = true;
+            this.idProducto.Visible = false;
+            // 
+            // nombreProd
+            // 
+            this.nombreProd.HeaderText = "Nombre Producto";
+            this.nombreProd.Name = "nombreProd";
+            // 
+            // cantidad
+            // 
+            this.cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cantidad.HeaderText = "Cantidad";
+            this.cantidad.Name = "cantidad";
+            // 
+            // descuento
+            // 
+            this.descuento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descuento.HeaderText = "Descuento";
+            this.descuento.Name = "descuento";
+            // 
+            // precioUnidad
+            // 
+            this.precioUnidad.HeaderText = "Precio unidad";
+            this.precioUnidad.Name = "precioUnidad";
+            this.precioUnidad.ReadOnly = true;
+            // 
+            // precio
+            // 
+            this.precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.precio.HeaderText = "Precio";
+            this.precio.Name = "precio";
+            this.precio.ReadOnly = true;
             // 
             // lPrecioTotal
             // 
@@ -687,44 +727,6 @@
             this.textBox11.Name = "textBox11";
             this.textBox11.Size = new System.Drawing.Size(351, 20);
             this.textBox11.TabIndex = 13;
-            // 
-            // idProducto
-            // 
-            this.idProducto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.idProducto.HeaderText = "Id Producto";
-            this.idProducto.Name = "idProducto";
-            this.idProducto.ReadOnly = true;
-            this.idProducto.Visible = false;
-            // 
-            // nombreProd
-            // 
-            this.nombreProd.HeaderText = "Nombre Producto";
-            this.nombreProd.Name = "nombreProd";
-            // 
-            // cantidad
-            // 
-            this.cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cantidad.HeaderText = "Cantidad";
-            this.cantidad.Name = "cantidad";
-            // 
-            // descuento
-            // 
-            this.descuento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descuento.HeaderText = "Descuento";
-            this.descuento.Name = "descuento";
-            // 
-            // precioUnidad
-            // 
-            this.precioUnidad.HeaderText = "Precio unidad";
-            this.precioUnidad.Name = "precioUnidad";
-            this.precioUnidad.ReadOnly = true;
-            // 
-            // precio
-            // 
-            this.precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.precio.HeaderText = "Precio";
-            this.precio.Name = "precio";
-            this.precio.ReadOnly = true;
             // 
             // FormularioPedidos
             // 
