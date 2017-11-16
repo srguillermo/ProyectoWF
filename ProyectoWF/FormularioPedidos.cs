@@ -15,6 +15,7 @@ namespace ProyectoWF {
 
         ArrayList idClienteSegunPosicion;
         ArrayList idCAgenciaSegunPosicion;
+        ArrayList idProductoSegunPosicion;
         int idEmpleado;
 
         public FormularioPedidos(int idEmpleado)
@@ -52,6 +53,7 @@ namespace ProyectoWF {
 
 
             dgProductos.Rows.Insert(0);
+            cargarProductosCbDataGridView();
 
         }
 
@@ -172,6 +174,7 @@ namespace ProyectoWF {
             for (int i = 0; i < dgProductos.Rows.Count; i++)
             {
                 dgProductos.Rows[1].Cells["cantidad"].ReadOnly = true;
+                dgProductos.Rows[1].Cells["nombreProd"].ReadOnly = true;
             }
 
         }
@@ -181,6 +184,70 @@ namespace ProyectoWF {
             colocarDatosCliente();
         }
 
+        public void cargarProductosCbDataGridView()
+        {
 
+            string comando = "select ProductoID,ProductoNombre from dbo.Productos order by ProductoID";
+            SqlDataAdapter adapter = new SqlDataAdapter(comando, Conexion.getConexion());
+            DataSet cuenta = new DataSet();
+            adapter.Fill(cuenta);
+            idProductoSegunPosicion = new ArrayList();
+            for (int i = 0; i < cuenta.Tables[0].Rows.Count; i++)
+            {
+                idProductoSegunPosicion.Add(cuenta.Tables[0].Rows[i]["ProductoID"].ToString());
+                ((DataGridViewComboBoxColumn)dgProductos.Columns[1]).Items.Add(cuenta.Tables[0].Rows[i]["ProductoNombre"].ToString());
+            }
+
+
+        }
+
+        void cb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string comando = "select PrecioUnidad from dbo.Productos where ProductoID=" + idProductoSegunPosicion[((ComboBox)sender).SelectedIndex];
+            SqlDataAdapter adapter = new SqlDataAdapter(comando, Conexion.getConexion());
+            DataSet cuenta = new DataSet();
+            adapter.Fill(cuenta);
+            dgProductos.Rows[0].Cells["precioUnidad"].Value = cuenta.Tables[0].Rows[0]["PrecioUnidad"].ToString();
+        }
+
+
+
+
+        private void tb_TextChanged(object sender, EventArgs e)
+        {
+            if (dgProductos.Rows[0].Cells["cantidad"].Value != null)
+            {
+                double prue = ((Convert.ToDouble(dgProductos.Rows[dgProductos.CurrentRow.Index].Cells["descuento"].Value) > 0 || dgProductos.Rows[dgProductos.CurrentRow.Index].Cells["descuento"].Value!=null) ? Convert.ToDouble(dgProductos.Rows[dgProductos.CurrentRow.Index].Cells["cantidad"].Value)*(Convert.ToDouble(dgProductos.Rows[dgProductos.CurrentRow.Index].Cells["descuento"].Value) / 100) : 0);
+                double prueba = (Convert.ToDouble(dgProductos.Rows[dgProductos.CurrentRow.Index].Cells["cantidad"].Value)- prue) *Convert.ToDouble(dgProductos.Rows[dgProductos.CurrentRow.Index].Cells["precioUnidad"].Value);
+                dgProductos.Rows[0].Cells["precio"].Value = prueba;
+            }
+
+
+        }
+
+
+        private void dgProductos_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+
+            if (this.dgProductos.CurrentCellAddress.X == dgProductos.Columns[2].DisplayIndex)
+            {
+                TextBox tb = (TextBox)e.Control;
+                if (tb != null)
+                {
+                    tb.Validating -= new CancelEventHandler(tb_TextChanged);
+                    tb.Validating += new CancelEventHandler(tb_TextChanged);
+                }
+            }
+            else if (this.dgProductos.CurrentCellAddress.X == dgProductos.Columns[1].DisplayIndex)
+            {
+                ComboBox cb = (ComboBox)e.Control;
+                if (cb != null)
+                {
+                    cb.DropDownStyle = ComboBoxStyle.DropDown;
+                    cb.SelectedIndexChanged -= new EventHandler(cb_SelectedIndexChanged);
+                    cb.SelectedIndexChanged += new EventHandler(cb_SelectedIndexChanged);
+                }
+            }
+        }
     }
 }
