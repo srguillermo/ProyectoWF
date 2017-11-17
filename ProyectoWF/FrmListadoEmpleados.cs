@@ -15,6 +15,7 @@ namespace ProyectoWF
         public FrmListadoEmpleados()
         {
             InitializeComponent();
+            splitContainer1.IsSplitterFixed = true;
         }
     }
 }
