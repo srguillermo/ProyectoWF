@@ -25,14 +25,16 @@ namespace ProyectoWF
 
         //Conexion
 
-        SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ProyectoWF;"+
-            "Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;");
+        SqlConnection con = new SqlConnection("Data Source = (localdb)\\MSSQLLocalDB;"+
+            "Initial Catalog = ProyectoWF; Integrated Security = True;"+
+            "Connect Timeout = 30; Encrypt=False;TrustServerCertificate=True;"+
+            "ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
         SqlDataAdapter adapter;
         DataTable table;
         SqlDataReader reader;
         SqlCommand command;
 
-
+        
         public void consulta()
         {
             string sql = "SELECT * FROM Empleados";
@@ -43,7 +45,7 @@ namespace ProyectoWF
             dataGridView1.DataSource = table;
             dataGridView1.AutoSize = true;
         }
-
+        
         private void button5_Click(object sender, EventArgs e)
         {
             if (splitContainer1.SplitterDistance == 40) {
