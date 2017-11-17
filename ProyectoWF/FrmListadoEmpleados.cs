@@ -45,18 +45,23 @@ namespace ProyectoWF
             dataGridView1.DataSource = table;
             dataGridView1.AutoSize = true;
         }
-        
+
         private void button5_Click(object sender, EventArgs e)
         {
-            if (splitContainer1.SplitterDistance == 40) {
-                splitContainer1.SplitterDistance = 150;
-                button5.Text = "Cerrar búsqueda";
+            if (splitContainer1.Panel1Collapsed)
+            {
+                button5.Text = "Cerrar";
+                splitContainer1.Panel1Collapsed = false;
+                splitContainer1.SplitterDistance = 100;
             }
             else
             {
-                splitContainer1.SplitterDistance = 40;
-                button5.Text = "Abrir búsqueda";
+                button5.Text = "Abrir";
+                splitContainer1.Panel1Collapsed = true;
+
             }
+
+           
         }
     }
 }
