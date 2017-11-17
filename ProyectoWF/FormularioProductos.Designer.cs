@@ -35,19 +35,19 @@
             this.tbCantidad = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tbNombre = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.lbIdProducto = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.gbDirección = new System.Windows.Forms.GroupBox();
             this.tlOtrosDatos = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.btAceptar = new System.Windows.Forms.Button();
-            this.btCancelar = new System.Windows.Forms.Button();
-            this.lbObligatorio = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cbProveedor = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cbCategoria = new System.Windows.Forms.ComboBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.btAceptar = new System.Windows.Forms.Button();
+            this.btCancelar = new System.Windows.Forms.Button();
+            this.lbObligatorio = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.gbDatosP.SuspendLayout();
             this.tlPersonales.SuspendLayout();
@@ -58,13 +58,13 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 5;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55F));
             this.tableLayoutPanel1.Controls.Add(this.gbDatosP, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.gbDirección, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.gbDirección, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.lbObligatorio, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -78,6 +78,7 @@
             // 
             // gbDatosP
             // 
+            this.tableLayoutPanel1.SetColumnSpan(this.gbDatosP, 2);
             this.gbDatosP.Controls.Add(this.tlPersonales);
             this.gbDatosP.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbDatosP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -85,8 +86,8 @@
             this.gbDatosP.Location = new System.Drawing.Point(15, 15);
             this.gbDatosP.Margin = new System.Windows.Forms.Padding(15, 15, 10, 0);
             this.gbDatosP.Name = "gbDatosP";
-            this.gbDatosP.Padding = new System.Windows.Forms.Padding(10, 5, 25, 10);
-            this.gbDatosP.Size = new System.Drawing.Size(314, 156);
+            this.gbDatosP.Padding = new System.Windows.Forms.Padding(10, 5, 0, 10);
+            this.gbDatosP.Size = new System.Drawing.Size(291, 156);
             this.gbDatosP.TabIndex = 0;
             this.gbDatosP.TabStop = false;
             this.gbDatosP.Text = "Datos del producto";
@@ -114,7 +115,7 @@
             this.tlPersonales.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tlPersonales.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tlPersonales.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlPersonales.Size = new System.Drawing.Size(276, 128);
+            this.tlPersonales.Size = new System.Drawing.Size(278, 128);
             this.tlPersonales.TabIndex = 0;
             // 
             // tbPrecio
@@ -151,6 +152,18 @@
             this.tbNombre.Size = new System.Drawing.Size(172, 20);
             this.tbNombre.TabIndex = 3;
             // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(235, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 20);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "*";
+            // 
             // lbIdProducto
             // 
             this.lbIdProducto.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -173,13 +186,15 @@
             // 
             // gbDirección
             // 
+            this.gbDirección.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gbDirección.Controls.Add(this.tlOtrosDatos);
-            this.gbDirección.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gbDirección.Location = new System.Drawing.Point(354, 15);
-            this.gbDirección.Margin = new System.Windows.Forms.Padding(15, 15, 10, 0);
+            this.gbDirección.Location = new System.Drawing.Point(316, 15);
+            this.gbDirección.Margin = new System.Windows.Forms.Padding(0, 15, 10, 0);
             this.gbDirección.Name = "gbDirección";
             this.gbDirección.Padding = new System.Windows.Forms.Padding(0, 5, 25, 50);
-            this.gbDirección.Size = new System.Drawing.Size(314, 156);
+            this.gbDirección.Size = new System.Drawing.Size(352, 156);
             this.gbDirección.TabIndex = 1;
             this.gbDirección.TabStop = false;
             this.gbDirección.Text = "Otros datos";
@@ -189,10 +204,9 @@
             this.tlOtrosDatos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tlOtrosDatos.ColumnCount = 3;
+            this.tlOtrosDatos.ColumnCount = 2;
             this.tlOtrosDatos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.75F));
             this.tlOtrosDatos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 72.25F));
-            this.tlOtrosDatos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.tlOtrosDatos.Controls.Add(this.label2, 0, 0);
             this.tlOtrosDatos.Controls.Add(this.cbProveedor, 1, 0);
             this.tlOtrosDatos.Controls.Add(this.label5, 0, 1);
@@ -202,8 +216,46 @@
             this.tlOtrosDatos.RowCount = 2;
             this.tlOtrosDatos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlOtrosDatos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlOtrosDatos.Size = new System.Drawing.Size(276, 85);
+            this.tlOtrosDatos.Size = new System.Drawing.Size(314, 85);
             this.tlOtrosDatos.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 14);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(74, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Proveedor";
+            // 
+            // cbProveedor
+            // 
+            this.cbProveedor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbProveedor.FormattingEnabled = true;
+            this.cbProveedor.Location = new System.Drawing.Point(83, 10);
+            this.cbProveedor.Name = "cbProveedor";
+            this.cbProveedor.Size = new System.Drawing.Size(202, 21);
+            this.cbProveedor.TabIndex = 6;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 57);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(54, 13);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Categoría";
+            // 
+            // cbCategoria
+            // 
+            this.cbCategoria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbCategoria.FormattingEnabled = true;
+            this.cbCategoria.Location = new System.Drawing.Point(83, 53);
+            this.cbCategoria.Name = "cbCategoria";
+            this.cbCategoria.Size = new System.Drawing.Size(202, 21);
+            this.cbCategoria.TabIndex = 14;
             // 
             // tableLayoutPanel2
             // 
@@ -213,17 +265,17 @@
             this.tableLayoutPanel2.Controls.Add(this.btAceptar, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.btCancelar, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(342, 174);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(319, 174);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(333, 34);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(356, 34);
             this.tableLayoutPanel2.TabIndex = 4;
             // 
             // btAceptar
             // 
             this.btAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btAceptar.Location = new System.Drawing.Point(255, 3);
+            this.btAceptar.Location = new System.Drawing.Point(311, 3);
             this.btAceptar.Margin = new System.Windows.Forms.Padding(3, 3, 3, 8);
             this.btAceptar.Name = "btAceptar";
             this.btAceptar.Size = new System.Drawing.Size(75, 23);
@@ -235,7 +287,7 @@
             // btCancelar
             // 
             this.btCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btCancelar.Location = new System.Drawing.Point(174, 3);
+            this.btCancelar.Location = new System.Drawing.Point(230, 3);
             this.btCancelar.Margin = new System.Windows.Forms.Padding(3, 3, 3, 8);
             this.btCancelar.Name = "btCancelar";
             this.btCancelar.Size = new System.Drawing.Size(75, 23);
@@ -255,56 +307,6 @@
             this.lbObligatorio.Size = new System.Drawing.Size(104, 13);
             this.lbObligatorio.TabIndex = 3;
             this.lbObligatorio.Text = "*   Campo obligatorio";
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(235, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 20);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "*";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 14);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Proveedor";
-            // 
-            // cbProveedor
-            // 
-            this.cbProveedor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbProveedor.FormattingEnabled = true;
-            this.cbProveedor.Location = new System.Drawing.Point(72, 10);
-            this.cbProveedor.Name = "cbProveedor";
-            this.cbProveedor.Size = new System.Drawing.Size(176, 21);
-            this.cbProveedor.TabIndex = 6;
-            // 
-            // label5
-            // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 57);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(54, 13);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Categoría";
-            // 
-            // cbCategoria
-            // 
-            this.cbCategoria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbCategoria.FormattingEnabled = true;
-            this.cbCategoria.Location = new System.Drawing.Point(72, 53);
-            this.cbCategoria.Name = "cbCategoria";
-            this.cbCategoria.Size = new System.Drawing.Size(176, 21);
-            this.cbCategoria.TabIndex = 14;
             // 
             // FormularioProductos
             // 
