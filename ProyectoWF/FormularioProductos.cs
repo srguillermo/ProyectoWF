@@ -17,7 +17,12 @@ namespace ProyectoWF
             InitializeComponent();
         }
 
-        private void tableLayoutPanel3_Paint(object sender, PaintEventArgs e)
+        private void btCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btAceptar_Click(object sender, EventArgs e)
         {
 
         }
