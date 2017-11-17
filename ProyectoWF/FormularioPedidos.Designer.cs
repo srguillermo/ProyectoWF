@@ -263,6 +263,7 @@
             // dtFechaEntrega
             // 
             this.dtFechaEntrega.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtFechaEntrega.CustomFormat = "";
             this.dtFechaEntrega.Location = new System.Drawing.Point(561, 7);
             this.dtFechaEntrega.Name = "dtFechaEntrega";
             this.dtFechaEntrega.Size = new System.Drawing.Size(332, 20);
@@ -331,7 +332,7 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.80165F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.80165F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.tableLayoutPanel4.Controls.Add(this.lNombreEntrega, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.lRegionEntrega, 3, 1);
             this.tableLayoutPanel4.Controls.Add(this.lDireccionEntrega, 3, 0);
@@ -371,7 +372,7 @@
             // 
             this.lRegionEntrega.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lRegionEntrega.AutoSize = true;
-            this.lRegionEntrega.Location = new System.Drawing.Point(454, 53);
+            this.lRegionEntrega.Location = new System.Drawing.Point(452, 53);
             this.lRegionEntrega.Name = "lRegionEntrega";
             this.lRegionEntrega.Size = new System.Drawing.Size(94, 13);
             this.lRegionEntrega.TabIndex = 1;
@@ -381,7 +382,7 @@
             // 
             this.lDireccionEntrega.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lDireccionEntrega.AutoSize = true;
-            this.lDireccionEntrega.Location = new System.Drawing.Point(454, 13);
+            this.lDireccionEntrega.Location = new System.Drawing.Point(452, 13);
             this.lDireccionEntrega.Name = "lDireccionEntrega";
             this.lDireccionEntrega.Size = new System.Drawing.Size(94, 13);
             this.lDireccionEntrega.TabIndex = 3;
@@ -391,7 +392,7 @@
             // 
             this.tbRegion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tbRegion.Enabled = false;
-            this.tbRegion.Location = new System.Drawing.Point(554, 50);
+            this.tbRegion.Location = new System.Drawing.Point(552, 50);
             this.tbRegion.Name = "tbRegion";
             this.tbRegion.Size = new System.Drawing.Size(111, 20);
             this.tbRegion.TabIndex = 9;
@@ -400,7 +401,7 @@
             // 
             this.tbCodigoPostal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tbCodigoPostal.Enabled = false;
-            this.tbCodigoPostal.Location = new System.Drawing.Point(771, 50);
+            this.tbCodigoPostal.Location = new System.Drawing.Point(769, 50);
             this.tbCodigoPostal.Name = "tbCodigoPostal";
             this.tbCodigoPostal.Size = new System.Drawing.Size(111, 20);
             this.tbCodigoPostal.TabIndex = 10;
@@ -409,7 +410,7 @@
             // 
             this.lCP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lCP.AutoSize = true;
-            this.lCP.Location = new System.Drawing.Point(671, 53);
+            this.lCP.Location = new System.Drawing.Point(669, 53);
             this.lCP.Name = "lCP";
             this.lCP.Size = new System.Drawing.Size(94, 13);
             this.lCP.TabIndex = 12;
@@ -423,7 +424,7 @@
             this.tbNombreCliente.FormattingEnabled = true;
             this.tbNombreCliente.Location = new System.Drawing.Point(103, 9);
             this.tbNombreCliente.Name = "tbNombreCliente";
-            this.tbNombreCliente.Size = new System.Drawing.Size(325, 21);
+            this.tbNombreCliente.Size = new System.Drawing.Size(323, 21);
             this.tbNombreCliente.TabIndex = 6;
             this.tbNombreCliente.SelectedIndexChanged += new System.EventHandler(this.cbNombreCliente_SelectedIndexChanged);
             this.tbNombreCliente.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbNombreCliente_KeyDown);
@@ -434,7 +435,7 @@
             // 
             this.lPais.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lPais.AutoSize = true;
-            this.lPais.Location = new System.Drawing.Point(454, 94);
+            this.lPais.Location = new System.Drawing.Point(452, 94);
             this.lPais.Name = "lPais";
             this.lPais.Size = new System.Drawing.Size(94, 13);
             this.lPais.TabIndex = 11;
@@ -446,7 +447,7 @@
             this.tbCiudad.Enabled = false;
             this.tbCiudad.Location = new System.Drawing.Point(103, 90);
             this.tbCiudad.Name = "tbCiudad";
-            this.tbCiudad.Size = new System.Drawing.Size(325, 20);
+            this.tbCiudad.Size = new System.Drawing.Size(323, 20);
             this.tbCiudad.TabIndex = 11;
             // 
             // lCiudadEntrega
@@ -474,7 +475,7 @@
             this.tbDireccion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel4.SetColumnSpan(this.tbDireccion, 3);
             this.tbDireccion.Enabled = false;
-            this.tbDireccion.Location = new System.Drawing.Point(554, 10);
+            this.tbDireccion.Location = new System.Drawing.Point(552, 10);
             this.tbDireccion.Name = "tbDireccion";
             this.tbDireccion.Size = new System.Drawing.Size(328, 20);
             this.tbDireccion.TabIndex = 7;
@@ -485,7 +486,7 @@
             this.tbTelefono.Enabled = false;
             this.tbTelefono.Location = new System.Drawing.Point(103, 50);
             this.tbTelefono.Name = "tbTelefono";
-            this.tbTelefono.Size = new System.Drawing.Size(325, 20);
+            this.tbTelefono.Size = new System.Drawing.Size(323, 20);
             this.tbTelefono.TabIndex = 8;
             // 
             // tbPais
@@ -493,7 +494,7 @@
             this.tbPais.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel4.SetColumnSpan(this.tbPais, 3);
             this.tbPais.Enabled = false;
-            this.tbPais.Location = new System.Drawing.Point(554, 90);
+            this.tbPais.Location = new System.Drawing.Point(552, 90);
             this.tbPais.Name = "tbPais";
             this.tbPais.Size = new System.Drawing.Size(328, 20);
             this.tbPais.TabIndex = 12;

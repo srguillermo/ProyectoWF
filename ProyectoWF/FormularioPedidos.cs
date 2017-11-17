@@ -310,13 +310,39 @@ namespace ProyectoWF {
         private void btDarAlta_Click(object sender, EventArgs e)
 
         {
-            SqlCommand sqlCommand = new SqlCommand("insert into dbo.Pedidos(ClienteID,EmpleadoID,PedidoFecha,RequiredFecha,FechaEntregado,ShipVia,Freight,NombreEntrega,DireccionEntrega,CiudadEntrega,RegionEntrega,CodigoPostalEntrega,PaisEntrega) values(" +
-                       idClienteSegunPosicion[tbNombreCliente.SelectedIndex] + "," + idEmpleado + "," + dtFechaPedido.Value.Date.ToShortDateString() + "," + dtFechaRequerida.Value.ToShortDateString().ToString() + "," + dtFechaEntrega.Value.ToShortDateString().ToString() + "," +
-                       idCAgenciaSegunPosicion[cbViasEnvio.SelectedIndex] + "," + Convert.ToDouble(mtbPrecioFinal.Text) + ",'" + tbNombreCliente.Text + "','" + tbDireccion.Text + "','" + tbCiudad.Text +"','" + tbRegion.Text + "'," + tbCodigoPostal.Text + ",'" + tbPais.Text +
-                       "')", Conexion.getConexion());
+            SqlCommand sqlCommand = new SqlCommand("insert into dbo.Pedidos(ClienteID,EmpleadoID,PedidoFecha,RequiredFecha,FechaEntregado,ShipVia,Freight,NombreEntrega,DireccionEntrega,CiudadEntrega,RegionEntrega,CodigoPostalEntrega,PaisEntrega) values(@idCliente,@idEmpleado,@join_date,@join_date2,@join_date3,@idAgencia," +
+                "@precioFinal,@nombreCliente,@direccionCliente,@ciudadCliente,@regionCliente,@cpCliente,@paisCliente)", Conexion.getConexion());
+
+            sqlCommand.Parameters.Add("@idCliente", SqlDbType.Int).Value = idClienteSegunPosicion[tbNombreCliente.SelectedIndex];
+            sqlCommand.Parameters.Add("@idEmpleado", SqlDbType.Int).Value = idEmpleado;
+            sqlCommand.Parameters.Add("@idAgencia", SqlDbType.Int).Value = idCAgenciaSegunPosicion[cbViasEnvio.SelectedIndex];
+            sqlCommand.Parameters.Add("@precioFinal", SqlDbType.Decimal).Value = Convert.ToDouble(mtbPrecioFinal.Text);
+            sqlCommand.Parameters.Add("@nombreCliente", SqlDbType.VarChar).Value = tbNombreCliente.Text;
+            sqlCommand.Parameters.Add("@direccionCliente", SqlDbType.VarChar).Value = tbDireccion.Text;
+            sqlCommand.Parameters.Add("@ciudadCliente", SqlDbType.VarChar).Value = tbCiudad.Text;
+            sqlCommand.Parameters.Add("@regionCliente", SqlDbType.VarChar).Value = tbRegion.Text;
+            sqlCommand.Parameters.Add("@cpCliente", SqlDbType.VarChar).Value = tbCodigoPostal.Text;
+            sqlCommand.Parameters.Add("@paisCliente", SqlDbType.VarChar).Value = tbPais.Text;
+            sqlCommand.Parameters.Add("@join_date", SqlDbType.Date).Value = DateTime.Now;
+            sqlCommand.Parameters.Add("@join_date2", SqlDbType.Date).Value = dtFechaRequerida.Value;
+            sqlCommand.Parameters.Add("@join_date3", SqlDbType.Date).Value = dtFechaEntrega.Value;
+
             sqlCommand.ExecuteNonQuery();
+
             
-            
+
+            for (int i = 0; i < dgProductos.RowCount; i++)
+            {
+
+                sqlCommand = new SqlCommand("insert into");
+                sqlCommand.Parameters.Add("@idCliente", SqlDbType.Int).Value = dgProductos.Rows[i].Cells["idProducto"].Value; ;
+                sqlCommand.Parameters.Add("@idEmpleado", SqlDbType.Int).Value = idEmpleado;
+                sqlCommand.Parameters.Add("@idAgencia", SqlDbType.Int).Value = idCAgenciaSegunPosicion[cbViasEnvio.SelectedIndex];
+                sqlCommand.Parameters.Add("@precioFinal", SqlDbType.Decimal).Value = Convert.ToDouble(mtbPrecioFinal.Text);
+                sqlCommand.Parameters.Add("@nombreCliente", SqlDbType.VarChar).Value = tbNombreCliente.Text;
+
+            }
+
         }
     }
 }
