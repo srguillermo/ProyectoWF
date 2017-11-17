@@ -25,21 +25,19 @@ namespace ProyectoWF
         }
 
         //Conexion
-        
-        SqlConnection con = new SqlConnection("Data Source = (localdb)\\MSSQLLocalDB;"+
-            "Initial Catalog = ProyectoWF; Integrated Security = True;"+
-            "Connect Timeout = 30; Encrypt=False;TrustServerCertificate=True;"+
-            "ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-        SqlDataAdapter adapter;
-        DataTable table;
-        SqlDataReader reader;
-        SqlCommand command;
 
-        
+
+
         public void consulta()
         {
+            string sConnection = ConfigurationManager.ConnectionStrings["proyectoWF"].ConnectionString;
+            SqlConnection con = new SqlConnection(sConnection);
+            SqlDataAdapter adapter;
+            DataTable table;
+            //SqlDataReader reader;
+            SqlCommand command;
             string sql = "SELECT * FROM Empleados";
-            command = new SqlCommand(sql,con);
+            command = new SqlCommand(sql, con);
             adapter = new SqlDataAdapter(command);
             table = new DataTable();
             adapter.Fill(table);
