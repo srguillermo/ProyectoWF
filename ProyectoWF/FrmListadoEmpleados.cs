@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace ProyectoWF
 {
@@ -24,7 +25,7 @@ namespace ProyectoWF
         }
 
         //Conexion
-
+        
         SqlConnection con = new SqlConnection("Data Source = (localdb)\\MSSQLLocalDB;"+
             "Initial Catalog = ProyectoWF; Integrated Security = True;"+
             "Connect Timeout = 30; Encrypt=False;TrustServerCertificate=True;"+
