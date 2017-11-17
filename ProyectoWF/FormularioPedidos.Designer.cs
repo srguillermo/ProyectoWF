@@ -37,7 +37,7 @@
             this.lFechaPedido = new System.Windows.Forms.Label();
             this.lFechaEntrega = new System.Windows.Forms.Label();
             this.lFechaRequerida = new System.Windows.Forms.Label();
-            this.dpFechaEntrega = new System.Windows.Forms.DateTimePicker();
+            this.dtFechaEntrega = new System.Windows.Forms.DateTimePicker();
             this.dtFechaPedido = new System.Windows.Forms.DateTimePicker();
             this.dtFechaRequerida = new System.Windows.Forms.DateTimePicker();
             this.cbViasEnvio = new System.Windows.Forms.ComboBox();
@@ -50,7 +50,7 @@
             this.tbRegion = new System.Windows.Forms.TextBox();
             this.tbCodigoPostal = new System.Windows.Forms.TextBox();
             this.lCP = new System.Windows.Forms.Label();
-            this.cbNombreCliente = new System.Windows.Forms.ComboBox();
+            this.tbNombreCliente = new System.Windows.Forms.ComboBox();
             this.lPais = new System.Windows.Forms.Label();
             this.tbCiudad = new System.Windows.Forms.TextBox();
             this.lCiudadEntrega = new System.Windows.Forms.Label();
@@ -73,7 +73,7 @@
             this.precioUnidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lPrecioTotal = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.mtbPrecioFinal = new System.Windows.Forms.MaskedTextBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.btDarAlta = new System.Windows.Forms.Button();
             this.btCancelar = new System.Windows.Forms.Button();
@@ -182,7 +182,7 @@
             this.tableLayoutPanel5.Controls.Add(this.lFechaPedido, 0, 2);
             this.tableLayoutPanel5.Controls.Add(this.lFechaEntrega, 3, 0);
             this.tableLayoutPanel5.Controls.Add(this.lFechaRequerida, 3, 1);
-            this.tableLayoutPanel5.Controls.Add(this.dpFechaEntrega, 4, 0);
+            this.tableLayoutPanel5.Controls.Add(this.dtFechaEntrega, 4, 0);
             this.tableLayoutPanel5.Controls.Add(this.dtFechaPedido, 1, 2);
             this.tableLayoutPanel5.Controls.Add(this.dtFechaRequerida, 4, 1);
             this.tableLayoutPanel5.Controls.Add(this.cbViasEnvio, 1, 1);
@@ -260,13 +260,13 @@
             this.lFechaRequerida.Text = "Fecha requerida";
             this.lFechaRequerida.Click += new System.EventHandler(this.lFechaRequerida_Click);
             // 
-            // dpFechaEntrega
+            // dtFechaEntrega
             // 
-            this.dpFechaEntrega.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.dpFechaEntrega.Location = new System.Drawing.Point(561, 7);
-            this.dpFechaEntrega.Name = "dpFechaEntrega";
-            this.dpFechaEntrega.Size = new System.Drawing.Size(332, 20);
-            this.dpFechaEntrega.TabIndex = 11;
+            this.dtFechaEntrega.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtFechaEntrega.Location = new System.Drawing.Point(561, 7);
+            this.dtFechaEntrega.Name = "dtFechaEntrega";
+            this.dtFechaEntrega.Size = new System.Drawing.Size(332, 20);
+            this.dtFechaEntrega.TabIndex = 11;
             // 
             // dtFechaPedido
             // 
@@ -331,14 +331,14 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.80165F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.80165F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel4.Controls.Add(this.lNombreEntrega, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.lRegionEntrega, 3, 1);
             this.tableLayoutPanel4.Controls.Add(this.lDireccionEntrega, 3, 0);
             this.tableLayoutPanel4.Controls.Add(this.tbRegion, 4, 1);
             this.tableLayoutPanel4.Controls.Add(this.tbCodigoPostal, 6, 1);
             this.tableLayoutPanel4.Controls.Add(this.lCP, 5, 1);
-            this.tableLayoutPanel4.Controls.Add(this.cbNombreCliente, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.tbNombreCliente, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.lPais, 3, 2);
             this.tableLayoutPanel4.Controls.Add(this.tbCiudad, 1, 2);
             this.tableLayoutPanel4.Controls.Add(this.lCiudadEntrega, 0, 2);
@@ -393,42 +393,42 @@
             this.tbRegion.Enabled = false;
             this.tbRegion.Location = new System.Drawing.Point(554, 50);
             this.tbRegion.Name = "tbRegion";
-            this.tbRegion.Size = new System.Drawing.Size(112, 20);
+            this.tbRegion.Size = new System.Drawing.Size(111, 20);
             this.tbRegion.TabIndex = 9;
             // 
             // tbCodigoPostal
             // 
             this.tbCodigoPostal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tbCodigoPostal.Enabled = false;
-            this.tbCodigoPostal.Location = new System.Drawing.Point(772, 50);
+            this.tbCodigoPostal.Location = new System.Drawing.Point(771, 50);
             this.tbCodigoPostal.Name = "tbCodigoPostal";
-            this.tbCodigoPostal.Size = new System.Drawing.Size(112, 20);
+            this.tbCodigoPostal.Size = new System.Drawing.Size(111, 20);
             this.tbCodigoPostal.TabIndex = 10;
             // 
             // lCP
             // 
             this.lCP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lCP.AutoSize = true;
-            this.lCP.Location = new System.Drawing.Point(672, 53);
+            this.lCP.Location = new System.Drawing.Point(671, 53);
             this.lCP.Name = "lCP";
             this.lCP.Size = new System.Drawing.Size(94, 13);
             this.lCP.TabIndex = 12;
             this.lCP.Text = "Código postal";
             // 
-            // cbNombreCliente
+            // tbNombreCliente
             // 
-            this.cbNombreCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbNombreCliente.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cbNombreCliente.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cbNombreCliente.FormattingEnabled = true;
-            this.cbNombreCliente.Location = new System.Drawing.Point(103, 9);
-            this.cbNombreCliente.Name = "cbNombreCliente";
-            this.cbNombreCliente.Size = new System.Drawing.Size(325, 21);
-            this.cbNombreCliente.TabIndex = 6;
-            this.cbNombreCliente.SelectedIndexChanged += new System.EventHandler(this.cbNombreCliente_SelectedIndexChanged);
-            this.cbNombreCliente.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbNombreCliente_KeyDown);
-            this.cbNombreCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbNombreCliente_KeyPress);
-            this.cbNombreCliente.Validating += new System.ComponentModel.CancelEventHandler(this.cbNombreCliente_Validating);
+            this.tbNombreCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbNombreCliente.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.tbNombreCliente.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.tbNombreCliente.FormattingEnabled = true;
+            this.tbNombreCliente.Location = new System.Drawing.Point(103, 9);
+            this.tbNombreCliente.Name = "tbNombreCliente";
+            this.tbNombreCliente.Size = new System.Drawing.Size(325, 21);
+            this.tbNombreCliente.TabIndex = 6;
+            this.tbNombreCliente.SelectedIndexChanged += new System.EventHandler(this.cbNombreCliente_SelectedIndexChanged);
+            this.tbNombreCliente.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbNombreCliente_KeyDown);
+            this.tbNombreCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbNombreCliente_KeyPress);
+            this.tbNombreCliente.Validating += new System.ComponentModel.CancelEventHandler(this.cbNombreCliente_Validating);
             // 
             // lPais
             // 
@@ -476,7 +476,7 @@
             this.tbDireccion.Enabled = false;
             this.tbDireccion.Location = new System.Drawing.Point(554, 10);
             this.tbDireccion.Name = "tbDireccion";
-            this.tbDireccion.Size = new System.Drawing.Size(330, 20);
+            this.tbDireccion.Size = new System.Drawing.Size(328, 20);
             this.tbDireccion.TabIndex = 7;
             // 
             // tbTelefono
@@ -495,7 +495,7 @@
             this.tbPais.Enabled = false;
             this.tbPais.Location = new System.Drawing.Point(554, 90);
             this.tbPais.Name = "tbPais";
-            this.tbPais.Size = new System.Drawing.Size(330, 20);
+            this.tbPais.Size = new System.Drawing.Size(328, 20);
             this.tbPais.TabIndex = 12;
             // 
             // splitContainer3
@@ -558,7 +558,7 @@
             this.tableLayoutPanel6.Controls.Add(this.btEditar, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.dgProductos, 0, 1);
             this.tableLayoutPanel6.Controls.Add(this.lPrecioTotal, 0, 2);
-            this.tableLayoutPanel6.Controls.Add(this.maskedTextBox1, 1, 2);
+            this.tableLayoutPanel6.Controls.Add(this.mtbPrecioFinal, 1, 2);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
@@ -673,15 +673,15 @@
             this.lPrecioTotal.TabIndex = 4;
             this.lPrecioTotal.Text = "Precio total";
             // 
-            // maskedTextBox1
+            // mtbPrecioFinal
             // 
-            this.maskedTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel6.SetColumnSpan(this.maskedTextBox1, 3);
-            this.maskedTextBox1.Location = new System.Drawing.Point(792, 350);
-            this.maskedTextBox1.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(105, 20);
-            this.maskedTextBox1.TabIndex = 5;
+            this.mtbPrecioFinal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel6.SetColumnSpan(this.mtbPrecioFinal, 3);
+            this.mtbPrecioFinal.Location = new System.Drawing.Point(792, 350);
+            this.mtbPrecioFinal.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
+            this.mtbPrecioFinal.Name = "mtbPrecioFinal";
+            this.mtbPrecioFinal.Size = new System.Drawing.Size(105, 20);
+            this.mtbPrecioFinal.TabIndex = 5;
             // 
             // tableLayoutPanel7
             // 
@@ -708,6 +708,7 @@
             this.btDarAlta.TabIndex = 6;
             this.btDarAlta.Text = "Dar de alta";
             this.btDarAlta.UseVisualStyleBackColor = true;
+            this.btDarAlta.Click += new System.EventHandler(this.btDarAlta_Click);
             // 
             // btCancelar
             // 
@@ -794,7 +795,7 @@
         private System.Windows.Forms.TextBox tbPais;
         private System.Windows.Forms.Label lCP;
         private System.Windows.Forms.Label lFechaRequerida;
-        private System.Windows.Forms.ComboBox cbNombreCliente;
+        private System.Windows.Forms.ComboBox tbNombreCliente;
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -806,10 +807,10 @@
         private System.Windows.Forms.Button btDarAlta;
         private System.Windows.Forms.Button btCancelar;
         private System.Windows.Forms.Label lPrecioTotal;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox mtbPrecioFinal;
         private System.Windows.Forms.Label lTelefono;
         private System.Windows.Forms.TextBox tbTelefono;
-        private System.Windows.Forms.DateTimePicker dpFechaEntrega;
+        private System.Windows.Forms.DateTimePicker dtFechaEntrega;
         private System.Windows.Forms.DateTimePicker dtFechaPedido;
         private System.Windows.Forms.DateTimePicker dtFechaRequerida;
         private System.Windows.Forms.ComboBox cbViasEnvio;

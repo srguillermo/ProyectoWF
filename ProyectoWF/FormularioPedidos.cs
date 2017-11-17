@@ -30,11 +30,11 @@ namespace ProyectoWF {
             for (int i = 0; i < cuenta.Tables[0].Rows.Count; i++)
             {
                 idClienteSegunPosicion.Add(cuenta.Tables[0].Rows[i]["ClienteID"].ToString());
-                cbNombreCliente.Items.Add(cuenta.Tables[0].Rows[i]["ContactoNombre"].ToString());
+                tbNombreCliente.Items.Add(cuenta.Tables[0].Rows[i]["ContactoNombre"].ToString());
             }
             this.idEmpleado = idEmpleado;
 
-            comando = "Select concat(Nombre ,' ',Apellidos) as 'nombreCompleto' from dbo.Empleados where EmpleadoID=3";
+            comando = "Select concat(Nombre ,' ',Apellidos) as 'nombreCompleto' from dbo.Empleados where EmpleadoID=" + idEmpleado;
             adapter = new SqlDataAdapter(comando, Conexion.getConexion());
             cuenta = new DataSet();
             adapter.Fill(cuenta);
@@ -129,9 +129,9 @@ namespace ProyectoWF {
 
         private void colocarDatosCliente()
         {
-            if (cbNombreCliente.SelectedItem != null)
+            if (tbNombreCliente.SelectedItem != null)
             {
-                string comando = String.Format("Select * from dbo.Clientes where ClienteID=" + idClienteSegunPosicion[cbNombreCliente.SelectedIndex]);
+                string comando = String.Format("Select * from dbo.Clientes where ClienteID=" + idClienteSegunPosicion[tbNombreCliente.SelectedIndex]);
                 SqlDataAdapter adapter = new SqlDataAdapter(comando, Conexion.getConexion());
                 DataSet cuenta = new DataSet();
                 adapter.Fill(cuenta);
@@ -158,7 +158,7 @@ namespace ProyectoWF {
 
         private void borrarDatosCliente()
         {
-            if (cbNombreCliente.SelectedItem == null)
+            if (tbNombreCliente.SelectedItem == null)
             {
                 tbDireccion.Text = "";
                 tbCiudad.Text = "";
@@ -208,6 +208,7 @@ namespace ProyectoWF {
             SqlDataAdapter adapter = new SqlDataAdapter(comando, Conexion.getConexion());
             DataSet cuenta = new DataSet();
             adapter.Fill(cuenta);
+            dgProductos.CurrentRow.Cells["idProducto"].Value = idProductoSegunPosicion[((ComboBox)sender).SelectedIndex];
             dgProductos.CurrentRow.Cells["precioUnidad"].Value = cuenta.Tables[0].Rows[0]["PrecioUnidad"].ToString();
             calculoCeldaPrecio();
         }
@@ -235,6 +236,17 @@ namespace ProyectoWF {
                 double descuento = ((Convert.ToDouble(dgProductos.Rows[dgProductos.CurrentRow.Index].Cells["descuento"].Value) > 0 || dgProductos.Rows[dgProductos.CurrentRow.Index].Cells["descuento"].Value != null) ? Convert.ToDouble(dgProductos.Rows[dgProductos.CurrentRow.Index].Cells["cantidad"].Value) * (Convert.ToDouble(dgProductos.Rows[dgProductos.CurrentRow.Index].Cells["descuento"].Value) / 100) : 0);
                 double precioConDescuentoAplicado = (Convert.ToDouble(dgProductos.Rows[dgProductos.CurrentRow.Index].Cells["cantidad"].Value) - descuento) * Convert.ToDouble(dgProductos.Rows[dgProductos.CurrentRow.Index].Cells["precioUnidad"].Value);
                 dgProductos.CurrentRow.Cells["precio"].Value = precioConDescuentoAplicado;
+
+                double precioFinal = 0;
+                for (int i = 0; i < dgProductos.Rows.Count; i++)
+                {
+                    precioFinal += Convert.ToDouble(dgProductos.Rows[i].Cells["precio"].Value);
+
+                }
+
+                mtbPrecioFinal.Text = Convert.ToString(precioFinal);
+
+
             }
         }
 
@@ -293,6 +305,18 @@ namespace ProyectoWF {
                 dgProductos.Rows[numeroFilaSeleccionado].Cells["cantidad"].ReadOnly = true;
                 dgProductos.CurrentRow.DefaultCellStyle.BackColor = Color.Empty;
             }
+        }
+
+        private void btDarAlta_Click(object sender, EventArgs e)
+
+        {
+            SqlCommand sqlCommand = new SqlCommand("insert into dbo.Pedidos(ClienteID,EmpleadoID,PedidoFecha,RequiredFecha,FechaEntregado,ShipVia,Freight,NombreEntrega,DireccionEntrega,CiudadEntrega,RegionEntrega,CodigoPostalEntrega,PaisEntrega) values(" +
+                       idClienteSegunPosicion[tbNombreCliente.SelectedIndex] + "," + idEmpleado + "," + dtFechaPedido.Value.Date.ToShortDateString() + "," + dtFechaRequerida.Value.ToShortDateString().ToString() + "," + dtFechaEntrega.Value.ToShortDateString().ToString() + "," +
+                       idCAgenciaSegunPosicion[cbViasEnvio.SelectedIndex] + "," + Convert.ToDouble(mtbPrecioFinal.Text) + ",'" + tbNombreCliente.Text + "','" + tbDireccion.Text + "','" + tbCiudad.Text +"','" + tbRegion.Text + "'," + tbCodigoPostal.Text + ",'" + tbPais.Text +
+                       "')", Conexion.getConexion());
+            sqlCommand.ExecuteNonQuery();
+            
+            
         }
     }
 }
