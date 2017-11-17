@@ -66,12 +66,13 @@
             // 
             this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
             this.splitContainer1.Panel1.Padding = new System.Windows.Forms.Padding(10);
+            this.splitContainer1.Panel1Collapsed = true;
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel1);
             this.splitContainer1.Size = new System.Drawing.Size(884, 661);
-            this.splitContainer1.SplitterDistance = 119;
+            this.splitContainer1.SplitterDistance = 120;
             this.splitContainer1.TabIndex = 0;
             // 
             // groupBox1
@@ -89,7 +90,7 @@
             this.groupBox1.Location = new System.Drawing.Point(10, 10);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(10);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(864, 99);
+            this.groupBox1.Size = new System.Drawing.Size(864, 100);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Busqueda avanzada";
@@ -195,12 +196,12 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(884, 538);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(884, 661);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(799, 505);
+            this.button4.Location = new System.Drawing.Point(799, 628);
             this.button4.Margin = new System.Windows.Forms.Padding(10);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
@@ -213,10 +214,10 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanel1.SetColumnSpan(this.dataGridView1, 4);
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(10, 53);
+            this.dataGridView1.Location = new System.Drawing.Point(10, 62);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(10);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(864, 432);
+            this.dataGridView1.Size = new System.Drawing.Size(864, 546);
             this.dataGridView1.TabIndex = 4;
             // 
             // button1
@@ -225,7 +226,7 @@
             this.button1.Location = new System.Drawing.Point(609, 10);
             this.button1.Margin = new System.Windows.Forms.Padding(10);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(75, 32);
             this.button1.TabIndex = 0;
             this.button1.UseVisualStyleBackColor = true;
             // 
@@ -235,7 +236,7 @@
             this.button2.Location = new System.Drawing.Point(704, 10);
             this.button2.Margin = new System.Windows.Forms.Padding(10);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(75, 32);
             this.button2.TabIndex = 1;
             this.button2.UseVisualStyleBackColor = true;
             // 
@@ -245,22 +246,20 @@
             this.button3.Location = new System.Drawing.Point(799, 10);
             this.button3.Margin = new System.Windows.Forms.Padding(10);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.Size = new System.Drawing.Size(75, 32);
             this.button3.TabIndex = 2;
             this.button3.UseVisualStyleBackColor = true;
             // 
             // button5
             // 
             this.button5.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.button5.AutoSize = true;
-            this.button5.Image = global::ProyectoWF.Properties.Resources.buscar;
             this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button5.Location = new System.Drawing.Point(10, 10);
             this.button5.Margin = new System.Windows.Forms.Padding(10);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(88, 23);
+            this.button5.Size = new System.Drawing.Size(125, 32);
             this.button5.TabIndex = 0;
-            this.button5.Text = "Abrir búsqueda";
+            this.button5.Text = "Abrir Busqueda";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -279,7 +278,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
