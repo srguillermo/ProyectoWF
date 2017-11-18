@@ -45,11 +45,11 @@
             this.cbProveedor = new System.Windows.Forms.ComboBox();
             this.lbCategoria = new System.Windows.Forms.Label();
             this.cbCategoria = new System.Windows.Forms.ComboBox();
+            this.lbExistencias = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btAceptar = new System.Windows.Forms.Button();
             this.btCancelar = new System.Windows.Forms.Button();
             this.lbObligatorio = new System.Windows.Forms.Label();
-            this.lbExistencias = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tlPrincipal.SuspendLayout();
             this.gbDatosP.SuspendLayout();
@@ -193,10 +193,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gbDirección.Controls.Add(this.tlOtrosDatos);
             this.gbDirección.Location = new System.Drawing.Point(305, 15);
-            this.gbDirección.Margin = new System.Windows.Forms.Padding(0, 15, 0, 0);
+            this.gbDirección.Margin = new System.Windows.Forms.Padding(0, 15, 6, 0);
             this.gbDirección.Name = "gbDirección";
             this.gbDirección.Padding = new System.Windows.Forms.Padding(15, 15, 0, 0);
-            this.gbDirección.Size = new System.Drawing.Size(373, 156);
+            this.gbDirección.Size = new System.Drawing.Size(367, 156);
             this.gbDirección.TabIndex = 1;
             this.gbDirección.TabStop = false;
             this.gbDirección.Text = "Otros datos";
@@ -220,7 +220,7 @@
             this.tlOtrosDatos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tlOtrosDatos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tlOtrosDatos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlOtrosDatos.Size = new System.Drawing.Size(345, 125);
+            this.tlOtrosDatos.Size = new System.Drawing.Size(339, 125);
             this.tlOtrosDatos.TabIndex = 1;
             // 
             // lbProveedor
@@ -237,9 +237,9 @@
             // 
             this.cbProveedor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cbProveedor.FormattingEnabled = true;
-            this.cbProveedor.Location = new System.Drawing.Point(72, 10);
+            this.cbProveedor.Location = new System.Drawing.Point(70, 10);
             this.cbProveedor.Name = "cbProveedor";
-            this.cbProveedor.Size = new System.Drawing.Size(270, 21);
+            this.cbProveedor.Size = new System.Drawing.Size(266, 21);
             this.cbProveedor.TabIndex = 3;
             // 
             // lbCategoria
@@ -256,10 +256,21 @@
             // 
             this.cbCategoria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cbCategoria.FormattingEnabled = true;
-            this.cbCategoria.Location = new System.Drawing.Point(72, 51);
+            this.cbCategoria.Location = new System.Drawing.Point(70, 51);
             this.cbCategoria.Name = "cbCategoria";
-            this.cbCategoria.Size = new System.Drawing.Size(270, 21);
+            this.cbCategoria.Size = new System.Drawing.Size(266, 21);
             this.cbCategoria.TabIndex = 4;
+            // 
+            // lbExistencias
+            // 
+            this.lbExistencias.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbExistencias.AutoSize = true;
+            this.lbExistencias.Location = new System.Drawing.Point(202, 112);
+            this.lbExistencias.Name = "lbExistencias";
+            this.lbExistencias.Size = new System.Drawing.Size(134, 13);
+            this.lbExistencias.TabIndex = 15;
+            this.lbExistencias.Text = "Unidades en existencias: 0";
+            this.lbExistencias.Visible = false;
             // 
             // tableLayoutPanel2
             // 
@@ -312,17 +323,6 @@
             this.lbObligatorio.Size = new System.Drawing.Size(104, 13);
             this.lbObligatorio.TabIndex = 3;
             this.lbObligatorio.Text = "*   Campo obligatorio";
-            // 
-            // lbExistencias
-            // 
-            this.lbExistencias.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbExistencias.AutoSize = true;
-            this.lbExistencias.Location = new System.Drawing.Point(208, 112);
-            this.lbExistencias.Name = "lbExistencias";
-            this.lbExistencias.Size = new System.Drawing.Size(134, 13);
-            this.lbExistencias.TabIndex = 15;
-            this.lbExistencias.Text = "Unidades en existencias: 0";
-            this.lbExistencias.Visible = false;
             // 
             // FormularioProductos
             // 
