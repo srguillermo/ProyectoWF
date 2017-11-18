@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -24,13 +25,24 @@ namespace ProyectoWF
             toolTip1.SetToolTip(tbPrecio, "Precio unitario del producto.");
             toolTip1.SetToolTip(cbCategoria, "Categoría del producto.");
             toolTip1.SetToolTip(cbProveedor, "Proveedor del producto.");
+            Conexion.getConexion();
+            SqlCommand comando = new SqlCommand();
+            comando.Connection = Conexion.conexion;
 
 
         }
         public FormularioProductos(int modo, int primaryKey) {
             this.modo = modo;
             this.pk = primaryKey;
+            toolTip1.SetToolTip(tbNombre, "Nombre del producto.");
+            toolTip1.SetToolTip(tbCantidad, "Cantidad del producto.");
+            toolTip1.SetToolTip(tbPrecio, "Precio unitario del producto.");
+            toolTip1.SetToolTip(cbCategoria, "Categoría del producto.");
+            toolTip1.SetToolTip(cbProveedor, "Proveedor del producto.");
             
+
+
+
             if (modo == 0)
             {
                 this.Text = "Alta de producto";
