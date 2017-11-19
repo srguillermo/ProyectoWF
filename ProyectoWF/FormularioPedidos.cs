@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,11 +14,12 @@ using System.Windows.Forms;
 namespace ProyectoWF {
     public partial class FormularioPedidos : Form {
 
-        ArrayList idClienteSegunPosicion;
-        ArrayList idCAgenciaSegunPosicion;
-        ArrayList idProductoSegunPosicion;
-        int idEmpleado;
-        int numeroFilaSeleccionado;
+        private ArrayList idClienteSegunPosicion;
+        private ArrayList idCAgenciaSegunPosicion;
+        private ArrayList idProductoSegunPosicion;
+        private int idEmpleado;
+        private int numeroFilaSeleccionado;
+        private double precioFinal;
 
         public FormularioPedidos(int idEmpleado)
         {
@@ -38,7 +40,7 @@ namespace ProyectoWF {
             adapter = new SqlDataAdapter(comando, Conexion.getConexion());
             cuenta = new DataSet();
             adapter.Fill(cuenta);
-            tbEmpleadoNombre.Text = cuenta.Tables[0].Rows[0]["nombreCompleto"].ToString();
+
 
             comando = "Select AgenciaID,NombreCompania from dbo.Agencias";
             adapter = new SqlDataAdapter(comando, Conexion.getConexion());
@@ -55,6 +57,14 @@ namespace ProyectoWF {
 
             dgProductos.Rows.Insert(0);
             cargarProductosCbDataGridView();
+
+            lFd.Visible = false;
+            lFd2.Visible = false;
+            lFd3.Visible = false;
+            lFd4.Visible = false;
+
+
+
 
         }
 
@@ -237,14 +247,14 @@ namespace ProyectoWF {
                 double precioConDescuentoAplicado = (Convert.ToDouble(dgProductos.Rows[dgProductos.CurrentRow.Index].Cells["cantidad"].Value) - descuento) * Convert.ToDouble(dgProductos.Rows[dgProductos.CurrentRow.Index].Cells["precioUnidad"].Value);
                 dgProductos.CurrentRow.Cells["precio"].Value = precioConDescuentoAplicado;
 
-                double precioFinal = 0;
+                precioFinal = 0;
                 for (int i = 0; i < dgProductos.Rows.Count; i++)
                 {
                     precioFinal += Convert.ToDouble(dgProductos.Rows[i].Cells["precio"].Value);
 
                 }
 
-                mtbPrecioFinal.Text = Convert.ToString(precioFinal);
+                mtbPrecioFinal.Text = precioFinal.ToString("C", CultureInfo.CreateSpecificCulture("es-ES"));
 
 
             }
@@ -259,8 +269,8 @@ namespace ProyectoWF {
                 TextBox tb = (TextBox)e.Control;
                 if (tb != null)
                 {
-                    tb.Validating -= new CancelEventHandler(tb_Validating);
-                    tb.Validating += new CancelEventHandler(tb_Validating);
+                    tb.LostFocus -= new EventHandler(tb_Validating);
+                    tb.LostFocus += new EventHandler(tb_Validating);
                 }
             }
             else if (this.dgProductos.CurrentCellAddress.X == dgProductos.Columns[2].DisplayIndex)
@@ -268,8 +278,8 @@ namespace ProyectoWF {
                 TextBox tb = (TextBox)e.Control;
                 if (tb != null)
                 {
-                    tb.Validating -= new CancelEventHandler(tb_Validating);
-                    tb.Validating += new CancelEventHandler(tb_Validating);
+                    tb.LostFocus -= new EventHandler(tb_Validating);
+                    tb.LostFocus += new EventHandler(tb_Validating);
                 }
             }
             else if (this.dgProductos.CurrentCellAddress.X == dgProductos.Columns[1].DisplayIndex)
@@ -286,6 +296,7 @@ namespace ProyectoWF {
 
         private void btEditar_MouseClick(object sender, MouseEventArgs e)
         {
+            numeroFilaSeleccionado = dgProductos.CurrentRow.Index;
             if (numeroFilaSeleccionado > 0)
             {
                 dgProductos.CurrentRow.Cells["nombreProd"].ReadOnly = false;
@@ -310,39 +321,130 @@ namespace ProyectoWF {
         private void btDarAlta_Click(object sender, EventArgs e)
 
         {
-            SqlCommand sqlCommand = new SqlCommand("insert into dbo.Pedidos(ClienteID,EmpleadoID,PedidoFecha,RequiredFecha,FechaEntregado,ShipVia,Freight,NombreEntrega,DireccionEntrega,CiudadEntrega,RegionEntrega,CodigoPostalEntrega,PaisEntrega) values(@idCliente,@idEmpleado,@join_date,@join_date2,@join_date3,@idAgencia," +
-                "@precioFinal,@nombreCliente,@direccionCliente,@ciudadCliente,@regionCliente,@cpCliente,@paisCliente)", Conexion.getConexion());
+            lFd.Visible = false;
+            lFd2.Visible = false;
+            lFd3.Visible = false;
+            lFd4.Visible = false;
+            bool puedoDarDeAlta = true;
 
-            sqlCommand.Parameters.Add("@idCliente", SqlDbType.Int).Value = idClienteSegunPosicion[tbNombreCliente.SelectedIndex];
-            sqlCommand.Parameters.Add("@idEmpleado", SqlDbType.Int).Value = idEmpleado;
-            sqlCommand.Parameters.Add("@idAgencia", SqlDbType.Int).Value = idCAgenciaSegunPosicion[cbViasEnvio.SelectedIndex];
-            sqlCommand.Parameters.Add("@precioFinal", SqlDbType.Decimal).Value = Convert.ToDouble(mtbPrecioFinal.Text);
-            sqlCommand.Parameters.Add("@nombreCliente", SqlDbType.VarChar).Value = tbNombreCliente.Text;
-            sqlCommand.Parameters.Add("@direccionCliente", SqlDbType.VarChar).Value = tbDireccion.Text;
-            sqlCommand.Parameters.Add("@ciudadCliente", SqlDbType.VarChar).Value = tbCiudad.Text;
-            sqlCommand.Parameters.Add("@regionCliente", SqlDbType.VarChar).Value = tbRegion.Text;
-            sqlCommand.Parameters.Add("@cpCliente", SqlDbType.VarChar).Value = tbCodigoPostal.Text;
-            sqlCommand.Parameters.Add("@paisCliente", SqlDbType.VarChar).Value = tbPais.Text;
-            sqlCommand.Parameters.Add("@join_date", SqlDbType.Date).Value = DateTime.Now;
-            sqlCommand.Parameters.Add("@join_date2", SqlDbType.Date).Value = dtFechaRequerida.Value;
-            sqlCommand.Parameters.Add("@join_date3", SqlDbType.Date).Value = dtFechaEntrega.Value;
+            if (cbViasEnvio.SelectedItem == null)
+            {
+                lFd.Visible = true;
+                lFd2.Visible = true;
+                lFd4.Visible = true;
+                puedoDarDeAlta = false;
+            }
 
-            sqlCommand.ExecuteNonQuery();
+            if (tbNombreCliente.SelectedItem == null)
+            {
+                lFd.Visible = true;
+                lFd2.Visible = true;
+                lFd3.Visible = true;
+                puedoDarDeAlta = false;
+            }
 
-            
-
-            for (int i = 0; i < dgProductos.RowCount; i++)
+            if (puedoDarDeAlta)
             {
 
-                sqlCommand = new SqlCommand("insert into");
-                sqlCommand.Parameters.Add("@idCliente", SqlDbType.Int).Value = dgProductos.Rows[i].Cells["idProducto"].Value; ;
+                SqlCommand sqlCommand = new SqlCommand("insert into dbo.Pedidos(ClienteID,EmpleadoID,PedidoFecha,RequiredFecha,FechaEntregado,ShipVia,Freight,NombreEntrega,DireccionEntrega,CiudadEntrega,RegionEntrega,CodigoPostalEntrega,PaisEntrega) values(@idCliente,@idEmpleado,@join_date,@join_date2,@join_date3,@idAgencia," +
+                    "@precioFinal,@nombreCliente,@direccionCliente,@ciudadCliente,@regionCliente,@cpCliente,@paisCliente)", Conexion.getConexion());
+
+                sqlCommand.Parameters.Add("@idCliente", SqlDbType.Int).Value = idClienteSegunPosicion[tbNombreCliente.SelectedIndex];
                 sqlCommand.Parameters.Add("@idEmpleado", SqlDbType.Int).Value = idEmpleado;
                 sqlCommand.Parameters.Add("@idAgencia", SqlDbType.Int).Value = idCAgenciaSegunPosicion[cbViasEnvio.SelectedIndex];
-                sqlCommand.Parameters.Add("@precioFinal", SqlDbType.Decimal).Value = Convert.ToDouble(mtbPrecioFinal.Text);
+                sqlCommand.Parameters.Add("@precioFinal", SqlDbType.Decimal).Value = precioFinal;
                 sqlCommand.Parameters.Add("@nombreCliente", SqlDbType.VarChar).Value = tbNombreCliente.Text;
+                sqlCommand.Parameters.Add("@direccionCliente", SqlDbType.VarChar).Value = tbDireccion.Text;
+                sqlCommand.Parameters.Add("@ciudadCliente", SqlDbType.VarChar).Value = tbCiudad.Text;
+                sqlCommand.Parameters.Add("@regionCliente", SqlDbType.VarChar).Value = tbRegion.Text;
+                sqlCommand.Parameters.Add("@cpCliente", SqlDbType.VarChar).Value = tbCodigoPostal.Text;
+                sqlCommand.Parameters.Add("@paisCliente", SqlDbType.VarChar).Value = tbPais.Text;
+                sqlCommand.Parameters.Add("@join_date", SqlDbType.Date).Value = DateTime.Now;
+                sqlCommand.Parameters.Add("@join_date2", SqlDbType.Date).Value = dtFechaRequerida.Value;
+                sqlCommand.Parameters.Add("@join_date3", SqlDbType.Date).Value = dtFechaEntrega.Value;
+
+                sqlCommand.ExecuteNonQuery();
+
+
+
+                for (int i = 0; i < dgProductos.RowCount; i++)
+                {
+
+                    sqlCommand = new SqlCommand("insert into");
+                    sqlCommand.Parameters.Add("@idCliente", SqlDbType.Int).Value = dgProductos.Rows[i].Cells["idProducto"].Value; ;
+                    sqlCommand.Parameters.Add("@idEmpleado", SqlDbType.Int).Value = idEmpleado;
+                    sqlCommand.Parameters.Add("@idAgencia", SqlDbType.Int).Value = idCAgenciaSegunPosicion[cbViasEnvio.SelectedIndex];
+                    sqlCommand.Parameters.Add("@precioFinal", SqlDbType.Decimal).Value = precioFinal;
+                    sqlCommand.Parameters.Add("@nombreCliente", SqlDbType.VarChar).Value = tbNombreCliente.Text;
+
+                }
+            }
+
+        }
+
+        private void btMenos_Click(object sender, EventArgs e)
+        {
+
+
+            if (dgProductos.Rows.Count > 1)
+            {
+                foreach (DataGridViewRow row in dgProductos.SelectedRows)
+                {
+                    dgProductos.Rows.Remove(row);
+                }
 
             }
+        }
+
+        private void tbTelefono_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtFechaPedido_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbViasEnvio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbCiudad_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtFechaEntrega_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtFechaRequerida_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbDireccion_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbRegion_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbPais_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbCodigoPostal_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }
 }
+

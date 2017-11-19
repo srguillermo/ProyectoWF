@@ -31,8 +31,6 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.gbDatosPedido = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.lEmpleadoNombre = new System.Windows.Forms.Label();
-            this.tbEmpleadoNombre = new System.Windows.Forms.TextBox();
             this.lViaEnvio = new System.Windows.Forms.Label();
             this.lFechaPedido = new System.Windows.Forms.Label();
             this.lFechaEntrega = new System.Windows.Forms.Label();
@@ -74,10 +72,15 @@
             this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lPrecioTotal = new System.Windows.Forms.Label();
             this.mtbPrecioFinal = new System.Windows.Forms.MaskedTextBox();
-            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.btDarAlta = new System.Windows.Forms.Button();
-            this.btCancelar = new System.Windows.Forms.Button();
             this.textBox11 = new System.Windows.Forms.TextBox();
+            this.btCancelar = new System.Windows.Forms.Button();
+            this.btDarAlta = new System.Windows.Forms.Button();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.lFd = new System.Windows.Forms.Label();
+            this.lFd2 = new System.Windows.Forms.Label();
+            this.lFd3 = new System.Windows.Forms.Label();
+            this.lFd4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -101,6 +104,7 @@
             this.tableLayoutPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgProductos)).BeginInit();
             this.tableLayoutPanel7.SuspendLayout();
+            this.tableLayoutPanel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -119,7 +123,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer3);
             this.splitContainer1.Size = new System.Drawing.Size(943, 770);
-            this.splitContainer1.SplitterDistance = 310;
+            this.splitContainer1.SplitterDistance = 274;
             this.splitContainer1.TabIndex = 0;
             // 
             // splitContainer2
@@ -136,8 +140,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.tableLayoutPanel3);
-            this.splitContainer2.Size = new System.Drawing.Size(943, 310);
-            this.splitContainer2.SplitterDistance = 146;
+            this.splitContainer2.Size = new System.Drawing.Size(943, 274);
+            this.splitContainer2.SplitterDistance = 111;
             this.splitContainer2.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -152,7 +156,7 @@
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 146F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(943, 146);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(943, 111);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // gbDatosPedido
@@ -162,7 +166,7 @@
             this.gbDatosPedido.Location = new System.Drawing.Point(10, 10);
             this.gbDatosPedido.Margin = new System.Windows.Forms.Padding(10);
             this.gbDatosPedido.Name = "gbDatosPedido";
-            this.gbDatosPedido.Size = new System.Drawing.Size(923, 126);
+            this.gbDatosPedido.Size = new System.Drawing.Size(923, 91);
             this.gbDatosPedido.TabIndex = 2;
             this.gbDatosPedido.TabStop = false;
             this.gbDatosPedido.Text = "Datos pedido";
@@ -176,53 +180,31 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 21F));
-            this.tableLayoutPanel5.Controls.Add(this.lEmpleadoNombre, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.tbEmpleadoNombre, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.lViaEnvio, 0, 1);
-            this.tableLayoutPanel5.Controls.Add(this.lFechaPedido, 0, 2);
             this.tableLayoutPanel5.Controls.Add(this.lFechaEntrega, 3, 0);
             this.tableLayoutPanel5.Controls.Add(this.lFechaRequerida, 3, 1);
             this.tableLayoutPanel5.Controls.Add(this.dtFechaEntrega, 4, 0);
-            this.tableLayoutPanel5.Controls.Add(this.dtFechaPedido, 1, 2);
             this.tableLayoutPanel5.Controls.Add(this.dtFechaRequerida, 4, 1);
-            this.tableLayoutPanel5.Controls.Add(this.cbViasEnvio, 1, 1);
+            this.tableLayoutPanel5.Controls.Add(this.lViaEnvio, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.cbViasEnvio, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.lFechaPedido, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.dtFechaPedido, 1, 1);
+            this.tableLayoutPanel5.Controls.Add(this.lFd4, 2, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 3;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(917, 107);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(917, 72);
             this.tableLayoutPanel5.TabIndex = 0;
             this.tableLayoutPanel5.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel5_Paint);
-            // 
-            // lEmpleadoNombre
-            // 
-            this.lEmpleadoNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lEmpleadoNombre.AutoSize = true;
-            this.lEmpleadoNombre.Location = new System.Drawing.Point(3, 11);
-            this.lEmpleadoNombre.Name = "lEmpleadoNombre";
-            this.lEmpleadoNombre.Size = new System.Drawing.Size(94, 13);
-            this.lEmpleadoNombre.TabIndex = 0;
-            this.lEmpleadoNombre.Text = "Nombre empleado";
-            // 
-            // tbEmpleadoNombre
-            // 
-            this.tbEmpleadoNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbEmpleadoNombre.Enabled = false;
-            this.tbEmpleadoNombre.Location = new System.Drawing.Point(103, 7);
-            this.tbEmpleadoNombre.Name = "tbEmpleadoNombre";
-            this.tbEmpleadoNombre.Size = new System.Drawing.Size(332, 20);
-            this.tbEmpleadoNombre.TabIndex = 1;
-            this.tbEmpleadoNombre.TextChanged += new System.EventHandler(this.tbEmpleadoId_TextChanged);
             // 
             // lViaEnvio
             // 
             this.lViaEnvio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lViaEnvio.AutoSize = true;
-            this.lViaEnvio.Location = new System.Drawing.Point(3, 46);
+            this.lViaEnvio.Location = new System.Drawing.Point(3, 11);
             this.lViaEnvio.Name = "lViaEnvio";
             this.lViaEnvio.Size = new System.Drawing.Size(94, 13);
             this.lViaEnvio.TabIndex = 4;
@@ -232,7 +214,7 @@
             // 
             this.lFechaPedido.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lFechaPedido.AutoSize = true;
-            this.lFechaPedido.Location = new System.Drawing.Point(3, 82);
+            this.lFechaPedido.Location = new System.Drawing.Point(3, 47);
             this.lFechaPedido.Name = "lFechaPedido";
             this.lFechaPedido.Size = new System.Drawing.Size(94, 13);
             this.lFechaPedido.TabIndex = 2;
@@ -253,7 +235,7 @@
             // 
             this.lFechaRequerida.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lFechaRequerida.AutoSize = true;
-            this.lFechaRequerida.Location = new System.Drawing.Point(461, 46);
+            this.lFechaRequerida.Location = new System.Drawing.Point(461, 47);
             this.lFechaRequerida.Name = "lFechaRequerida";
             this.lFechaRequerida.Size = new System.Drawing.Size(94, 13);
             this.lFechaRequerida.TabIndex = 10;
@@ -264,27 +246,30 @@
             // 
             this.dtFechaEntrega.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dtFechaEntrega.CustomFormat = "";
-            this.dtFechaEntrega.Location = new System.Drawing.Point(561, 7);
+            this.dtFechaEntrega.Location = new System.Drawing.Point(561, 8);
             this.dtFechaEntrega.Name = "dtFechaEntrega";
             this.dtFechaEntrega.Size = new System.Drawing.Size(332, 20);
             this.dtFechaEntrega.TabIndex = 11;
+            this.dtFechaEntrega.ValueChanged += new System.EventHandler(this.dtFechaEntrega_ValueChanged);
             // 
             // dtFechaPedido
             // 
             this.dtFechaPedido.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dtFechaPedido.Enabled = false;
-            this.dtFechaPedido.Location = new System.Drawing.Point(103, 78);
+            this.dtFechaPedido.Location = new System.Drawing.Point(103, 44);
             this.dtFechaPedido.Name = "dtFechaPedido";
             this.dtFechaPedido.Size = new System.Drawing.Size(332, 20);
             this.dtFechaPedido.TabIndex = 12;
+            this.dtFechaPedido.ValueChanged += new System.EventHandler(this.dtFechaPedido_ValueChanged);
             // 
             // dtFechaRequerida
             // 
             this.dtFechaRequerida.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtFechaRequerida.Location = new System.Drawing.Point(561, 42);
+            this.dtFechaRequerida.Location = new System.Drawing.Point(561, 44);
             this.dtFechaRequerida.Name = "dtFechaRequerida";
             this.dtFechaRequerida.Size = new System.Drawing.Size(332, 20);
             this.dtFechaRequerida.TabIndex = 13;
+            this.dtFechaRequerida.ValueChanged += new System.EventHandler(this.dtFechaRequerida_ValueChanged);
             // 
             // cbViasEnvio
             // 
@@ -292,10 +277,11 @@
             this.cbViasEnvio.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbViasEnvio.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbViasEnvio.FormattingEnabled = true;
-            this.cbViasEnvio.Location = new System.Drawing.Point(103, 42);
+            this.cbViasEnvio.Location = new System.Drawing.Point(103, 7);
             this.cbViasEnvio.Name = "cbViasEnvio";
             this.cbViasEnvio.Size = new System.Drawing.Size(332, 21);
             this.cbViasEnvio.TabIndex = 14;
+            this.cbViasEnvio.SelectedIndexChanged += new System.EventHandler(this.cbViasEnvio_SelectedIndexChanged);
             // 
             // tableLayoutPanel3
             // 
@@ -307,7 +293,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(943, 160);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(943, 159);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // gbDatosEncio
@@ -317,7 +303,7 @@
             this.gbDatosEncio.Location = new System.Drawing.Point(10, 10);
             this.gbDatosEncio.Margin = new System.Windows.Forms.Padding(10);
             this.gbDatosEncio.Name = "gbDatosEncio";
-            this.gbDatosEncio.Size = new System.Drawing.Size(923, 140);
+            this.gbDatosEncio.Size = new System.Drawing.Size(923, 139);
             this.gbDatosEncio.TabIndex = 3;
             this.gbDatosEncio.TabStop = false;
             this.gbDatosEncio.Text = "Datos envio";
@@ -332,7 +318,7 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.80165F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.80165F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel4.Controls.Add(this.lNombreEntrega, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.lRegionEntrega, 3, 1);
             this.tableLayoutPanel4.Controls.Add(this.lDireccionEntrega, 3, 0);
@@ -347,6 +333,7 @@
             this.tableLayoutPanel4.Controls.Add(this.tbDireccion, 4, 0);
             this.tableLayoutPanel4.Controls.Add(this.tbTelefono, 1, 1);
             this.tableLayoutPanel4.Controls.Add(this.tbPais, 4, 2);
+            this.tableLayoutPanel4.Controls.Add(this.lFd3, 2, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -354,8 +341,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(917, 121);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(917, 120);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // lNombreEntrega
@@ -372,7 +358,7 @@
             // 
             this.lRegionEntrega.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lRegionEntrega.AutoSize = true;
-            this.lRegionEntrega.Location = new System.Drawing.Point(452, 53);
+            this.lRegionEntrega.Location = new System.Drawing.Point(459, 52);
             this.lRegionEntrega.Name = "lRegionEntrega";
             this.lRegionEntrega.Size = new System.Drawing.Size(94, 13);
             this.lRegionEntrega.TabIndex = 1;
@@ -382,7 +368,7 @@
             // 
             this.lDireccionEntrega.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lDireccionEntrega.AutoSize = true;
-            this.lDireccionEntrega.Location = new System.Drawing.Point(452, 13);
+            this.lDireccionEntrega.Location = new System.Drawing.Point(459, 13);
             this.lDireccionEntrega.Name = "lDireccionEntrega";
             this.lDireccionEntrega.Size = new System.Drawing.Size(94, 13);
             this.lDireccionEntrega.TabIndex = 3;
@@ -392,25 +378,27 @@
             // 
             this.tbRegion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tbRegion.Enabled = false;
-            this.tbRegion.Location = new System.Drawing.Point(552, 50);
+            this.tbRegion.Location = new System.Drawing.Point(559, 48);
             this.tbRegion.Name = "tbRegion";
-            this.tbRegion.Size = new System.Drawing.Size(111, 20);
+            this.tbRegion.Size = new System.Drawing.Size(114, 20);
             this.tbRegion.TabIndex = 9;
+            this.tbRegion.TextChanged += new System.EventHandler(this.tbRegion_TextChanged);
             // 
             // tbCodigoPostal
             // 
             this.tbCodigoPostal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tbCodigoPostal.Enabled = false;
-            this.tbCodigoPostal.Location = new System.Drawing.Point(769, 50);
+            this.tbCodigoPostal.Location = new System.Drawing.Point(779, 48);
             this.tbCodigoPostal.Name = "tbCodigoPostal";
-            this.tbCodigoPostal.Size = new System.Drawing.Size(111, 20);
+            this.tbCodigoPostal.Size = new System.Drawing.Size(114, 20);
             this.tbCodigoPostal.TabIndex = 10;
+            this.tbCodigoPostal.TextChanged += new System.EventHandler(this.tbCodigoPostal_TextChanged);
             // 
             // lCP
             // 
             this.lCP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lCP.AutoSize = true;
-            this.lCP.Location = new System.Drawing.Point(669, 53);
+            this.lCP.Location = new System.Drawing.Point(679, 52);
             this.lCP.Name = "lCP";
             this.lCP.Size = new System.Drawing.Size(94, 13);
             this.lCP.TabIndex = 12;
@@ -424,7 +412,7 @@
             this.tbNombreCliente.FormattingEnabled = true;
             this.tbNombreCliente.Location = new System.Drawing.Point(103, 9);
             this.tbNombreCliente.Name = "tbNombreCliente";
-            this.tbNombreCliente.Size = new System.Drawing.Size(323, 21);
+            this.tbNombreCliente.Size = new System.Drawing.Size(330, 21);
             this.tbNombreCliente.TabIndex = 6;
             this.tbNombreCliente.SelectedIndexChanged += new System.EventHandler(this.cbNombreCliente_SelectedIndexChanged);
             this.tbNombreCliente.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbNombreCliente_KeyDown);
@@ -435,7 +423,7 @@
             // 
             this.lPais.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lPais.AutoSize = true;
-            this.lPais.Location = new System.Drawing.Point(452, 94);
+            this.lPais.Location = new System.Drawing.Point(459, 92);
             this.lPais.Name = "lPais";
             this.lPais.Size = new System.Drawing.Size(94, 13);
             this.lPais.TabIndex = 11;
@@ -445,16 +433,17 @@
             // 
             this.tbCiudad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tbCiudad.Enabled = false;
-            this.tbCiudad.Location = new System.Drawing.Point(103, 90);
+            this.tbCiudad.Location = new System.Drawing.Point(103, 89);
             this.tbCiudad.Name = "tbCiudad";
-            this.tbCiudad.Size = new System.Drawing.Size(323, 20);
+            this.tbCiudad.Size = new System.Drawing.Size(330, 20);
             this.tbCiudad.TabIndex = 11;
+            this.tbCiudad.TextChanged += new System.EventHandler(this.tbCiudad_TextChanged);
             // 
             // lCiudadEntrega
             // 
             this.lCiudadEntrega.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lCiudadEntrega.AutoSize = true;
-            this.lCiudadEntrega.Location = new System.Drawing.Point(3, 94);
+            this.lCiudadEntrega.Location = new System.Drawing.Point(3, 92);
             this.lCiudadEntrega.Name = "lCiudadEntrega";
             this.lCiudadEntrega.Size = new System.Drawing.Size(94, 13);
             this.lCiudadEntrega.TabIndex = 4;
@@ -464,7 +453,7 @@
             // 
             this.lTelefono.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lTelefono.AutoSize = true;
-            this.lTelefono.Location = new System.Drawing.Point(3, 53);
+            this.lTelefono.Location = new System.Drawing.Point(3, 52);
             this.lTelefono.Name = "lTelefono";
             this.lTelefono.Size = new System.Drawing.Size(94, 13);
             this.lTelefono.TabIndex = 19;
@@ -475,29 +464,32 @@
             this.tbDireccion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel4.SetColumnSpan(this.tbDireccion, 3);
             this.tbDireccion.Enabled = false;
-            this.tbDireccion.Location = new System.Drawing.Point(552, 10);
+            this.tbDireccion.Location = new System.Drawing.Point(559, 9);
             this.tbDireccion.Name = "tbDireccion";
-            this.tbDireccion.Size = new System.Drawing.Size(328, 20);
+            this.tbDireccion.Size = new System.Drawing.Size(334, 20);
             this.tbDireccion.TabIndex = 7;
+            this.tbDireccion.TextChanged += new System.EventHandler(this.tbDireccion_TextChanged);
             // 
             // tbTelefono
             // 
             this.tbTelefono.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tbTelefono.Enabled = false;
-            this.tbTelefono.Location = new System.Drawing.Point(103, 50);
+            this.tbTelefono.Location = new System.Drawing.Point(103, 48);
             this.tbTelefono.Name = "tbTelefono";
-            this.tbTelefono.Size = new System.Drawing.Size(323, 20);
+            this.tbTelefono.Size = new System.Drawing.Size(330, 20);
             this.tbTelefono.TabIndex = 8;
+            this.tbTelefono.TextChanged += new System.EventHandler(this.tbTelefono_TextChanged);
             // 
             // tbPais
             // 
             this.tbPais.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel4.SetColumnSpan(this.tbPais, 3);
             this.tbPais.Enabled = false;
-            this.tbPais.Location = new System.Drawing.Point(552, 90);
+            this.tbPais.Location = new System.Drawing.Point(559, 89);
             this.tbPais.Name = "tbPais";
-            this.tbPais.Size = new System.Drawing.Size(328, 20);
+            this.tbPais.Size = new System.Drawing.Size(334, 20);
             this.tbPais.TabIndex = 12;
+            this.tbPais.TextChanged += new System.EventHandler(this.tbPais_TextChanged);
             // 
             // splitContainer3
             // 
@@ -514,8 +506,8 @@
             // 
             this.splitContainer3.Panel2.Controls.Add(this.tableLayoutPanel7);
             this.splitContainer3.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer3_Panel2_Paint);
-            this.splitContainer3.Size = new System.Drawing.Size(943, 456);
-            this.splitContainer3.SplitterDistance = 415;
+            this.splitContainer3.Size = new System.Drawing.Size(943, 492);
+            this.splitContainer3.SplitterDistance = 447;
             this.splitContainer3.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -530,7 +522,7 @@
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 415F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(943, 415);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(943, 447);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // groupBox1
@@ -540,7 +532,7 @@
             this.groupBox1.Location = new System.Drawing.Point(10, 10);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(10);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(923, 395);
+            this.groupBox1.Size = new System.Drawing.Size(923, 427);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Línea de pedido";
@@ -568,7 +560,7 @@
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(917, 376);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(917, 408);
             this.tableLayoutPanel6.TabIndex = 1;
             // 
             // btMenos
@@ -580,6 +572,7 @@
             this.btMenos.TabIndex = 0;
             this.btMenos.Text = "  -  ";
             this.btMenos.UseVisualStyleBackColor = true;
+            this.btMenos.Click += new System.EventHandler(this.btMenos_Click);
             // 
             // btMas
             // 
@@ -621,7 +614,7 @@
             this.dgProductos.Location = new System.Drawing.Point(15, 32);
             this.dgProductos.Margin = new System.Windows.Forms.Padding(15, 3, 0, 5);
             this.dgProductos.Name = "dgProductos";
-            this.dgProductos.Size = new System.Drawing.Size(882, 308);
+            this.dgProductos.Size = new System.Drawing.Size(882, 340);
             this.dgProductos.TabIndex = 3;
             this.dgProductos.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgProductos_EditingControlShowing);
             this.dgProductos.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgProductos_RowLeave);
@@ -668,7 +661,7 @@
             // 
             this.lPrecioTotal.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lPrecioTotal.AutoSize = true;
-            this.lPrecioTotal.Location = new System.Drawing.Point(726, 354);
+            this.lPrecioTotal.Location = new System.Drawing.Point(726, 386);
             this.lPrecioTotal.Name = "lPrecioTotal";
             this.lPrecioTotal.Size = new System.Drawing.Size(60, 13);
             this.lPrecioTotal.TabIndex = 4;
@@ -678,11 +671,42 @@
             // 
             this.mtbPrecioFinal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel6.SetColumnSpan(this.mtbPrecioFinal, 3);
-            this.mtbPrecioFinal.Location = new System.Drawing.Point(792, 350);
+            this.mtbPrecioFinal.Location = new System.Drawing.Point(792, 382);
             this.mtbPrecioFinal.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
             this.mtbPrecioFinal.Name = "mtbPrecioFinal";
             this.mtbPrecioFinal.Size = new System.Drawing.Size(105, 20);
             this.mtbPrecioFinal.TabIndex = 5;
+            this.mtbPrecioFinal.ValidatingType = typeof(int);
+            // 
+            // textBox11
+            // 
+            this.textBox11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox11.Location = new System.Drawing.Point(88, 208);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(351, 20);
+            this.textBox11.TabIndex = 13;
+            // 
+            // btCancelar
+            // 
+            this.btCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btCancelar.Location = new System.Drawing.Point(858, 9);
+            this.btCancelar.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
+            this.btCancelar.Name = "btCancelar";
+            this.btCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btCancelar.TabIndex = 7;
+            this.btCancelar.Text = "Cancelar";
+            this.btCancelar.UseVisualStyleBackColor = true;
+            // 
+            // btDarAlta
+            // 
+            this.btDarAlta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btDarAlta.Location = new System.Drawing.Point(777, 9);
+            this.btDarAlta.Name = "btDarAlta";
+            this.btDarAlta.Size = new System.Drawing.Size(75, 23);
+            this.btDarAlta.TabIndex = 6;
+            this.btDarAlta.Text = "Dar de alta";
+            this.btDarAlta.UseVisualStyleBackColor = true;
+            this.btDarAlta.Click += new System.EventHandler(this.btDarAlta_Click);
             // 
             // tableLayoutPanel7
             // 
@@ -692,43 +716,77 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel7.Controls.Add(this.btDarAlta, 1, 0);
             this.tableLayoutPanel7.Controls.Add(this.btCancelar, 2, 0);
+            this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel8, 0, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(943, 37);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(943, 41);
             this.tableLayoutPanel7.TabIndex = 0;
             // 
-            // btDarAlta
+            // tableLayoutPanel8
             // 
-            this.btDarAlta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btDarAlta.Location = new System.Drawing.Point(777, 7);
-            this.btDarAlta.Name = "btDarAlta";
-            this.btDarAlta.Size = new System.Drawing.Size(75, 23);
-            this.btDarAlta.TabIndex = 6;
-            this.btDarAlta.Text = "Dar de alta";
-            this.btDarAlta.UseVisualStyleBackColor = true;
-            this.btDarAlta.Click += new System.EventHandler(this.btDarAlta_Click);
+            this.tableLayoutPanel8.ColumnCount = 3;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel8.Controls.Add(this.lFd2, 1, 0);
+            this.tableLayoutPanel8.Controls.Add(this.lFd, 0, 0);
+            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 1;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(768, 35);
+            this.tableLayoutPanel8.TabIndex = 8;
             // 
-            // btCancelar
+            // lFd
             // 
-            this.btCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btCancelar.Location = new System.Drawing.Point(858, 7);
-            this.btCancelar.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
-            this.btCancelar.Name = "btCancelar";
-            this.btCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btCancelar.TabIndex = 7;
-            this.btCancelar.Text = "Cancelar";
-            this.btCancelar.UseVisualStyleBackColor = true;
+            this.lFd.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lFd.AutoSize = true;
+            this.lFd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lFd.ForeColor = System.Drawing.Color.Red;
+            this.lFd.Location = new System.Drawing.Point(3, 9);
+            this.lFd.Name = "lFd";
+            this.lFd.Size = new System.Drawing.Size(14, 16);
+            this.lFd.TabIndex = 0;
+            this.lFd.Text = "*";
             // 
-            // textBox11
+            // lFd2
             // 
-            this.textBox11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox11.Location = new System.Drawing.Point(88, 208);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(351, 20);
-            this.textBox11.TabIndex = 13;
+            this.lFd2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lFd2.AutoSize = true;
+            this.lFd2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lFd2.Location = new System.Drawing.Point(23, 9);
+            this.lFd2.Name = "lFd2";
+            this.lFd2.Size = new System.Drawing.Size(181, 16);
+            this.lFd2.TabIndex = 1;
+            this.lFd2.Text = "Faltan datos obligatorios";
+            // 
+            // lFd3
+            // 
+            this.lFd3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lFd3.AutoSize = true;
+            this.lFd3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lFd3.ForeColor = System.Drawing.Color.Red;
+            this.lFd3.Location = new System.Drawing.Point(439, 11);
+            this.lFd3.Name = "lFd3";
+            this.lFd3.Size = new System.Drawing.Size(14, 16);
+            this.lFd3.TabIndex = 20;
+            this.lFd3.Text = "*";
+            // 
+            // lFd4
+            // 
+            this.lFd4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lFd4.AutoSize = true;
+            this.lFd4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lFd4.ForeColor = System.Drawing.Color.Red;
+            this.lFd4.Location = new System.Drawing.Point(441, 10);
+            this.lFd4.Name = "lFd4";
+            this.lFd4.Size = new System.Drawing.Size(14, 16);
+            this.lFd4.TabIndex = 21;
+            this.lFd4.Text = "*";
             // 
             // FormularioPedidos
             // 
@@ -764,6 +822,8 @@
             this.tableLayoutPanel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgProductos)).EndInit();
             this.tableLayoutPanel7.ResumeLayout(false);
+            this.tableLayoutPanel8.ResumeLayout(false);
+            this.tableLayoutPanel8.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -776,8 +836,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.GroupBox gbDatosPedido;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.Label lEmpleadoNombre;
-        private System.Windows.Forms.TextBox tbEmpleadoNombre;
         private System.Windows.Forms.Label lFechaPedido;
         private System.Windows.Forms.Label lFechaEntrega;
         private System.Windows.Forms.Label lViaEnvio;
@@ -804,9 +862,6 @@
         private System.Windows.Forms.Button btMenos;
         private System.Windows.Forms.Button btMas;
         private System.Windows.Forms.Button btEditar;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
-        private System.Windows.Forms.Button btDarAlta;
-        private System.Windows.Forms.Button btCancelar;
         private System.Windows.Forms.Label lPrecioTotal;
         private System.Windows.Forms.MaskedTextBox mtbPrecioFinal;
         private System.Windows.Forms.Label lTelefono;
@@ -822,5 +877,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn descuento;
         private System.Windows.Forms.DataGridViewTextBoxColumn precioUnidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn precio;
+        private System.Windows.Forms.Label lFd4;
+        private System.Windows.Forms.Label lFd3;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.Button btDarAlta;
+        private System.Windows.Forms.Button btCancelar;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
+        private System.Windows.Forms.Label lFd2;
+        private System.Windows.Forms.Label lFd;
     }
 }
