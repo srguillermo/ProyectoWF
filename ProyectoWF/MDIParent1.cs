@@ -60,13 +60,8 @@ namespace ProyectoWF {
 
         private void OpenFile(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            openFileDialog.Filter = "Archivos de texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*";
-            if (openFileDialog.ShowDialog(this) == DialogResult.OK)
-            {
-                string FileName = openFileDialog.FileName;
-            }
+            splitter1.Visible = false;
+            tvSecciones.Visible = false;
         }
 
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -129,6 +124,12 @@ namespace ProyectoWF {
         private void MDIParent1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            splitter1.Visible = true;
+            tvSecciones.Visible = true;
         }
     }
 }
