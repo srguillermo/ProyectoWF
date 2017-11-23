@@ -15,33 +15,43 @@ namespace ProyectoWF
     {
         private int modo;
         private int pk;
+        private SqlCommand cadenaInsertar, cadenaCategorias, cadenaProveedores;
 
         public FormularioProductos()
         {
-            InitializeComponent();
-            toolTip1 = new ToolTip();
-            toolTip1.SetToolTip(tbNombre, "Nombre del producto.");
-            toolTip1.SetToolTip(tbCantidad, "Cantidad del producto.");
-            toolTip1.SetToolTip(tbPrecio, "Precio unitario del producto.");
-            toolTip1.SetToolTip(cbCategoria, "Categoría del producto.");
-            toolTip1.SetToolTip(cbProveedor, "Proveedor del producto.");
-            Conexion.getConexion();
-            SqlCommand comando = new SqlCommand();
-            comando.Connection = Conexion.conexion;
-
-
         }
         public FormularioProductos(int modo, int primaryKey) {
+            InitializeComponent();
             this.modo = modo;
             this.pk = primaryKey;
+
+            Conexion.getConexion();
+
+            cadenaInsertar = new SqlCommand("insert into Productos (ProductoNombre) " +
+                                  "values (@nombre)", Conexion.conexion);
+            cadenaCategorias = new SqlCommand("SELECT nombreCategoria FROM Categorias", Conexion.conexion);
+            cadenaProveedores = new SqlCommand("SELECT contactNombre FROM Proveedores", Conexion.conexion);
+            cargarOpciones();
+            
+
+            
+        }
+
+        private void cargarOpciones() {
             toolTip1.SetToolTip(tbNombre, "Nombre del producto.");
             toolTip1.SetToolTip(tbCantidad, "Cantidad del producto.");
             toolTip1.SetToolTip(tbPrecio, "Precio unitario del producto.");
             toolTip1.SetToolTip(cbCategoria, "Categoría del producto.");
             toolTip1.SetToolTip(cbProveedor, "Proveedor del producto.");
+
+            cbProveedor.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbProveedor.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cbCategoria.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbCategoria.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+            cargarComboBox(cadenaProveedores, cbProveedor);
+            cargarComboBox(cadenaCategorias, cbCategoria);
             
-
-
 
             if (modo == 0)
             {
@@ -53,7 +63,8 @@ namespace ProyectoWF
                 this.Text = "Modificación de producto";
                 this.lbExistencias.Visible = true;
             }
-            else if (modo == 2) {
+            else if (modo == 2)
+            {
                 this.Text = "Vista de datos de producto";
                 tbNombre.Enabled = false;
                 tbCantidad.Enabled = false;
@@ -65,8 +76,19 @@ namespace ProyectoWF
             }
         }
 
+        private void cargarComboBox(SqlCommand cadena, ComboBox cb) {
+            SqlDataReader dr = cadena.ExecuteReader();
+
+            while (dr.Read()) {
+                cb.Items.Add(dr[0]);
+            }
+            dr.Close();
+            
+        }
+
         private void btCancelar_Click(object sender, EventArgs e)
         {
+            Conexion.cerrarConexion();
             Close();
         }
 
@@ -79,7 +101,15 @@ namespace ProyectoWF
                     MessageBox.Show("Faltan datos obligatorios.","",MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else {
+                    cadenaInsertar.Parameters.Clear();
+                    cadenaInsertar.Parameters.AddWithValue("nombre", tbNombre.Text);
 
+                    int res = cadenaInsertar.ExecuteNonQuery();
+
+                    if (res > 0)
+                    {
+                        MessageBox.Show("Datos almacenados.");
+                    }
                 }
             }
             else if (modo == 1)
@@ -94,6 +124,7 @@ namespace ProyectoWF
 
         private void FormularioProductos_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Conexion.cerrarConexion();
             Dispose();
         }
 
