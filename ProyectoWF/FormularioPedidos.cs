@@ -18,50 +18,72 @@ namespace ProyectoWF {
         private ArrayList idCAgenciaSegunPosicion;
         private ArrayList idProductoSegunPosicion;
         private int idEmpleado;
+
         private int numeroFilaSeleccionado;
         private double precioFinal;
 
-        public FormularioPedidos(int idEmpleado)
+        public FormularioPedidos(int modo, int primaryKey)
         {
             InitializeComponent();
-            string comando = "Select ContactoNombre,ClienteID from dbo.Clientes";
-            SqlDataAdapter adapter = new SqlDataAdapter(comando, Conexion.getConexion());
-            DataSet cuenta = new DataSet();
-            adapter.Fill(cuenta);
-            idClienteSegunPosicion = new ArrayList();
-            for (int i = 0; i < cuenta.Tables[0].Rows.Count; i++)
+            this.idEmpleado = primaryKey;
+
+            if (modo == 0)
             {
-                idClienteSegunPosicion.Add(cuenta.Tables[0].Rows[i]["ClienteID"].ToString());
-                tbNombreCliente.Items.Add(cuenta.Tables[0].Rows[i]["ContactoNombre"].ToString());
+                //Modo Alta
+                string comando = "Select ContactoNombre,ClienteID from dbo.Clientes";
+                SqlDataAdapter adapter = new SqlDataAdapter(comando, Conexion.getConexion());
+                DataSet cuenta = new DataSet();
+                adapter.Fill(cuenta);
+                idClienteSegunPosicion = new ArrayList();
+                for (int i = 0; i < cuenta.Tables[0].Rows.Count; i++)
+                {
+                    idClienteSegunPosicion.Add(cuenta.Tables[0].Rows[i]["ClienteID"].ToString());
+                    tbNombreCliente.Items.Add(cuenta.Tables[0].Rows[i]["ContactoNombre"].ToString());
+                }
+                
+
+                comando = "Select concat(Nombre ,' ',Apellidos) as 'nombreCompleto' from dbo.Empleados where EmpleadoID=" + idEmpleado;
+                adapter = new SqlDataAdapter(comando, Conexion.getConexion());
+                cuenta = new DataSet();
+                adapter.Fill(cuenta);
+
+
+                comando = "Select AgenciaID,NombreCompania from dbo.Agencias";
+                adapter = new SqlDataAdapter(comando, Conexion.getConexion());
+                cuenta = new DataSet();
+                adapter.Fill(cuenta);
+                idCAgenciaSegunPosicion = new ArrayList();
+                Console.WriteLine(cuenta.Tables[0].Rows.Count);
+                for (int i = 0; i < cuenta.Tables[0].Rows.Count; i++)
+                {
+                    idCAgenciaSegunPosicion.Add(cuenta.Tables[0].Rows[i]["AgenciaID"].ToString());
+                    cbViasEnvio.Items.Add(cuenta.Tables[0].Rows[i]["NombreCompania"].ToString());
+                }
+
+
+                dgProductos.Rows.Insert(0);
+                cargarProductosCbDataGridView();
+
+                lFd.Visible = false;
+                lFd2.Visible = false;
+                lFd3.Visible = false;
+                lFd4.Visible = false;
             }
-            this.idEmpleado = idEmpleado;
-
-            comando = "Select concat(Nombre ,' ',Apellidos) as 'nombreCompleto' from dbo.Empleados where EmpleadoID=" + idEmpleado;
-            adapter = new SqlDataAdapter(comando, Conexion.getConexion());
-            cuenta = new DataSet();
-            adapter.Fill(cuenta);
-
-
-            comando = "Select AgenciaID,NombreCompania from dbo.Agencias";
-            adapter = new SqlDataAdapter(comando, Conexion.getConexion());
-            cuenta = new DataSet();
-            adapter.Fill(cuenta);
-            idCAgenciaSegunPosicion = new ArrayList();
-            Console.WriteLine(cuenta.Tables[0].Rows.Count);
-            for (int i = 0; i < cuenta.Tables[0].Rows.Count; i++)
+            else if (modo == 1)
             {
-                idCAgenciaSegunPosicion.Add(cuenta.Tables[0].Rows[i]["AgenciaID"].ToString());
-                cbViasEnvio.Items.Add(cuenta.Tables[0].Rows[i]["NombreCompania"].ToString());
+                //Modo modificación
+                string comando = "Select * from dbo.Clientes";
+                SqlDataAdapter adapter = new SqlDataAdapter(comando, Conexion.getConexion());
+                DataSet cuenta = new DataSet();
+                adapter.Fill(cuenta);
+
+            }
+            else if (modo == 2)
+            {
+                //Modo vista bloqueadaº                                                                                                         
+
             }
 
-
-            dgProductos.Rows.Insert(0);
-            cargarProductosCbDataGridView();
-
-            lFd.Visible = false;
-            lFd2.Visible = false;
-            lFd3.Visible = false;
-            lFd4.Visible = false;
 
 
 
