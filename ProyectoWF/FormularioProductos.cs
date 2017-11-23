@@ -73,6 +73,7 @@ namespace ProyectoWF
                 cbCategoria.Enabled = false;
                 this.lbExistencias.Visible = true;
                 btCancelar.Enabled = false;
+
             }
         }
 
@@ -118,7 +119,7 @@ namespace ProyectoWF
             }
             else if (modo == 2)
             {
-
+                Dispose();
             }
         }
 
