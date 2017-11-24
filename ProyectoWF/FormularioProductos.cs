@@ -15,7 +15,7 @@ namespace ProyectoWF
     {
         private int modo;
         private int pk;
-        private SqlCommand cadenaInsertar, cadenaCategorias, cadenaProveedores, cadenaSelect;
+        private SqlCommand cadenaInsert, cadenaUpdate, cadenaCategorias, cadenaProveedores, cadenaSelect;
 
         public FormularioProductos()
         {
@@ -27,10 +27,14 @@ namespace ProyectoWF
 
             Conexion.getConexion();
 
-            cadenaInsertar = new SqlCommand("insert into Productos (ProductoNombre) " +
-                                  "values (@nombre)", Conexion.conexion);
+            cadenaInsert = new SqlCommand("insert into Productos (ProductoNombre, ProveedorID, CategoriaID, CantidadPorUnidad, PrecioUnidad, UnidadesEnExistencias) " +
+                                  "values (@nombre, @proveedor, @categoria, @cantidad, @precio, @stock)", Conexion.conexion);
+            cadenaUpdate = new SqlCommand("UPDATE Productos SET ProductoNombre = @nombre, ProveedorID = @proveedor," +
+                                          " CategoriaID = @categoria, CantidadPorUnidad = @cantidad, " +
+                                          "PrecioUnidad = @precio, UnidadesEnExistencias = @stock " +
+                                          "WHERE ProductoID = @id", Conexion.conexion);
             cadenaCategorias = new SqlCommand("SELECT nombreCategoria FROM Categorias", Conexion.conexion);
-            cadenaProveedores = new SqlCommand("SELECT contactNombre FROM Proveedores", Conexion.conexion);
+            cadenaProveedores = new SqlCommand("SELECT nombreCompania FROM Proveedores", Conexion.conexion);
             cadenaSelect = new SqlCommand("SELECT * FROM Productos WHERE @id = ProductoID", Conexion.conexion);
             cargarOpciones();
             
@@ -87,9 +91,9 @@ namespace ProyectoWF
                 {
                     tbNombre.Text = dr.GetString(1);
                     if (!dr.IsDBNull(2))
-                        cbProveedor.Text = buscarProveedor(dr.GetInt32(2));
+                        cbProveedor.Text = buscarProveedor(dr.GetInt32(2),"");
                     if (!dr.IsDBNull(3))
-                        cbCategoria.Text = buscarCategoria(dr.GetInt32(3));
+                        cbCategoria.Text = buscarCategoria(dr.GetInt32(3), "");
                     if (!dr.IsDBNull(4))
                         tbCantidad.Text = dr.GetString(4);
                     if (!dr.IsDBNull(5))
@@ -112,34 +116,69 @@ namespace ProyectoWF
             
         }
 
-        private String buscarProveedor(int pk) {
-            SqlCommand cadena = new SqlCommand("SELECT nombreCompania FROM Proveedores WHERE @id = ProveedorID", Conexion.conexion);
+        private String buscarProveedor(int pk, String nombreCompania) {
+            SqlCommand cadena = new SqlCommand("SELECT ProveedorID, nombreCompania FROM Proveedores WHERE @id = ProveedorID OR @nombreCompania = nombreCompania", Conexion.conexion);
             cadena.Parameters.Clear();
-            cadena.Parameters.AddWithValue("id",pk);
+            if (pk != 0)
+                cadena.Parameters.AddWithValue("id",pk);
+            else
+                cadena.Parameters.AddWithValue("id", "");
+            cadena.Parameters.AddWithValue("nombreCompania", nombreCompania);
             SqlDataReader dr = cadena.ExecuteReader();
-            String nombre;
-            if (dr.Read()) {
-                nombre = dr.GetString(0);
-                dr.Close();
-                return nombre;
+            String nombre, primaryKey;
+
+            if (nombreCompania.Equals(""))
+            {
+                if (dr.Read())
+                {
+                    nombre = dr.GetString(1);
+                    dr.Close();
+                    return nombre;
+                }
+            }
+            else {
+                if (dr.Read())
+                {
+                    primaryKey = dr.GetInt32(0).ToString();
+                    dr.Close();
+                    return primaryKey;
+                }
+
             }
 
             dr.Close();
             return "";
         }
 
-        private String buscarCategoria(int pk)
+        private String buscarCategoria(int pk, String nombreCategoria)
         {
-            SqlCommand cadena = new SqlCommand("SELECT NombreCategoria FROM Categorias WHERE @id = CategoriaID", Conexion.conexion);
+            SqlCommand cadena = new SqlCommand("SELECT CategoriaID, NombreCategoria FROM Categorias WHERE @id = CategoriaID OR @nombreCategoria = nombreCategoria", Conexion.conexion);
             cadena.Parameters.Clear();
-            cadena.Parameters.AddWithValue("id", pk);
+            if (pk != 0)
+                cadena.Parameters.AddWithValue("id", pk);
+            else
+                cadena.Parameters.AddWithValue("id", "");
+            cadena.Parameters.AddWithValue("nombreCategoria", nombreCategoria);
             SqlDataReader dr = cadena.ExecuteReader();
-            String nombre;
-            if (dr.Read())
+            String nombre, primaryKey;
+            if (nombreCategoria.Equals(""))
             {
-                nombre = dr.GetString(0);
-                dr.Close();
-                return nombre;
+                if (dr.Read())
+                {
+                    nombre = dr.GetString(1);
+                    dr.Close();
+                    return nombre;
+                }
+            }
+            else
+            {
+                if (dr.Read())
+                {
+                    primaryKey = dr.GetInt32(0).ToString();
+                    dr.Close();
+                    return primaryKey;
+                }
+
             }
 
             dr.Close();
@@ -160,20 +199,75 @@ namespace ProyectoWF
                     MessageBox.Show("Faltan datos obligatorios.","",MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else {
-                    cadenaInsertar.Parameters.Clear();
-                    cadenaInsertar.Parameters.AddWithValue("nombre", tbNombre.Text);
+                    cadenaInsert.Parameters.Clear();
+                    cadenaInsert.Parameters.AddWithValue("nombre", tbNombre.Text);
+                    if (!cbProveedor.Text.Equals(""))
+                    {
+                        cadenaInsert.Parameters.AddWithValue("proveedor", buscarProveedor(0, cbProveedor.Text));
+                    }
+                    else {
+                        cadenaInsert.Parameters.AddWithValue("proveedor", DBNull.Value);
+                    }
+                    if (!cbCategoria.Text.Equals(""))
+                        cadenaInsert.Parameters.AddWithValue("categoria", buscarCategoria(0, cbCategoria.Text));
+                    else
+                    {
+                        cadenaInsert.Parameters.AddWithValue("categoria", DBNull.Value);
+                    }
+                    if (!tbCantidad.Text.Equals(""))
+                        cadenaInsert.Parameters.AddWithValue("cantidad", tbCantidad.Text);
+                    else
+                        cadenaInsert.Parameters.AddWithValue("cantidad", DBNull.Value);
 
-                    int res = cadenaInsertar.ExecuteNonQuery();
+                    cadenaInsert.Parameters.AddWithValue("precio", tbPrecio.Text);
+                    cadenaInsert.Parameters.AddWithValue("stock", tbStock.Text);
+                    int res = cadenaInsert.ExecuteNonQuery();
 
                     if (res > 0)
                     {
-                        MessageBox.Show("Datos almacenados.");
+                        MessageBox.Show("Datos almacenados.","", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
             else if (modo == 1)
             {
-                Dispose();
+                if (!DatosObligatorios())
+                {
+                    MessageBox.Show("Faltan datos obligatorios.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    cadenaUpdate.Parameters.Clear();
+                    cadenaUpdate.Parameters.AddWithValue("nombre", tbNombre.Text);
+                    if (!cbProveedor.Text.Equals(""))
+                    {
+                        cadenaUpdate.Parameters.AddWithValue("proveedor", buscarProveedor(0, cbProveedor.Text));
+                    }
+                    else
+                    {
+                        cadenaUpdate.Parameters.AddWithValue("proveedor", DBNull.Value);
+                    }
+                    if (!cbCategoria.Text.Equals(""))
+                        cadenaUpdate.Parameters.AddWithValue("categoria", buscarCategoria(0, cbCategoria.Text));
+                    else
+                    {
+                        cadenaUpdate.Parameters.AddWithValue("categoria", DBNull.Value);
+                    }
+                    if (!tbCantidad.Text.Equals(""))
+                        cadenaUpdate.Parameters.AddWithValue("cantidad", tbCantidad.Text);
+                    else
+                        cadenaUpdate.Parameters.AddWithValue("cantidad", DBNull.Value);
+
+                    cadenaUpdate.Parameters.AddWithValue("precio", tbPrecio.Text);
+                    cadenaUpdate.Parameters.AddWithValue("stock", tbStock.Text);
+                    cadenaUpdate.Parameters.AddWithValue("id", pk);
+                    int res = cadenaUpdate.ExecuteNonQuery();
+
+                    if (res > 0)
+                    {
+                        MessageBox.Show("Producto modificado.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
             }
             else if (modo == 2)
             {
