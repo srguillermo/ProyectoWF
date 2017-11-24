@@ -41,7 +41,18 @@ namespace ProyectoWF
 
             
         }
-
+        //
+        //
+        // byte[] imageData;
+        // if (tbLogo.Text == "") {
+        // imageData = new byte[1];
+        // imageData[0] = 0;
+        // } else {
+        //  imageData = File.ReadAllBytes(@tbLogo.Text);
+        // }
+        //
+        //
+        //
         private void cargarOpciones() {
             toolTip1.SetToolTip(tbNombre, "Nombre del producto.");
             toolTip1.SetToolTip(tbCantidad, "Cantidad del producto.");

@@ -35,7 +35,6 @@
             this.tbPrecio = new System.Windows.Forms.TextBox();
             this.tbCantidad = new System.Windows.Forms.TextBox();
             this.lbCantidad = new System.Windows.Forms.Label();
-            this.tbNombre = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lbIdProducto = new System.Windows.Forms.Label();
             this.lbPrecio = new System.Windows.Forms.Label();
@@ -52,6 +51,7 @@
             this.btCancelar = new System.Windows.Forms.Button();
             this.lbObligatorio = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.tbNombre = new System.Windows.Forms.TextBox();
             this.tlPrincipal.SuspendLayout();
             this.gbDatosP.SuspendLayout();
             this.tlPersonales.SuspendLayout();
@@ -87,23 +87,20 @@
             this.gbDatosP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbDatosP.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.gbDatosP.Location = new System.Drawing.Point(15, 15);
-            this.gbDatosP.Margin = new System.Windows.Forms.Padding(15, 15, 10, 0);
+            this.gbDatosP.Margin = new System.Windows.Forms.Padding(15, 15, 0, 0);
             this.gbDatosP.Name = "gbDatosP";
-            this.gbDatosP.Padding = new System.Windows.Forms.Padding(10, 5, 0, 10);
-            this.gbDatosP.Size = new System.Drawing.Size(280, 156);
+            this.gbDatosP.Padding = new System.Windows.Forms.Padding(10, 5, 5, 10);
+            this.gbDatosP.Size = new System.Drawing.Size(290, 156);
             this.gbDatosP.TabIndex = 0;
             this.gbDatosP.TabStop = false;
             this.gbDatosP.Text = "Datos del producto";
             // 
             // tlPersonales
             // 
-            this.tlPersonales.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.tlPersonales.ColumnCount = 3;
-            this.tlPersonales.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlPersonales.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlPersonales.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlPersonales.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tlPersonales.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tlPersonales.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tlPersonales.Controls.Add(this.tbPrecio, 0, 2);
             this.tlPersonales.Controls.Add(this.tbCantidad, 1, 1);
             this.tlPersonales.Controls.Add(this.lbCantidad, 0, 1);
@@ -111,14 +108,15 @@
             this.tlPersonales.Controls.Add(this.label1, 2, 0);
             this.tlPersonales.Controls.Add(this.lbIdProducto, 0, 0);
             this.tlPersonales.Controls.Add(this.lbPrecio, 0, 2);
+            this.tlPersonales.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlPersonales.Location = new System.Drawing.Point(10, 18);
             this.tlPersonales.Name = "tlPersonales";
-            this.tlPersonales.RowCount = 3;
-            this.tlPersonales.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlPersonales.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlPersonales.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlPersonales.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlPersonales.Size = new System.Drawing.Size(267, 128);
+            this.tlPersonales.RowCount = 4;
+            this.tlPersonales.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlPersonales.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlPersonales.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlPersonales.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlPersonales.Size = new System.Drawing.Size(275, 128);
             this.tlPersonales.TabIndex = 0;
             // 
             // tbPrecio
@@ -146,14 +144,6 @@
             this.lbCantidad.Size = new System.Drawing.Size(40, 13);
             this.lbCantidad.TabIndex = 9;
             this.lbCantidad.Text = "Cant/u";
-            // 
-            // tbNombre
-            // 
-            this.tbNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbNombre.Location = new System.Drawing.Point(57, 11);
-            this.tbNombre.Name = "tbNombre";
-            this.tbNombre.Size = new System.Drawing.Size(172, 20);
-            this.tbNombre.TabIndex = 0;
             // 
             // label1
             // 
@@ -193,11 +183,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gbDirección.Controls.Add(this.tlOtrosDatos);
-            this.gbDirección.Location = new System.Drawing.Point(305, 15);
-            this.gbDirección.Margin = new System.Windows.Forms.Padding(0, 15, 6, 0);
+            this.gbDirección.Location = new System.Drawing.Point(320, 15);
+            this.gbDirección.Margin = new System.Windows.Forms.Padding(15, 15, 6, 0);
             this.gbDirección.Name = "gbDirección";
             this.gbDirección.Padding = new System.Windows.Forms.Padding(15, 15, 0, 0);
-            this.gbDirección.Size = new System.Drawing.Size(367, 156);
+            this.gbDirección.Size = new System.Drawing.Size(352, 156);
             this.gbDirección.TabIndex = 1;
             this.gbDirección.TabStop = false;
             this.gbDirección.Text = "Otros datos";
@@ -218,18 +208,19 @@
             this.tlOtrosDatos.Controls.Add(this.tbStock, 1, 2);
             this.tlOtrosDatos.Location = new System.Drawing.Point(3, 18);
             this.tlOtrosDatos.Name = "tlOtrosDatos";
-            this.tlOtrosDatos.RowCount = 3;
-            this.tlOtrosDatos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlOtrosDatos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlOtrosDatos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlOtrosDatos.Size = new System.Drawing.Size(339, 125);
+            this.tlOtrosDatos.RowCount = 4;
+            this.tlOtrosDatos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlOtrosDatos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlOtrosDatos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlOtrosDatos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlOtrosDatos.Size = new System.Drawing.Size(324, 125);
             this.tlOtrosDatos.TabIndex = 1;
             // 
             // lbStock
             // 
             this.lbStock.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbStock.AutoSize = true;
-            this.lbStock.Location = new System.Drawing.Point(3, 97);
+            this.lbStock.Location = new System.Drawing.Point(3, 71);
             this.lbStock.Name = "lbStock";
             this.lbStock.Size = new System.Drawing.Size(35, 13);
             this.lbStock.TabIndex = 10;
@@ -239,7 +230,7 @@
             // 
             this.lbProveedor.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbProveedor.AutoSize = true;
-            this.lbProveedor.Location = new System.Drawing.Point(3, 14);
+            this.lbProveedor.Location = new System.Drawing.Point(3, 9);
             this.lbProveedor.Name = "lbProveedor";
             this.lbProveedor.Size = new System.Drawing.Size(56, 13);
             this.lbProveedor.TabIndex = 5;
@@ -251,16 +242,16 @@
             this.cbProveedor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbProveedor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbProveedor.FormattingEnabled = true;
-            this.cbProveedor.Location = new System.Drawing.Point(70, 10);
+            this.cbProveedor.Location = new System.Drawing.Point(67, 5);
             this.cbProveedor.Name = "cbProveedor";
-            this.cbProveedor.Size = new System.Drawing.Size(266, 21);
+            this.cbProveedor.Size = new System.Drawing.Size(254, 21);
             this.cbProveedor.TabIndex = 3;
             // 
             // lbCategoria
             // 
             this.lbCategoria.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbCategoria.AutoSize = true;
-            this.lbCategoria.Location = new System.Drawing.Point(3, 55);
+            this.lbCategoria.Location = new System.Drawing.Point(3, 40);
             this.lbCategoria.Name = "lbCategoria";
             this.lbCategoria.Size = new System.Drawing.Size(54, 13);
             this.lbCategoria.TabIndex = 9;
@@ -272,17 +263,17 @@
             this.cbCategoria.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbCategoria.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbCategoria.FormattingEnabled = true;
-            this.cbCategoria.Location = new System.Drawing.Point(70, 51);
+            this.cbCategoria.Location = new System.Drawing.Point(67, 36);
             this.cbCategoria.Name = "cbCategoria";
-            this.cbCategoria.Size = new System.Drawing.Size(266, 21);
+            this.cbCategoria.Size = new System.Drawing.Size(254, 21);
             this.cbCategoria.TabIndex = 4;
             // 
             // tbStock
             // 
             this.tbStock.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbStock.Location = new System.Drawing.Point(70, 93);
+            this.tbStock.Location = new System.Drawing.Point(67, 67);
             this.tbStock.Name = "tbStock";
-            this.tbStock.Size = new System.Drawing.Size(266, 20);
+            this.tbStock.Size = new System.Drawing.Size(254, 20);
             this.tbStock.TabIndex = 5;
             // 
             // tableLayoutPanel2
@@ -337,6 +328,14 @@
             this.lbObligatorio.TabIndex = 3;
             this.lbObligatorio.Text = "*   Campo obligatorio";
             // 
+            // tbNombre
+            // 
+            this.tbNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbNombre.Location = new System.Drawing.Point(57, 11);
+            this.tbNombre.Name = "tbNombre";
+            this.tbNombre.Size = new System.Drawing.Size(172, 20);
+            this.tbNombre.TabIndex = 0;
+            // 
             // FormularioProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -368,7 +367,6 @@
         private System.Windows.Forms.Button btAceptar;
         private System.Windows.Forms.Button btCancelar;
         private System.Windows.Forms.TableLayoutPanel tlPersonales;
-        private System.Windows.Forms.TextBox tbNombre;
         private System.Windows.Forms.GroupBox gbDirección;
         private System.Windows.Forms.TableLayoutPanel tlOtrosDatos;
         private System.Windows.Forms.Label lbIdProducto;
@@ -384,5 +382,6 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Label lbStock;
         private System.Windows.Forms.TextBox tbStock;
+        private System.Windows.Forms.TextBox tbNombre;
     }
 }
