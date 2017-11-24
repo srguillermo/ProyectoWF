@@ -249,7 +249,7 @@ namespace ProyectoWF
                     imageData = File.ReadAllBytes(@imagen);
                     cadenaInsert.Parameters.Add("imagen", SqlDbType.Image).Value = imageData;
                     int res = cadenaInsert.ExecuteNonQuery();
-
+                    //asdsaddd
                     if (res > 0)
                     {
                         MessageBox.Show("Datos almacenados.","", MessageBoxButtons.OK, MessageBoxIcon.Information);
