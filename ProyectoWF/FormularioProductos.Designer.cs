@@ -41,11 +41,12 @@
             this.lbPrecio = new System.Windows.Forms.Label();
             this.gbDirección = new System.Windows.Forms.GroupBox();
             this.tlOtrosDatos = new System.Windows.Forms.TableLayoutPanel();
+            this.lbStock = new System.Windows.Forms.Label();
             this.lbProveedor = new System.Windows.Forms.Label();
             this.cbProveedor = new System.Windows.Forms.ComboBox();
             this.lbCategoria = new System.Windows.Forms.Label();
             this.cbCategoria = new System.Windows.Forms.ComboBox();
-            this.lbExistencias = new System.Windows.Forms.Label();
+            this.tbStock = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btAceptar = new System.Windows.Forms.Button();
             this.btCancelar = new System.Windows.Forms.Button();
@@ -209,11 +210,12 @@
             this.tlOtrosDatos.ColumnCount = 2;
             this.tlOtrosDatos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tlOtrosDatos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tlOtrosDatos.Controls.Add(this.lbStock, 0, 2);
             this.tlOtrosDatos.Controls.Add(this.lbProveedor, 0, 0);
             this.tlOtrosDatos.Controls.Add(this.cbProveedor, 1, 0);
             this.tlOtrosDatos.Controls.Add(this.lbCategoria, 0, 1);
             this.tlOtrosDatos.Controls.Add(this.cbCategoria, 1, 1);
-            this.tlOtrosDatos.Controls.Add(this.lbExistencias, 1, 2);
+            this.tlOtrosDatos.Controls.Add(this.tbStock, 1, 2);
             this.tlOtrosDatos.Location = new System.Drawing.Point(3, 18);
             this.tlOtrosDatos.Name = "tlOtrosDatos";
             this.tlOtrosDatos.RowCount = 3;
@@ -222,6 +224,16 @@
             this.tlOtrosDatos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tlOtrosDatos.Size = new System.Drawing.Size(339, 125);
             this.tlOtrosDatos.TabIndex = 1;
+            // 
+            // lbStock
+            // 
+            this.lbStock.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbStock.AutoSize = true;
+            this.lbStock.Location = new System.Drawing.Point(3, 97);
+            this.lbStock.Name = "lbStock";
+            this.lbStock.Size = new System.Drawing.Size(35, 13);
+            this.lbStock.TabIndex = 10;
+            this.lbStock.Text = "Stock";
             // 
             // lbProveedor
             // 
@@ -236,6 +248,8 @@
             // cbProveedor
             // 
             this.cbProveedor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbProveedor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbProveedor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbProveedor.FormattingEnabled = true;
             this.cbProveedor.Location = new System.Drawing.Point(70, 10);
             this.cbProveedor.Name = "cbProveedor";
@@ -255,22 +269,21 @@
             // cbCategoria
             // 
             this.cbCategoria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbCategoria.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbCategoria.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbCategoria.FormattingEnabled = true;
             this.cbCategoria.Location = new System.Drawing.Point(70, 51);
             this.cbCategoria.Name = "cbCategoria";
             this.cbCategoria.Size = new System.Drawing.Size(266, 21);
             this.cbCategoria.TabIndex = 4;
             // 
-            // lbExistencias
+            // tbStock
             // 
-            this.lbExistencias.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbExistencias.AutoSize = true;
-            this.lbExistencias.Location = new System.Drawing.Point(202, 112);
-            this.lbExistencias.Name = "lbExistencias";
-            this.lbExistencias.Size = new System.Drawing.Size(134, 13);
-            this.lbExistencias.TabIndex = 15;
-            this.lbExistencias.Text = "Unidades en existencias: 0";
-            this.lbExistencias.Visible = false;
+            this.tbStock.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbStock.Location = new System.Drawing.Point(70, 93);
+            this.tbStock.Name = "tbStock";
+            this.tbStock.Size = new System.Drawing.Size(266, 20);
+            this.tbStock.TabIndex = 5;
             // 
             // tableLayoutPanel2
             // 
@@ -294,7 +307,7 @@
             this.btAceptar.Margin = new System.Windows.Forms.Padding(3, 3, 3, 8);
             this.btAceptar.Name = "btAceptar";
             this.btAceptar.Size = new System.Drawing.Size(75, 23);
-            this.btAceptar.TabIndex = 1;
+            this.btAceptar.TabIndex = 7;
             this.btAceptar.Text = "Aceptar";
             this.btAceptar.UseVisualStyleBackColor = true;
             this.btAceptar.Click += new System.EventHandler(this.btAceptar_Click);
@@ -306,7 +319,7 @@
             this.btCancelar.Margin = new System.Windows.Forms.Padding(3, 3, 3, 8);
             this.btCancelar.Name = "btCancelar";
             this.btCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btCancelar.TabIndex = 0;
+            this.btCancelar.TabIndex = 6;
             this.btCancelar.Text = "Cancelar";
             this.btCancelar.UseVisualStyleBackColor = true;
             this.btCancelar.Click += new System.EventHandler(this.btCancelar_Click);
@@ -368,7 +381,8 @@
         private System.Windows.Forms.ComboBox cbProveedor;
         private System.Windows.Forms.Label lbCategoria;
         private System.Windows.Forms.ComboBox cbCategoria;
-        private System.Windows.Forms.Label lbExistencias;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Label lbStock;
+        private System.Windows.Forms.TextBox tbStock;
     }
 }
