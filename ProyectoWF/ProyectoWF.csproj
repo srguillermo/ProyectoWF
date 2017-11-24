@@ -49,6 +49,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Conexion.cs" />
+    <Compile Include="FormAltaPrueba.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAltaPrueba.Designer.cs">
+      <DependentUpon>FormAltaPrueba.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmListadoClientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +69,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ProyectoWFDataSet1.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FormAltaPrueba.resx">
+      <DependentUpon>FormAltaPrueba.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmListadoClientes.resx">
       <DependentUpon>FrmListadoClientes.cs</DependentUpon>
     </EmbeddedResource>

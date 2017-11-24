@@ -45,16 +45,18 @@ namespace ProyectoWF
         String cadena;
         BindingSource bs;
         SqlCommand cmd;
+        int modo;
+        
 
         public FrmListadoClientes()
         {
             InitializeComponent();
             cadena = ConfigurationManager.ConnectionStrings["ProyectoWF"].ConnectionString;//cadena de conexion en App.conf
-            con = new SqlConnection(cadena);//objeto conexion
+            con = Conexion.getConexion();
             bs = new BindingSource();
             splitContainer1.IsSplitterFixed = true;
             cargar(dataGridView1);
-            dataGridView1.Columns["ClienteID"].Visible = false;
+            //dataGridView1.Columns["ClienteID"].Visible = false;
             dataGridView1.Columns["Logo"].Visible = false;   
         }
 
@@ -105,9 +107,11 @@ namespace ProyectoWF
                         bs.Filter = "NombreCompania LIKE '%" + txtCompañia.Text + "%'"; 
                         break;
                     case "txtCP":
+                        iEntro = 3;
                         bs.Filter = "CodigoPostal LIKE '%" + txtCP.Text + "%'";
                         break;
                     case "txtPais":
+                        iEntro = 4;
                         bs.Filter = "Pais LIKE '%" + txtPais.Text + "%'";
                         break;
                 }
@@ -179,12 +183,62 @@ namespace ProyectoWF
 
         private void btNuevo_Click(object sender, EventArgs e)
         {
-
+            modo=0;
+            int clave= 0;
+           
+                FormAltaPrueba f = new FormAltaPrueba(modo, clave);
+                f.FormClosed += new FormClosedEventHandler(formAltaPrueba_FormClosed);
+                f.ShowDialog();
         }
 
         private void btModificar_Click(object sender, EventArgs e)
         {
+            modo = 1;
+            int clave = 0;
+            DataGridViewRow fila;
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Debe seleccionar un campo a modificar", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (dataGridView1.SelectedRows.Count > 1)
+            {
+                MessageBox.Show("Debe seleccionar solo campo a modificar", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else {
 
+                fila=dataGridView1.SelectedRows[0];
+                clave = (int)fila.Cells["ClienteID"].Value;
+
+                //otra manera
+                //for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                //{
+                //    fila = dataGridView1.Rows[i];
+                //    if (fila.Selected == true)
+                //    {
+                //        clave = (int)fila.Cells["ClienteID"].Value;
+                //    }
+                FormAltaPrueba f = new FormAltaPrueba(modo,clave);
+                f.ShowDialog();
+            }
+            
         }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            modo = 2;
+            int clave = 0;
+            int indice;
+            indice = dataGridView1.SelectedCells[0].RowIndex;
+            clave = (int)dataGridView1.Rows[indice].Cells["ClienteID"].Value;
+
+            FormAltaPrueba f = new FormAltaPrueba(modo, clave);
+            f.ShowDialog();
+        }
+
+
+        private void formAltaPrueba_FormClosed(object sender, FormClosedEventArgs e) {
+            cargar(dataGridView1);
+        }
+        
     }
 }

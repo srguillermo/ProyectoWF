@@ -203,33 +203,36 @@
             // 
             // btNuevo
             // 
+            this.btNuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btNuevo.Image = global::ProyectoWF.Properties.Resources.nuevo;
-            this.btNuevo.Location = new System.Drawing.Point(889, 12);
+            this.btNuevo.Location = new System.Drawing.Point(979, 16);
             this.btNuevo.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
             this.btNuevo.Name = "btNuevo";
-            this.btNuevo.Size = new System.Drawing.Size(75, 32);
+            this.btNuevo.Size = new System.Drawing.Size(30, 23);
             this.btNuevo.TabIndex = 0;
             this.btNuevo.UseVisualStyleBackColor = true;
             this.btNuevo.Click += new System.EventHandler(this.btNuevo_Click);
             // 
             // btModificar
             // 
+            this.btModificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btModificar.Image = global::ProyectoWF.Properties.Resources.editar;
-            this.btModificar.Location = new System.Drawing.Point(990, 12);
+            this.btModificar.Location = new System.Drawing.Point(1035, 16);
             this.btModificar.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
             this.btModificar.Name = "btModificar";
-            this.btModificar.Size = new System.Drawing.Size(75, 32);
+            this.btModificar.Size = new System.Drawing.Size(30, 23);
             this.btModificar.TabIndex = 1;
             this.btModificar.UseVisualStyleBackColor = true;
             this.btModificar.Click += new System.EventHandler(this.btModificar_Click);
             // 
             // btBorrar
             // 
+            this.btBorrar.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btBorrar.Image = global::ProyectoWF.Properties.Resources.eliminar;
-            this.btBorrar.Location = new System.Drawing.Point(1091, 12);
+            this.btBorrar.Location = new System.Drawing.Point(1091, 16);
             this.btBorrar.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
             this.btBorrar.Name = "btBorrar";
-            this.btBorrar.Size = new System.Drawing.Size(75, 32);
+            this.btBorrar.Size = new System.Drawing.Size(30, 23);
             this.btBorrar.TabIndex = 2;
             this.btBorrar.UseVisualStyleBackColor = true;
             this.btBorrar.Click += new System.EventHandler(this.btBorrar_Click);
@@ -247,14 +250,21 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanel1.SetColumnSpan(this.dataGridView1, 4);
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(13, 68);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1153, 678);
             this.dataGridView1.TabIndex = 4;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // btFiltrar
             // 
@@ -278,6 +288,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1179, 814);
             this.Controls.Add(this.splitContainer1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmListadoClientes";
             this.Text = "Form1";
