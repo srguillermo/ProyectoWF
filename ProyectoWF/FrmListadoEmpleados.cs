@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Configuration;
 
 namespace ProyectoWF
 {
@@ -26,18 +25,18 @@ namespace ProyectoWF
 
         //Conexion
 
+        SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ProyectoWF;"+
+            "Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;");
+        SqlDataAdapter adapter;
+        DataTable table;
+        SqlDataReader reader;
+        SqlCommand command;
 
 
         public void consulta()
         {
-            string sConnection = ConfigurationManager.ConnectionStrings["proyectoWF"].ConnectionString;
-            SqlConnection con = new SqlConnection(sConnection);
-            SqlDataAdapter adapter;
-            DataTable table;
-            //SqlDataReader reader;
-            SqlCommand command;
             string sql = "SELECT * FROM Empleados";
-            command = new SqlCommand(sql, con);
+            command = new SqlCommand(sql,con);
             adapter = new SqlDataAdapter(command);
             table = new DataTable();
             adapter.Fill(table);
@@ -47,20 +46,15 @@ namespace ProyectoWF
 
         private void button5_Click(object sender, EventArgs e)
         {
-            if (splitContainer1.Panel1Collapsed)
-            {
-                button5.Text = "Cerrar";
-                splitContainer1.Panel1Collapsed = false;
-                splitContainer1.SplitterDistance = 100;
+            if (splitContainer1.SplitterDistance == 40) {
+                splitContainer1.SplitterDistance = 150;
+                button5.Text = "Cerrar búsqueda";
             }
             else
             {
-                button5.Text = "Abrir";
-                splitContainer1.Panel1Collapsed = true;
-
+                splitContainer1.SplitterDistance = 40;
+                button5.Text = "Abrir búsqueda";
             }
-
-           
         }
     }
 }
