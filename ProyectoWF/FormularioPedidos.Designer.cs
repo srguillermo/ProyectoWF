@@ -31,14 +31,15 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.gbDatosPedido = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.lViaEnvio = new System.Windows.Forms.Label();
-            this.lFechaPedido = new System.Windows.Forms.Label();
             this.lFechaEntrega = new System.Windows.Forms.Label();
             this.lFechaRequerida = new System.Windows.Forms.Label();
             this.dtFechaEntrega = new System.Windows.Forms.DateTimePicker();
-            this.dtFechaPedido = new System.Windows.Forms.DateTimePicker();
             this.dtFechaRequerida = new System.Windows.Forms.DateTimePicker();
+            this.lViaEnvio = new System.Windows.Forms.Label();
             this.cbViasEnvio = new System.Windows.Forms.ComboBox();
+            this.lFechaPedido = new System.Windows.Forms.Label();
+            this.dtFechaPedido = new System.Windows.Forms.DateTimePicker();
+            this.lFd4 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.gbDatosEncio = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -56,6 +57,7 @@
             this.tbDireccion = new System.Windows.Forms.TextBox();
             this.tbTelefono = new System.Windows.Forms.TextBox();
             this.tbPais = new System.Windows.Forms.TextBox();
+            this.lFd3 = new System.Windows.Forms.Label();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -72,15 +74,13 @@
             this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lPrecioTotal = new System.Windows.Forms.Label();
             this.mtbPrecioFinal = new System.Windows.Forms.MaskedTextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.btCancelar = new System.Windows.Forms.Button();
-            this.btDarAlta = new System.Windows.Forms.Button();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.btDarAlta = new System.Windows.Forms.Button();
+            this.btCancelar = new System.Windows.Forms.Button();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
-            this.lFd = new System.Windows.Forms.Label();
             this.lFd2 = new System.Windows.Forms.Label();
-            this.lFd3 = new System.Windows.Forms.Label();
-            this.lFd4 = new System.Windows.Forms.Label();
+            this.lFd = new System.Windows.Forms.Label();
+            this.textBox11 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -117,7 +117,6 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel1_Paint);
             // 
             // splitContainer1.Panel2
             // 
@@ -155,7 +154,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 146F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 111F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(943, 111);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
@@ -198,7 +197,43 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(917, 72);
             this.tableLayoutPanel5.TabIndex = 0;
-            this.tableLayoutPanel5.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel5_Paint);
+            // 
+            // lFechaEntrega
+            // 
+            this.lFechaEntrega.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lFechaEntrega.AutoSize = true;
+            this.lFechaEntrega.Location = new System.Drawing.Point(461, 11);
+            this.lFechaEntrega.Name = "lFechaEntrega";
+            this.lFechaEntrega.Size = new System.Drawing.Size(94, 13);
+            this.lFechaEntrega.TabIndex = 3;
+            this.lFechaEntrega.Text = "Fecha entrega";
+            // 
+            // lFechaRequerida
+            // 
+            this.lFechaRequerida.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lFechaRequerida.AutoSize = true;
+            this.lFechaRequerida.Location = new System.Drawing.Point(461, 47);
+            this.lFechaRequerida.Name = "lFechaRequerida";
+            this.lFechaRequerida.Size = new System.Drawing.Size(94, 13);
+            this.lFechaRequerida.TabIndex = 10;
+            this.lFechaRequerida.Text = "Fecha requerida";
+            // 
+            // dtFechaEntrega
+            // 
+            this.dtFechaEntrega.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtFechaEntrega.CustomFormat = "";
+            this.dtFechaEntrega.Location = new System.Drawing.Point(561, 8);
+            this.dtFechaEntrega.Name = "dtFechaEntrega";
+            this.dtFechaEntrega.Size = new System.Drawing.Size(332, 20);
+            this.dtFechaEntrega.TabIndex = 11;
+            // 
+            // dtFechaRequerida
+            // 
+            this.dtFechaRequerida.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtFechaRequerida.Location = new System.Drawing.Point(561, 44);
+            this.dtFechaRequerida.Name = "dtFechaRequerida";
+            this.dtFechaRequerida.Size = new System.Drawing.Size(332, 20);
+            this.dtFechaRequerida.TabIndex = 13;
             // 
             // lViaEnvio
             // 
@@ -210,67 +245,6 @@
             this.lViaEnvio.TabIndex = 4;
             this.lViaEnvio.Text = "Via Envio";
             // 
-            // lFechaPedido
-            // 
-            this.lFechaPedido.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lFechaPedido.AutoSize = true;
-            this.lFechaPedido.Location = new System.Drawing.Point(3, 47);
-            this.lFechaPedido.Name = "lFechaPedido";
-            this.lFechaPedido.Size = new System.Drawing.Size(94, 13);
-            this.lFechaPedido.TabIndex = 2;
-            this.lFechaPedido.Text = "Fecha pedido";
-            // 
-            // lFechaEntrega
-            // 
-            this.lFechaEntrega.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lFechaEntrega.AutoSize = true;
-            this.lFechaEntrega.Location = new System.Drawing.Point(461, 11);
-            this.lFechaEntrega.Name = "lFechaEntrega";
-            this.lFechaEntrega.Size = new System.Drawing.Size(94, 13);
-            this.lFechaEntrega.TabIndex = 3;
-            this.lFechaEntrega.Text = "Fecha entrega";
-            this.lFechaEntrega.Click += new System.EventHandler(this.lFechaEntrega_Click);
-            // 
-            // lFechaRequerida
-            // 
-            this.lFechaRequerida.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lFechaRequerida.AutoSize = true;
-            this.lFechaRequerida.Location = new System.Drawing.Point(461, 47);
-            this.lFechaRequerida.Name = "lFechaRequerida";
-            this.lFechaRequerida.Size = new System.Drawing.Size(94, 13);
-            this.lFechaRequerida.TabIndex = 10;
-            this.lFechaRequerida.Text = "Fecha requerida";
-            this.lFechaRequerida.Click += new System.EventHandler(this.lFechaRequerida_Click);
-            // 
-            // dtFechaEntrega
-            // 
-            this.dtFechaEntrega.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtFechaEntrega.CustomFormat = "";
-            this.dtFechaEntrega.Location = new System.Drawing.Point(561, 8);
-            this.dtFechaEntrega.Name = "dtFechaEntrega";
-            this.dtFechaEntrega.Size = new System.Drawing.Size(332, 20);
-            this.dtFechaEntrega.TabIndex = 11;
-            this.dtFechaEntrega.ValueChanged += new System.EventHandler(this.dtFechaEntrega_ValueChanged);
-            // 
-            // dtFechaPedido
-            // 
-            this.dtFechaPedido.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtFechaPedido.Enabled = false;
-            this.dtFechaPedido.Location = new System.Drawing.Point(103, 44);
-            this.dtFechaPedido.Name = "dtFechaPedido";
-            this.dtFechaPedido.Size = new System.Drawing.Size(332, 20);
-            this.dtFechaPedido.TabIndex = 12;
-            this.dtFechaPedido.ValueChanged += new System.EventHandler(this.dtFechaPedido_ValueChanged);
-            // 
-            // dtFechaRequerida
-            // 
-            this.dtFechaRequerida.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtFechaRequerida.Location = new System.Drawing.Point(561, 44);
-            this.dtFechaRequerida.Name = "dtFechaRequerida";
-            this.dtFechaRequerida.Size = new System.Drawing.Size(332, 20);
-            this.dtFechaRequerida.TabIndex = 13;
-            this.dtFechaRequerida.ValueChanged += new System.EventHandler(this.dtFechaRequerida_ValueChanged);
-            // 
             // cbViasEnvio
             // 
             this.cbViasEnvio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -281,7 +255,37 @@
             this.cbViasEnvio.Name = "cbViasEnvio";
             this.cbViasEnvio.Size = new System.Drawing.Size(332, 21);
             this.cbViasEnvio.TabIndex = 14;
-            this.cbViasEnvio.SelectedIndexChanged += new System.EventHandler(this.cbViasEnvio_SelectedIndexChanged);
+            // 
+            // lFechaPedido
+            // 
+            this.lFechaPedido.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lFechaPedido.AutoSize = true;
+            this.lFechaPedido.Location = new System.Drawing.Point(3, 47);
+            this.lFechaPedido.Name = "lFechaPedido";
+            this.lFechaPedido.Size = new System.Drawing.Size(94, 13);
+            this.lFechaPedido.TabIndex = 2;
+            this.lFechaPedido.Text = "Fecha pedido";
+            // 
+            // dtFechaPedido
+            // 
+            this.dtFechaPedido.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtFechaPedido.Enabled = false;
+            this.dtFechaPedido.Location = new System.Drawing.Point(103, 44);
+            this.dtFechaPedido.Name = "dtFechaPedido";
+            this.dtFechaPedido.Size = new System.Drawing.Size(332, 20);
+            this.dtFechaPedido.TabIndex = 12;
+            // 
+            // lFd4
+            // 
+            this.lFd4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lFd4.AutoSize = true;
+            this.lFd4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lFd4.ForeColor = System.Drawing.Color.Red;
+            this.lFd4.Location = new System.Drawing.Point(441, 10);
+            this.lFd4.Name = "lFd4";
+            this.lFd4.Size = new System.Drawing.Size(14, 16);
+            this.lFd4.TabIndex = 21;
+            this.lFd4.Text = "*";
             // 
             // tableLayoutPanel3
             // 
@@ -318,7 +322,7 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.80165F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.80165F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 21F));
             this.tableLayoutPanel4.Controls.Add(this.lNombreEntrega, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.lRegionEntrega, 3, 1);
             this.tableLayoutPanel4.Controls.Add(this.lDireccionEntrega, 3, 0);
@@ -380,25 +384,23 @@
             this.tbRegion.Enabled = false;
             this.tbRegion.Location = new System.Drawing.Point(559, 48);
             this.tbRegion.Name = "tbRegion";
-            this.tbRegion.Size = new System.Drawing.Size(114, 20);
+            this.tbRegion.Size = new System.Drawing.Size(113, 20);
             this.tbRegion.TabIndex = 9;
-            this.tbRegion.TextChanged += new System.EventHandler(this.tbRegion_TextChanged);
             // 
             // tbCodigoPostal
             // 
             this.tbCodigoPostal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.tbCodigoPostal.Enabled = false;
-            this.tbCodigoPostal.Location = new System.Drawing.Point(779, 48);
+            this.tbCodigoPostal.Location = new System.Drawing.Point(778, 48);
             this.tbCodigoPostal.Name = "tbCodigoPostal";
-            this.tbCodigoPostal.Size = new System.Drawing.Size(114, 20);
+            this.tbCodigoPostal.Size = new System.Drawing.Size(113, 20);
             this.tbCodigoPostal.TabIndex = 10;
-            this.tbCodigoPostal.TextChanged += new System.EventHandler(this.tbCodigoPostal_TextChanged);
             // 
             // lCP
             // 
             this.lCP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lCP.AutoSize = true;
-            this.lCP.Location = new System.Drawing.Point(679, 52);
+            this.lCP.Location = new System.Drawing.Point(678, 52);
             this.lCP.Name = "lCP";
             this.lCP.Size = new System.Drawing.Size(94, 13);
             this.lCP.TabIndex = 12;
@@ -416,7 +418,6 @@
             this.tbNombreCliente.TabIndex = 6;
             this.tbNombreCliente.SelectedIndexChanged += new System.EventHandler(this.cbNombreCliente_SelectedIndexChanged);
             this.tbNombreCliente.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbNombreCliente_KeyDown);
-            this.tbNombreCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbNombreCliente_KeyPress);
             this.tbNombreCliente.Validating += new System.ComponentModel.CancelEventHandler(this.cbNombreCliente_Validating);
             // 
             // lPais
@@ -437,7 +438,6 @@
             this.tbCiudad.Name = "tbCiudad";
             this.tbCiudad.Size = new System.Drawing.Size(330, 20);
             this.tbCiudad.TabIndex = 11;
-            this.tbCiudad.TextChanged += new System.EventHandler(this.tbCiudad_TextChanged);
             // 
             // lCiudadEntrega
             // 
@@ -466,9 +466,8 @@
             this.tbDireccion.Enabled = false;
             this.tbDireccion.Location = new System.Drawing.Point(559, 9);
             this.tbDireccion.Name = "tbDireccion";
-            this.tbDireccion.Size = new System.Drawing.Size(334, 20);
+            this.tbDireccion.Size = new System.Drawing.Size(332, 20);
             this.tbDireccion.TabIndex = 7;
-            this.tbDireccion.TextChanged += new System.EventHandler(this.tbDireccion_TextChanged);
             // 
             // tbTelefono
             // 
@@ -478,7 +477,6 @@
             this.tbTelefono.Name = "tbTelefono";
             this.tbTelefono.Size = new System.Drawing.Size(330, 20);
             this.tbTelefono.TabIndex = 8;
-            this.tbTelefono.TextChanged += new System.EventHandler(this.tbTelefono_TextChanged);
             // 
             // tbPais
             // 
@@ -487,9 +485,20 @@
             this.tbPais.Enabled = false;
             this.tbPais.Location = new System.Drawing.Point(559, 89);
             this.tbPais.Name = "tbPais";
-            this.tbPais.Size = new System.Drawing.Size(334, 20);
+            this.tbPais.Size = new System.Drawing.Size(332, 20);
             this.tbPais.TabIndex = 12;
-            this.tbPais.TextChanged += new System.EventHandler(this.tbPais_TextChanged);
+            // 
+            // lFd3
+            // 
+            this.lFd3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lFd3.AutoSize = true;
+            this.lFd3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lFd3.ForeColor = System.Drawing.Color.Red;
+            this.lFd3.Location = new System.Drawing.Point(439, 11);
+            this.lFd3.Name = "lFd3";
+            this.lFd3.Size = new System.Drawing.Size(14, 16);
+            this.lFd3.TabIndex = 20;
+            this.lFd3.Text = "*";
             // 
             // splitContainer3
             // 
@@ -505,7 +514,6 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.tableLayoutPanel7);
-            this.splitContainer3.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer3_Panel2_Paint);
             this.splitContainer3.Size = new System.Drawing.Size(943, 492);
             this.splitContainer3.SplitterDistance = 447;
             this.splitContainer3.TabIndex = 0;
@@ -521,7 +529,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 415F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 447F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(943, 447);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -536,7 +544,6 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Línea de pedido";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // tableLayoutPanel6
             // 
@@ -581,7 +588,6 @@
             this.btMas.Name = "btMas";
             this.btMas.Size = new System.Drawing.Size(30, 23);
             this.btMas.TabIndex = 1;
-            this.btMas.Text = " +  ";
             this.btMas.UseVisualStyleBackColor = true;
             this.btMas.Click += new System.EventHandler(this.btMas_Click);
             // 
@@ -678,36 +684,6 @@
             this.mtbPrecioFinal.TabIndex = 5;
             this.mtbPrecioFinal.ValidatingType = typeof(int);
             // 
-            // textBox11
-            // 
-            this.textBox11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox11.Location = new System.Drawing.Point(88, 208);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(351, 20);
-            this.textBox11.TabIndex = 13;
-            // 
-            // btCancelar
-            // 
-            this.btCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btCancelar.Location = new System.Drawing.Point(858, 9);
-            this.btCancelar.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
-            this.btCancelar.Name = "btCancelar";
-            this.btCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btCancelar.TabIndex = 7;
-            this.btCancelar.Text = "Cancelar";
-            this.btCancelar.UseVisualStyleBackColor = true;
-            // 
-            // btDarAlta
-            // 
-            this.btDarAlta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btDarAlta.Location = new System.Drawing.Point(777, 9);
-            this.btDarAlta.Name = "btDarAlta";
-            this.btDarAlta.Size = new System.Drawing.Size(75, 23);
-            this.btDarAlta.TabIndex = 6;
-            this.btDarAlta.Text = "Dar de alta";
-            this.btDarAlta.UseVisualStyleBackColor = true;
-            this.btDarAlta.Click += new System.EventHandler(this.btDarAlta_Click);
-            // 
             // tableLayoutPanel7
             // 
             this.tableLayoutPanel7.ColumnCount = 3;
@@ -725,6 +701,29 @@
             this.tableLayoutPanel7.Size = new System.Drawing.Size(943, 41);
             this.tableLayoutPanel7.TabIndex = 0;
             // 
+            // btDarAlta
+            // 
+            this.btDarAlta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btDarAlta.Location = new System.Drawing.Point(777, 9);
+            this.btDarAlta.Name = "btDarAlta";
+            this.btDarAlta.Size = new System.Drawing.Size(75, 23);
+            this.btDarAlta.TabIndex = 6;
+            this.btDarAlta.Text = "Dar de alta";
+            this.btDarAlta.UseVisualStyleBackColor = true;
+            this.btDarAlta.Click += new System.EventHandler(this.btDarAlta_Click);
+            // 
+            // btCancelar
+            // 
+            this.btCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btCancelar.Location = new System.Drawing.Point(858, 9);
+            this.btCancelar.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
+            this.btCancelar.Name = "btCancelar";
+            this.btCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btCancelar.TabIndex = 7;
+            this.btCancelar.Text = "Cancelar";
+            this.btCancelar.UseVisualStyleBackColor = true;
+            this.btCancelar.Click += new System.EventHandler(this.btCancelar_Click);
+            // 
             // tableLayoutPanel8
             // 
             this.tableLayoutPanel8.ColumnCount = 3;
@@ -741,6 +740,17 @@
             this.tableLayoutPanel8.Size = new System.Drawing.Size(768, 35);
             this.tableLayoutPanel8.TabIndex = 8;
             // 
+            // lFd2
+            // 
+            this.lFd2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lFd2.AutoSize = true;
+            this.lFd2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lFd2.Location = new System.Drawing.Point(23, 9);
+            this.lFd2.Name = "lFd2";
+            this.lFd2.Size = new System.Drawing.Size(181, 16);
+            this.lFd2.TabIndex = 1;
+            this.lFd2.Text = "Faltan datos obligatorios";
+            // 
             // lFd
             // 
             this.lFd.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -753,40 +763,13 @@
             this.lFd.TabIndex = 0;
             this.lFd.Text = "*";
             // 
-            // lFd2
+            // textBox11
             // 
-            this.lFd2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lFd2.AutoSize = true;
-            this.lFd2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lFd2.Location = new System.Drawing.Point(23, 9);
-            this.lFd2.Name = "lFd2";
-            this.lFd2.Size = new System.Drawing.Size(181, 16);
-            this.lFd2.TabIndex = 1;
-            this.lFd2.Text = "Faltan datos obligatorios";
-            // 
-            // lFd3
-            // 
-            this.lFd3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lFd3.AutoSize = true;
-            this.lFd3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lFd3.ForeColor = System.Drawing.Color.Red;
-            this.lFd3.Location = new System.Drawing.Point(439, 11);
-            this.lFd3.Name = "lFd3";
-            this.lFd3.Size = new System.Drawing.Size(14, 16);
-            this.lFd3.TabIndex = 20;
-            this.lFd3.Text = "*";
-            // 
-            // lFd4
-            // 
-            this.lFd4.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lFd4.AutoSize = true;
-            this.lFd4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lFd4.ForeColor = System.Drawing.Color.Red;
-            this.lFd4.Location = new System.Drawing.Point(441, 10);
-            this.lFd4.Name = "lFd4";
-            this.lFd4.Size = new System.Drawing.Size(14, 16);
-            this.lFd4.TabIndex = 21;
-            this.lFd4.Text = "*";
+            this.textBox11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox11.Location = new System.Drawing.Point(88, 208);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(351, 20);
+            this.textBox11.TabIndex = 13;
             // 
             // FormularioPedidos
             // 
