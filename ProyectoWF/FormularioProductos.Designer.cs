@@ -32,13 +32,15 @@
             this.tlPrincipal = new System.Windows.Forms.TableLayoutPanel();
             this.gbDatosP = new System.Windows.Forms.GroupBox();
             this.tlPersonales = new System.Windows.Forms.TableLayoutPanel();
-            this.tbPrecio = new System.Windows.Forms.TextBox();
+            this.lbStock = new System.Windows.Forms.Label();
             this.tbCantidad = new System.Windows.Forms.TextBox();
             this.lbCantidad = new System.Windows.Forms.Label();
             this.tbNombre = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lbIdProducto = new System.Windows.Forms.Label();
             this.lbPrecio = new System.Windows.Forms.Label();
+            this.tbPrecio = new System.Windows.Forms.TextBox();
+            this.tbStock = new System.Windows.Forms.TextBox();
             this.gbDirección = new System.Windows.Forms.GroupBox();
             this.tlOtrosDatos = new System.Windows.Forms.TableLayoutPanel();
             this.lbProveedor = new System.Windows.Forms.Label();
@@ -50,15 +52,19 @@
             this.btCancelar = new System.Windows.Forms.Button();
             this.lbObligatorio = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.lbStock = new System.Windows.Forms.Label();
-            this.tbStock = new System.Windows.Forms.TextBox();
+            this.btBuscarFoto = new System.Windows.Forms.Button();
+            this.lbFoto = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.pbFoto = new System.Windows.Forms.PictureBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tlPrincipal.SuspendLayout();
             this.gbDatosP.SuspendLayout();
             this.tlPersonales.SuspendLayout();
             this.gbDirección.SuspendLayout();
             this.tlOtrosDatos.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).BeginInit();
             this.SuspendLayout();
             // 
             // tlPrincipal
@@ -122,13 +128,15 @@
             this.tlPersonales.Size = new System.Drawing.Size(275, 198);
             this.tlPersonales.TabIndex = 0;
             // 
-            // tbPrecio
+            // lbStock
             // 
-            this.tbPrecio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbPrecio.Location = new System.Drawing.Point(58, 112);
-            this.tbPrecio.Name = "tbPrecio";
-            this.tbPrecio.Size = new System.Drawing.Size(186, 20);
-            this.tbPrecio.TabIndex = 2;
+            this.lbStock.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbStock.AutoSize = true;
+            this.lbStock.Location = new System.Drawing.Point(3, 166);
+            this.lbStock.Name = "lbStock";
+            this.lbStock.Size = new System.Drawing.Size(35, 13);
+            this.lbStock.TabIndex = 10;
+            this.lbStock.Text = "Stock";
             // 
             // tbCantidad
             // 
@@ -188,6 +196,22 @@
             this.lbPrecio.Size = new System.Drawing.Size(48, 13);
             this.lbPrecio.TabIndex = 11;
             this.lbPrecio.Text = "Precio/u";
+            // 
+            // tbPrecio
+            // 
+            this.tbPrecio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbPrecio.Location = new System.Drawing.Point(58, 112);
+            this.tbPrecio.Name = "tbPrecio";
+            this.tbPrecio.Size = new System.Drawing.Size(186, 20);
+            this.tbPrecio.TabIndex = 2;
+            // 
+            // tbStock
+            // 
+            this.tbStock.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbStock.Location = new System.Drawing.Point(58, 162);
+            this.tbStock.Name = "tbStock";
+            this.tbStock.Size = new System.Drawing.Size(186, 20);
+            this.tbStock.TabIndex = 12;
             // 
             // gbDirección
             // 
@@ -251,7 +275,7 @@
             // 
             this.lbCategoria.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbCategoria.AutoSize = true;
-            this.lbCategoria.Location = new System.Drawing.Point(3, 64);
+            this.lbCategoria.Location = new System.Drawing.Point(3, 65);
             this.lbCategoria.Name = "lbCategoria";
             this.lbCategoria.Size = new System.Drawing.Size(54, 13);
             this.lbCategoria.TabIndex = 9;
@@ -263,7 +287,7 @@
             this.cbCategoria.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbCategoria.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbCategoria.FormattingEnabled = true;
-            this.cbCategoria.Location = new System.Drawing.Point(67, 60);
+            this.cbCategoria.Location = new System.Drawing.Point(67, 61);
             this.cbCategoria.Name = "cbCategoria";
             this.cbCategoria.Size = new System.Drawing.Size(254, 21);
             this.cbCategoria.TabIndex = 4;
@@ -320,38 +344,60 @@
             this.lbObligatorio.TabIndex = 3;
             this.lbObligatorio.Text = "*   Campo obligatorio";
             // 
-            // lbStock
+            // btBuscarFoto
             // 
-            this.lbStock.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lbStock.AutoSize = true;
-            this.lbStock.Location = new System.Drawing.Point(3, 166);
-            this.lbStock.Name = "lbStock";
-            this.lbStock.Size = new System.Drawing.Size(35, 13);
-            this.lbStock.TabIndex = 10;
-            this.lbStock.Text = "Stock";
+            this.btBuscarFoto.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btBuscarFoto.Location = new System.Drawing.Point(64, 12);
+            this.btBuscarFoto.Name = "btBuscarFoto";
+            this.btBuscarFoto.Size = new System.Drawing.Size(25, 22);
+            this.btBuscarFoto.TabIndex = 11;
+            this.btBuscarFoto.Text = "...";
+            this.btBuscarFoto.UseVisualStyleBackColor = true;
+            this.btBuscarFoto.Click += new System.EventHandler(this.btBuscarFoto_Click);
             // 
-            // tbStock
+            // lbFoto
             // 
-            this.tbStock.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbStock.Location = new System.Drawing.Point(58, 162);
-            this.tbStock.Name = "tbStock";
-            this.tbStock.Size = new System.Drawing.Size(186, 20);
-            this.tbStock.TabIndex = 12;
+            this.lbFoto.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbFoto.AutoSize = true;
+            this.lbFoto.Location = new System.Drawing.Point(3, 16);
+            this.lbFoto.Name = "lbFoto";
+            this.lbFoto.Size = new System.Drawing.Size(28, 13);
+            this.lbFoto.TabIndex = 10;
+            this.lbFoto.Text = "Foto";
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnCount = 3;
             this.tlOtrosDatos.SetColumnSpan(this.tableLayoutPanel1, 2);
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.18239F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.94969F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.86793F));
+            this.tableLayoutPanel1.Controls.Add(this.lbFoto, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btBuscarFoto, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.pbFoto, 2, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(67, 131);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 99);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(143, 67);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(318, 93);
             this.tableLayoutPanel1.TabIndex = 10;
+            // 
+            // pbFoto
+            // 
+            this.pbFoto.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbFoto.Location = new System.Drawing.Point(101, 3);
+            this.pbFoto.Name = "pbFoto";
+            this.tableLayoutPanel1.SetRowSpan(this.pbFoto, 2);
+            this.pbFoto.Size = new System.Drawing.Size(214, 87);
+            this.pbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbFoto.TabIndex = 12;
+            this.pbFoto.TabStop = false;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // FormularioProductos
             // 
@@ -371,6 +417,9 @@
             this.tlOtrosDatos.ResumeLayout(false);
             this.tlOtrosDatos.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -401,5 +450,9 @@
         private System.Windows.Forms.Label lbStock;
         private System.Windows.Forms.TextBox tbStock;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label lbFoto;
+        private System.Windows.Forms.Button btBuscarFoto;
+        private System.Windows.Forms.PictureBox pbFoto;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

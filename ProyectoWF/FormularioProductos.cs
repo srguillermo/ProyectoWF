@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ namespace ProyectoWF
     {
         private int modo;
         private int pk;
+        String imagen = "";
         private SqlCommand cadenaInsert, cadenaUpdate, cadenaCategorias, cadenaProveedores, cadenaSelect;
 
         public FormularioProductos()
@@ -27,8 +29,8 @@ namespace ProyectoWF
 
             Conexion.getConexion();
 
-            cadenaInsert = new SqlCommand("insert into Productos (ProductoNombre, ProveedorID, CategoriaID, CantidadPorUnidad, PrecioUnidad, UnidadesEnExistencias) " +
-                                  "values (@nombre, @proveedor, @categoria, @cantidad, @precio, @stock)", Conexion.conexion);
+            cadenaInsert = new SqlCommand("insert into Productos (ProductoNombre, ProveedorID, CategoriaID, CantidadPorUnidad, PrecioUnidad, UnidadesEnExistencias, imagen) " +
+                                  "values (@nombre, @proveedor, @categoria, @cantidad, @precio, @stock, @imagen)", Conexion.conexion);
             cadenaUpdate = new SqlCommand("UPDATE Productos SET ProductoNombre = @nombre, ProveedorID = @proveedor," +
                                           " CategoriaID = @categoria, CantidadPorUnidad = @cantidad, " +
                                           "PrecioUnidad = @precio, UnidadesEnExistencias = @stock " +
@@ -60,6 +62,7 @@ namespace ProyectoWF
             toolTip1.SetToolTip(cbCategoria, "Categoría del producto.");
             toolTip1.SetToolTip(cbProveedor, "Proveedor del producto.");
             toolTip1.SetToolTip(tbStock, "Unidades en existencias.");
+            toolTip1.SetToolTip(pbFoto, "Imagen del producto.");
 
             cargarComboBox(cadenaProveedores, cbProveedor);
             cargarComboBox(cadenaCategorias, cbCategoria);
@@ -195,6 +198,16 @@ namespace ProyectoWF
             dr.Close();
             return "";
         }
+
+        private void btBuscarFoto_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK) {
+                imagen = openFileDialog1.FileName;
+                pbFoto.Image = new Bitmap(openFileDialog1.FileName);
+            }
+        }
+
         private void btCancelar_Click(object sender, EventArgs e)
         {
             Conexion.cerrarConexion();
@@ -232,6 +245,9 @@ namespace ProyectoWF
 
                     cadenaInsert.Parameters.AddWithValue("precio", tbPrecio.Text);
                     cadenaInsert.Parameters.AddWithValue("stock", tbStock.Text);
+                    byte[] imageData;
+                    imageData = File.ReadAllBytes(@imagen);
+                    cadenaInsert.Parameters.Add("imagen", SqlDbType.Image).Value = imageData;
                     int res = cadenaInsert.ExecuteNonQuery();
 
                     if (res > 0)
