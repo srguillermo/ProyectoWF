@@ -40,17 +40,17 @@
             this.pedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventanasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.tsbClientes = new System.Windows.Forms.ToolStripButton();
+            this.tsbPedidos = new System.Windows.Forms.ToolStripButton();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tssUsuario = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.splitter = new System.Windows.Forms.Splitter();
-            this.tvSecciones = new System.Windows.Forms.TreeView();
             this.tsbExpandir = new System.Windows.Forms.ToolStripButton();
             this.tsbRetraer = new System.Windows.Forms.ToolStripButton();
-            this.tsbClientes = new System.Windows.Forms.ToolStripButton();
-            this.tsbPedidos = new System.Windows.Forms.ToolStripButton();
+            this.splitter = new System.Windows.Forms.Splitter();
+            this.tvSecciones = new System.Windows.Forms.TreeView();
             this.msOpcionesFormPrincipal.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -160,6 +160,28 @@
             this.toolStrip.TabIndex = 1;
             this.toolStrip.Text = "ToolStrip";
             // 
+            // tsbClientes
+            // 
+            this.tsbClientes.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbClientes.Image = global::ProyectoWF.Properties.Resources.if_icon_person_stalker_211873__1_;
+            this.tsbClientes.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbClientes.Name = "tsbClientes";
+            this.tsbClientes.Size = new System.Drawing.Size(23, 22);
+            this.tsbClientes.Text = "toolStripButton1";
+            this.tsbClientes.ToolTipText = "Abrir clientes";
+            this.tsbClientes.Click += new System.EventHandler(this.tsbClientes_Click);
+            // 
+            // tsbPedidos
+            // 
+            this.tsbPedidos.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbPedidos.Image = global::ProyectoWF.Properties.Resources.icons8_windows_8_finance_purchase_order_8;
+            this.tsbPedidos.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbPedidos.Name = "tsbPedidos";
+            this.tsbPedidos.Size = new System.Drawing.Size(23, 22);
+            this.tsbPedidos.Text = "toolStripButton1";
+            this.tsbPedidos.ToolTipText = "Abrir pedidos";
+            this.tsbPedidos.Click += new System.EventHandler(this.tsbPedidos_Click);
+            // 
             // tssUsuario
             // 
             this.tssUsuario.Name = "tssUsuario";
@@ -173,7 +195,7 @@
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tssUsuario,
             this.toolStripStatusLabel1});
-            this.statusStrip.Location = new System.Drawing.Point(0, 861);
+            this.statusStrip.Location = new System.Drawing.Point(0, 851);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(1429, 22);
             this.statusStrip.TabIndex = 2;
@@ -195,27 +217,9 @@
             this.tsbRetraer});
             this.toolStrip1.Location = new System.Drawing.Point(0, 49);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(24, 812);
+            this.toolStrip1.Size = new System.Drawing.Size(24, 802);
             this.toolStrip1.TabIndex = 9;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // splitter
-            // 
-            this.splitter.Location = new System.Drawing.Point(24, 49);
-            this.splitter.Name = "splitter";
-            this.splitter.Size = new System.Drawing.Size(132, 812);
-            this.splitter.TabIndex = 10;
-            this.splitter.TabStop = false;
-            // 
-            // tvSecciones
-            // 
-            this.tvSecciones.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.tvSecciones.Location = new System.Drawing.Point(24, 49);
-            this.tvSecciones.Name = "tvSecciones";
-            this.tvSecciones.Size = new System.Drawing.Size(121, 812);
-            this.tvSecciones.TabIndex = 11;
-            this.tvSecciones.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvSecciones_NodeMouseDoubleClick);
             // 
             // tsbExpandir
             // 
@@ -239,33 +243,29 @@
             this.tsbRetraer.ToolTipText = "Esconder menú";
             this.tsbRetraer.Click += new System.EventHandler(this.tsbRetraer_Click);
             // 
-            // tsbClientes
+            // splitter
             // 
-            this.tsbClientes.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbClientes.Image = global::ProyectoWF.Properties.Resources.if_icon_person_stalker_211873__1_;
-            this.tsbClientes.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbClientes.Name = "tsbClientes";
-            this.tsbClientes.Size = new System.Drawing.Size(23, 22);
-            this.tsbClientes.Text = "toolStripButton1";
-            this.tsbClientes.ToolTipText = "Abrir clientes";
-            this.tsbClientes.Click += new System.EventHandler(this.tsbClientes_Click);
+            this.splitter.Location = new System.Drawing.Point(24, 49);
+            this.splitter.Name = "splitter";
+            this.splitter.Size = new System.Drawing.Size(132, 802);
+            this.splitter.TabIndex = 10;
+            this.splitter.TabStop = false;
             // 
-            // tsbPedidos
+            // tvSecciones
             // 
-            this.tsbPedidos.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbPedidos.Image = global::ProyectoWF.Properties.Resources.icons8_windows_8_finance_purchase_order_8;
-            this.tsbPedidos.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbPedidos.Name = "tsbPedidos";
-            this.tsbPedidos.Size = new System.Drawing.Size(23, 22);
-            this.tsbPedidos.Text = "toolStripButton1";
-            this.tsbPedidos.ToolTipText = "Abrir pedidos";
-            this.tsbPedidos.Click += new System.EventHandler(this.tsbPedidos_Click);
+            this.tvSecciones.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.tvSecciones.Location = new System.Drawing.Point(24, 49);
+            this.tvSecciones.Name = "tvSecciones";
+            this.tvSecciones.Size = new System.Drawing.Size(121, 802);
+            this.tvSecciones.TabIndex = 11;
+            this.tvSecciones.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvSecciones_NodeMouseDoubleClick);
             // 
             // FormularioPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1429, 883);
+            this.ClientSize = new System.Drawing.Size(1429, 873);
             this.Controls.Add(this.tvSecciones);
             this.Controls.Add(this.splitter);
             this.Controls.Add(this.toolStrip1);
