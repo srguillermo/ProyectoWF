@@ -30,7 +30,7 @@ namespace ProyectoWF {
             }
             catch (Exception e)
             {
-                Console.WriteLine("error");
+                Console.WriteLine("error "+e);
             }
 
             return conexion;
@@ -46,7 +46,7 @@ namespace ProyectoWF {
             }
             catch (Exception e)
             {
-                Console.WriteLine("error");
+                Console.WriteLine("error "+e);
             }
         }
 
