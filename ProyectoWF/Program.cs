@@ -16,7 +16,7 @@ namespace ProyectoWF
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormProveedores());
+            Application.Run(new FormProveedores(2, 3006));
         }
     }
 }

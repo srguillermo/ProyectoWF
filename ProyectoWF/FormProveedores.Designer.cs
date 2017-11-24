@@ -27,7 +27,6 @@
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
 			this.label13 = new System.Windows.Forms.Label();
-			this.label10 = new System.Windows.Forms.Label();
 			this.label11 = new System.Windows.Forms.Label();
 			this.label12 = new System.Windows.Forms.Label();
 			this.btExaminar = new System.Windows.Forms.Button();
@@ -35,6 +34,7 @@
 			this.mtbFax = new System.Windows.Forms.MaskedTextBox();
 			this.tbWeb = new System.Windows.Forms.TextBox();
 			this.tbLogo = new System.Windows.Forms.TextBox();
+			this.label10 = new System.Windows.Forms.Label();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
 			this.tbPais = new System.Windows.Forms.TextBox();
@@ -56,14 +56,14 @@
 			this.label4 = new System.Windows.Forms.Label();
 			this.tbContacto = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
-			this.groupBox4 = new System.Windows.Forms.GroupBox();
-			this.pbLogo = new System.Windows.Forms.PictureBox();
 			this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
 			this.label15 = new System.Windows.Forms.Label();
 			this.label14 = new System.Windows.Forms.Label();
 			this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
 			this.btAceptar = new System.Windows.Forms.Button();
 			this.btCancelar = new System.Windows.Forms.Button();
+			this.groupBox4 = new System.Windows.Forms.GroupBox();
+			this.pbLogo = new System.Windows.Forms.PictureBox();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.groupBox3.SuspendLayout();
 			this.tableLayoutPanel4.SuspendLayout();
@@ -71,10 +71,10 @@
 			this.tableLayoutPanel2.SuspendLayout();
 			this.groupBox1.SuspendLayout();
 			this.tableLayoutPanel3.SuspendLayout();
-			this.groupBox4.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
 			this.tableLayoutPanel5.SuspendLayout();
 			this.tableLayoutPanel6.SuspendLayout();
+			this.groupBox4.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// tableLayoutPanel1
@@ -117,7 +117,6 @@
 			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tableLayoutPanel4.Controls.Add(this.label13, 0, 3);
-			this.tableLayoutPanel4.Controls.Add(this.label10, 0, 0);
 			this.tableLayoutPanel4.Controls.Add(this.label11, 0, 1);
 			this.tableLayoutPanel4.Controls.Add(this.label12, 0, 2);
 			this.tableLayoutPanel4.Controls.Add(this.btExaminar, 2, 3);
@@ -125,6 +124,7 @@
 			this.tableLayoutPanel4.Controls.Add(this.mtbFax, 1, 1);
 			this.tableLayoutPanel4.Controls.Add(this.tbWeb, 1, 2);
 			this.tableLayoutPanel4.Controls.Add(this.tbLogo, 1, 3);
+			this.tableLayoutPanel4.Controls.Add(this.label10, 0, 0);
 			this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 16);
 			this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -145,16 +145,6 @@
 			this.label13.Size = new System.Drawing.Size(49, 13);
 			this.label13.TabIndex = 4;
 			this.label13.Text = "Logo";
-			// 
-			// label10
-			// 
-			this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.label10.AutoSize = true;
-			this.label10.Location = new System.Drawing.Point(3, 8);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(49, 13);
-			this.label10.TabIndex = 1;
-			this.label10.Text = "Teléfono";
 			// 
 			// label11
 			// 
@@ -182,7 +172,7 @@
 			this.btExaminar.Location = new System.Drawing.Point(248, 95);
 			this.btExaminar.Name = "btExaminar";
 			this.btExaminar.Size = new System.Drawing.Size(46, 23);
-			this.btExaminar.TabIndex = 5;
+			this.btExaminar.TabIndex = 9;
 			this.btExaminar.Text = "...";
 			this.btExaminar.UseVisualStyleBackColor = true;
 			this.btExaminar.Click += new System.EventHandler(this.btExaminar_Click);
@@ -224,7 +214,17 @@
 			this.tbLogo.Margin = new System.Windows.Forms.Padding(23, 3, 3, 3);
 			this.tbLogo.Name = "tbLogo";
 			this.tbLogo.Size = new System.Drawing.Size(164, 20);
-			this.tbLogo.TabIndex = 9;
+			this.tbLogo.TabIndex = 20;
+			// 
+			// label10
+			// 
+			this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.label10.AutoSize = true;
+			this.label10.Location = new System.Drawing.Point(3, 8);
+			this.label10.Name = "label10";
+			this.label10.Size = new System.Drawing.Size(49, 13);
+			this.label10.TabIndex = 1;
+			this.label10.Text = "Teléfono";
 			// 
 			// groupBox2
 			// 
@@ -472,28 +472,6 @@
 			this.label2.TabIndex = 2;
 			this.label2.Text = "Contacto";
 			// 
-			// groupBox4
-			// 
-			this.groupBox4.Controls.Add(this.pbLogo);
-			this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.groupBox4.Location = new System.Drawing.Point(332, 172);
-			this.groupBox4.Margin = new System.Windows.Forms.Padding(10);
-			this.groupBox4.Name = "groupBox4";
-			this.groupBox4.Size = new System.Drawing.Size(303, 153);
-			this.groupBox4.TabIndex = 4;
-			this.groupBox4.TabStop = false;
-			this.groupBox4.Text = "Vista previa logo";
-			// 
-			// pbLogo
-			// 
-			this.pbLogo.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.pbLogo.Location = new System.Drawing.Point(3, 16);
-			this.pbLogo.Name = "pbLogo";
-			this.pbLogo.Size = new System.Drawing.Size(297, 134);
-			this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.pbLogo.TabIndex = 0;
-			this.pbLogo.TabStop = false;
-			// 
 			// tableLayoutPanel5
 			// 
 			this.tableLayoutPanel5.ColumnCount = 2;
@@ -543,6 +521,15 @@
 			this.tableLayoutPanel6.Name = "tableLayoutPanel6";
 			this.tableLayoutPanel6.RowCount = 1;
 			this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
+			this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.tableLayoutPanel6.Size = new System.Drawing.Size(317, 36);
 			this.tableLayoutPanel6.TabIndex = 6;
@@ -554,27 +541,55 @@
 			this.btAceptar.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
 			this.btAceptar.Name = "btAceptar";
 			this.btAceptar.Size = new System.Drawing.Size(134, 23);
-			this.btAceptar.TabIndex = 1;
+			this.btAceptar.TabIndex = 10;
 			this.btAceptar.Text = "Aceptar";
 			this.btAceptar.UseVisualStyleBackColor = true;
+			this.btAceptar.Click += new System.EventHandler(this.btAceptar_Click);
 			// 
 			// btCancelar
 			// 
 			this.btCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.btCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.btCancelar.Location = new System.Drawing.Point(33, 6);
 			this.btCancelar.Margin = new System.Windows.Forms.Padding(33, 3, 3, 3);
 			this.btCancelar.Name = "btCancelar";
 			this.btCancelar.Size = new System.Drawing.Size(134, 23);
-			this.btCancelar.TabIndex = 0;
+			this.btCancelar.TabIndex = 11;
 			this.btCancelar.Text = "Cancelar";
 			this.btCancelar.UseVisualStyleBackColor = true;
+			this.btCancelar.Click += new System.EventHandler(this.btCancelar_Click);
+			// 
+			// groupBox4
+			// 
+			this.groupBox4.Controls.Add(this.pbLogo);
+			this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.groupBox4.Location = new System.Drawing.Point(332, 172);
+			this.groupBox4.Margin = new System.Windows.Forms.Padding(10);
+			this.groupBox4.Name = "groupBox4";
+			this.groupBox4.Size = new System.Drawing.Size(303, 153);
+			this.groupBox4.TabIndex = 4;
+			this.groupBox4.TabStop = false;
+			this.groupBox4.Text = "Vista previa logo";
+			// 
+			// pbLogo
+			// 
+			this.pbLogo.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.pbLogo.Location = new System.Drawing.Point(3, 16);
+			this.pbLogo.Name = "pbLogo";
+			this.pbLogo.Size = new System.Drawing.Size(297, 134);
+			this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pbLogo.TabIndex = 0;
+			this.pbLogo.TabStop = false;
 			// 
 			// FormProveedores
 			// 
+			this.AcceptButton = this.btAceptar;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.CancelButton = this.btCancelar;
 			this.ClientSize = new System.Drawing.Size(645, 377);
 			this.Controls.Add(this.tableLayoutPanel1);
+			this.MinimumSize = new System.Drawing.Size(661, 416);
 			this.Name = "FormProveedores";
 			this.Text = "Proveedores";
 			this.tableLayoutPanel1.ResumeLayout(false);
@@ -587,11 +602,11 @@
 			this.groupBox1.ResumeLayout(false);
 			this.tableLayoutPanel3.ResumeLayout(false);
 			this.tableLayoutPanel3.PerformLayout();
-			this.groupBox4.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
 			this.tableLayoutPanel5.ResumeLayout(false);
 			this.tableLayoutPanel5.PerformLayout();
 			this.tableLayoutPanel6.ResumeLayout(false);
+			this.groupBox4.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
 			this.ResumeLayout(false);
 
 		}
