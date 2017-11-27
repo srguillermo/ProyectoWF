@@ -35,8 +35,8 @@
             this.tbUsuario = new System.Windows.Forms.TextBox();
             this.tbContrasena = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lErrorUsu = new System.Windows.Forms.Label();
+            this.lErrorCon = new System.Windows.Forms.Label();
             this.lError = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -61,12 +61,14 @@
             // 
             // tbSalir
             // 
+            this.tbSalir.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.tbSalir.Location = new System.Drawing.Point(239, 128);
             this.tbSalir.Name = "tbSalir";
             this.tbSalir.Size = new System.Drawing.Size(75, 23);
             this.tbSalir.TabIndex = 2;
             this.tbSalir.Text = "Salir";
             this.tbSalir.UseVisualStyleBackColor = true;
+            this.tbSalir.Click += new System.EventHandler(this.tbSalir_Click);
             // 
             // btIniciarSesion
             // 
@@ -102,46 +104,47 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "LOGIN DE EMPLEADO";
             // 
-            // label4
+            // lErrorUsu
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(321, 59);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(13, 16);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "*";
+            this.lErrorUsu.AutoSize = true;
+            this.lErrorUsu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lErrorUsu.ForeColor = System.Drawing.Color.Red;
+            this.lErrorUsu.Location = new System.Drawing.Point(321, 59);
+            this.lErrorUsu.Name = "lErrorUsu";
+            this.lErrorUsu.Size = new System.Drawing.Size(13, 16);
+            this.lErrorUsu.TabIndex = 7;
+            this.lErrorUsu.Text = "*";
             // 
-            // label5
+            // lErrorCon
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(320, 98);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(13, 16);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "*";
+            this.lErrorCon.AutoSize = true;
+            this.lErrorCon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lErrorCon.ForeColor = System.Drawing.Color.Red;
+            this.lErrorCon.Location = new System.Drawing.Point(320, 98);
+            this.lErrorCon.Name = "lErrorCon";
+            this.lErrorCon.Size = new System.Drawing.Size(13, 16);
+            this.lErrorCon.TabIndex = 8;
+            this.lErrorCon.Text = "*";
             // 
             // lError
             // 
             this.lError.AutoSize = true;
             this.lError.Location = new System.Drawing.Point(44, 138);
             this.lError.Name = "lError";
-            this.lError.Size = new System.Drawing.Size(35, 13);
+            this.lError.Size = new System.Drawing.Size(0, 13);
             this.lError.TabIndex = 9;
-            this.lError.Text = "label6";
             this.lError.Visible = false;
             // 
             // Login
             // 
+            this.AcceptButton = this.btIniciarSesion;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.tbSalir;
             this.ClientSize = new System.Drawing.Size(338, 163);
             this.Controls.Add(this.lError);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lErrorCon);
+            this.Controls.Add(this.lErrorUsu);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tbContrasena);
             this.Controls.Add(this.tbUsuario);
@@ -151,6 +154,7 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -166,8 +170,8 @@
         private System.Windows.Forms.TextBox tbUsuario;
         private System.Windows.Forms.TextBox tbContrasena;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lErrorUsu;
+        private System.Windows.Forms.Label lErrorCon;
         private System.Windows.Forms.Label lError;
     }
 }

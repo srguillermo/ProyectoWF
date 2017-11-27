@@ -8,13 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ProyectoWF {
-    public partial class FormularioPrincipal : Form {
+namespace ProyectoWF
+{
+    public partial class FormularioPrincipal : Form
+    {
         private int childFormNumber = 0;
-
-        public FormularioPrincipal()
+        private Boolean esLogin;
+        public FormularioPrincipal(String usuario,ref Boolean esLogin)
         {
             InitializeComponent();
+            this.esLogin = esLogin;
+            tssUsuario.Text = "Has iniciado sesión con " + usuario;
             tsbExpandir.Visible = false;
             tssUsuario.Spring = true;
             tssUsuario.Alignment = ToolStripItemAlignment.Right;
@@ -182,13 +186,14 @@ namespace ProyectoWF {
 
         private void toolStripStatusLabel1_Click(object sender, EventArgs e)
         {
-
+            esLogin = true;
+            this.Close();
         }
 
         private void tsbClientes_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Clientes");
-            FormularioPedidos formPedidos = new FormularioPedidos(1,1);
+            FormularioPedidos formPedidos = new FormularioPedidos(1, 1);
             formPedidos.MdiParent = this;
             formPedidos.Show();
 
@@ -208,6 +213,7 @@ namespace ProyectoWF {
                     e.Cancel = true;
                 }
             }
+            
         }
     }
 }
