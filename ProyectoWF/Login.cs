@@ -17,6 +17,7 @@ namespace ProyectoWF
     {
 
        private Boolean esLogin;
+        private FormularioPrincipal formPrinc;
         public Login(ref Boolean esLogin)
         {
             InitializeComponent();
@@ -44,6 +45,36 @@ namespace ProyectoWF
             DataSet dataSet = new DataSet();
             adapter.Fill(dataSet);
             Console.WriteLine(dataSet.Tables[0].Rows.Count);
+
+
+            this.Hide();
+            tbContrasena.Dispose();
+
+            formPrinc = new FormularioPrincipal(tbUsuario.Text);
+
+            formPrinc.FormClosed += new FormClosedEventHandler(onClosingPrinci);
+            tbUsuario.Text = "";
+            formPrinc.ShowDialog();
+
+            if (esLogin) {
+                TextBox tbContrasena = new TextBox();
+
+                this.tbContrasena.Location = new System.Drawing.Point(118, 91);
+                this.tbContrasena.Name = "tbContrasena";
+                this.tbContrasena.Size = new System.Drawing.Size(196, 20);
+                this.tbContrasena.TabIndex = 5;
+                this.tbContrasena.Visible = true;
+
+
+                this.Show();
+            }
+            else
+            {
+                this.Close();
+            }
+
+
+            /*
             if (dataSet.Tables[0].Rows.Count == 1)
             {
                 command = new SqlCommand("select * from dbo.Empleados where Usuario=HASHBYTES('SHA2_512',@usuario) and Password=HASHBYTES('SHA2_512',@password)", Conexion.getConexion());
@@ -73,6 +104,12 @@ namespace ProyectoWF
                 MessageBox.Show("El usuario introducido no existe", "¡Error Usuario!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 lErrorUsu.Visible = true;
             }
+            */
+        }
+
+        private void onClosingPrinci(object sender, EventArgs e)
+        {
+            this.esLogin=formPrinc.EsLogin;
         }
 
         private void tbSalir_Click(object sender, EventArgs e)

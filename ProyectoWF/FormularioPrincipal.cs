@@ -14,10 +14,13 @@ namespace ProyectoWF
     {
         private int childFormNumber = 0;
         private Boolean esLogin;
-        public FormularioPrincipal(String usuario,ref Boolean esLogin)
+
+        public bool EsLogin { get => esLogin; set => esLogin = value; }
+
+        public FormularioPrincipal(String usuario)
         {
             InitializeComponent();
-            this.esLogin = esLogin;
+            this.EsLogin = false;
             tssUsuario.Text = "Has iniciado sesión con " + usuario;
             tsbExpandir.Visible = false;
             tssUsuario.Spring = true;
@@ -186,7 +189,8 @@ namespace ProyectoWF
 
         private void toolStripStatusLabel1_Click(object sender, EventArgs e)
         {
-            esLogin = true;
+            EsLogin = true;
+            
             this.Close();
         }
 
