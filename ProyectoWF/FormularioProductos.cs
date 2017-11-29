@@ -33,7 +33,7 @@ namespace ProyectoWF
                                   "values (@nombre, @proveedor, @categoria, @cantidad, @precio, @stock, @imagen)", Conexion.conexion);
             cadenaUpdate = new SqlCommand("UPDATE Productos SET ProductoNombre = @nombre, ProveedorID = @proveedor," +
                                           " CategoriaID = @categoria, CantidadPorUnidad = @cantidad, " +
-                                          "PrecioUnidad = @precio, UnidadesEnExistencias = @stock " +
+                                          "PrecioUnidad = @precio, UnidadesEnExistencias = @stock, Imagen = @imagen " +
                                           "WHERE ProductoID = @id", Conexion.conexion);
             cadenaCategorias = new SqlCommand("SELECT nombreCategoria FROM Categorias", Conexion.conexion);
             cadenaProveedores = new SqlCommand("SELECT nombreCompania FROM Proveedores", Conexion.conexion);
@@ -43,18 +43,7 @@ namespace ProyectoWF
 
             
         }
-        //
-        //
-        // byte[] imageData;
-        // if (tbLogo.Text == "") {
-        // imageData = new byte[1];
-        // imageData[0] = 0;
-        // } else {
-        //  imageData = File.ReadAllBytes(@tbLogo.Text);
-        // }
-        //
-        //
-        //
+
         private void cargarOpciones() {
             toolTip1.SetToolTip(tbNombre, "Nombre del producto.");
             toolTip1.SetToolTip(tbCantidad, "Cantidad del producto.");
@@ -89,6 +78,7 @@ namespace ProyectoWF
                 cbCategoria.Enabled = false;
                 tbStock.Enabled = false;
                 btCancelar.Enabled = false;
+                btBuscarFoto.Enabled = false;
                 cargarProducto();
 
             }
@@ -114,6 +104,13 @@ namespace ProyectoWF
                         tbPrecio.Text = dr.GetSqlMoney(5).ToString();
                     if (!dr.IsDBNull(6))
                         tbStock.Text = dr.GetInt16(6).ToString();
+                    if (!dr.IsDBNull(7))
+                    {
+                        byte[] imageData;
+                        imageData = (byte[])dr[7];
+                        pbFoto.Image = Image.FromStream(new MemoryStream(imageData));
+                    }
+
                 }
 
             }
@@ -249,7 +246,7 @@ namespace ProyectoWF
                     imageData = File.ReadAllBytes(@imagen);
                     cadenaInsert.Parameters.Add("imagen", SqlDbType.Image).Value = imageData;
                     int res = cadenaInsert.ExecuteNonQuery();
-                    //asdsaddd
+
                     if (res > 0)
                     {
                         MessageBox.Show("Datos almacenados.","", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -288,6 +285,9 @@ namespace ProyectoWF
                     cadenaUpdate.Parameters.AddWithValue("precio", tbPrecio.Text);
                     cadenaUpdate.Parameters.AddWithValue("stock", tbStock.Text);
                     cadenaUpdate.Parameters.AddWithValue("id", pk);
+                    byte[] imageData;
+                    imageData = File.ReadAllBytes(@imagen);
+                    cadenaUpdate.Parameters.Add("imagen", SqlDbType.Image).Value = imageData;
                     int res = cadenaUpdate.ExecuteNonQuery();
 
                     if (res > 0)

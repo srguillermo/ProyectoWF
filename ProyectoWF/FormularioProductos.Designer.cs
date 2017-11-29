@@ -47,23 +47,25 @@
             this.cbProveedor = new System.Windows.Forms.ComboBox();
             this.lbCategoria = new System.Windows.Forms.Label();
             this.cbCategoria = new System.Windows.Forms.ComboBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.lbFoto = new System.Windows.Forms.Label();
+            this.btBuscarFoto = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btAceptar = new System.Windows.Forms.Button();
             this.btCancelar = new System.Windows.Forms.Button();
             this.lbObligatorio = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.btBuscarFoto = new System.Windows.Forms.Button();
-            this.lbFoto = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.pbFoto = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.tbBorrarFoto = new System.Windows.Forms.Label();
+            this.pbFoto = new System.Windows.Forms.PictureBox();
+            this.btBorrarFoto = new System.Windows.Forms.Button();
             this.tlPrincipal.SuspendLayout();
             this.gbDatosP.SuspendLayout();
             this.tlPersonales.SuspendLayout();
             this.gbDirección.SuspendLayout();
             this.tlOtrosDatos.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).BeginInit();
             this.SuspendLayout();
             // 
@@ -211,7 +213,7 @@
             this.tbStock.Location = new System.Drawing.Point(58, 162);
             this.tbStock.Name = "tbStock";
             this.tbStock.Size = new System.Drawing.Size(186, 20);
-            this.tbStock.TabIndex = 12;
+            this.tbStock.TabIndex = 3;
             // 
             // gbDirección
             // 
@@ -269,7 +271,7 @@
             this.cbProveedor.Location = new System.Drawing.Point(67, 13);
             this.cbProveedor.Name = "cbProveedor";
             this.cbProveedor.Size = new System.Drawing.Size(254, 21);
-            this.cbProveedor.TabIndex = 3;
+            this.cbProveedor.TabIndex = 4;
             // 
             // lbCategoria
             // 
@@ -290,7 +292,49 @@
             this.cbCategoria.Location = new System.Drawing.Point(67, 61);
             this.cbCategoria.Name = "cbCategoria";
             this.cbCategoria.Size = new System.Drawing.Size(254, 21);
-            this.cbCategoria.TabIndex = 4;
+            this.cbCategoria.TabIndex = 5;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tlOtrosDatos.SetColumnSpan(this.tableLayoutPanel1, 2);
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.18239F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.94969F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.86793F));
+            this.tableLayoutPanel1.Controls.Add(this.tbBorrarFoto, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lbFoto, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btBuscarFoto, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.pbFoto, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btBorrarFoto, 1, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 99);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(318, 93);
+            this.tableLayoutPanel1.TabIndex = 10;
+            // 
+            // lbFoto
+            // 
+            this.lbFoto.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbFoto.AutoSize = true;
+            this.lbFoto.Location = new System.Drawing.Point(3, 16);
+            this.lbFoto.Name = "lbFoto";
+            this.lbFoto.Size = new System.Drawing.Size(28, 13);
+            this.lbFoto.TabIndex = 10;
+            this.lbFoto.Text = "Foto";
+            // 
+            // btBuscarFoto
+            // 
+            this.btBuscarFoto.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btBuscarFoto.Location = new System.Drawing.Point(63, 12);
+            this.btBuscarFoto.Name = "btBuscarFoto";
+            this.btBuscarFoto.Size = new System.Drawing.Size(25, 22);
+            this.btBuscarFoto.TabIndex = 6;
+            this.btBuscarFoto.Text = "...";
+            this.btBuscarFoto.UseVisualStyleBackColor = true;
+            this.btBuscarFoto.Click += new System.EventHandler(this.btBuscarFoto_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -314,7 +358,7 @@
             this.btAceptar.Margin = new System.Windows.Forms.Padding(3, 3, 3, 8);
             this.btAceptar.Name = "btAceptar";
             this.btAceptar.Size = new System.Drawing.Size(75, 23);
-            this.btAceptar.TabIndex = 7;
+            this.btAceptar.TabIndex = 9;
             this.btAceptar.Text = "Aceptar";
             this.btAceptar.UseVisualStyleBackColor = true;
             this.btAceptar.Click += new System.EventHandler(this.btAceptar_Click);
@@ -326,7 +370,7 @@
             this.btCancelar.Margin = new System.Windows.Forms.Padding(3, 3, 3, 8);
             this.btCancelar.Name = "btCancelar";
             this.btCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btCancelar.TabIndex = 6;
+            this.btCancelar.TabIndex = 8;
             this.btCancelar.Text = "Cancelar";
             this.btCancelar.UseVisualStyleBackColor = true;
             this.btCancelar.Click += new System.EventHandler(this.btCancelar_Click);
@@ -344,45 +388,19 @@
             this.lbObligatorio.TabIndex = 3;
             this.lbObligatorio.Text = "*   Campo obligatorio";
             // 
-            // btBuscarFoto
+            // openFileDialog1
             // 
-            this.btBuscarFoto.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btBuscarFoto.Location = new System.Drawing.Point(64, 12);
-            this.btBuscarFoto.Name = "btBuscarFoto";
-            this.btBuscarFoto.Size = new System.Drawing.Size(25, 22);
-            this.btBuscarFoto.TabIndex = 11;
-            this.btBuscarFoto.Text = "...";
-            this.btBuscarFoto.UseVisualStyleBackColor = true;
-            this.btBuscarFoto.Click += new System.EventHandler(this.btBuscarFoto_Click);
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // lbFoto
+            // tbBorrarFoto
             // 
-            this.lbFoto.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lbFoto.AutoSize = true;
-            this.lbFoto.Location = new System.Drawing.Point(3, 16);
-            this.lbFoto.Name = "lbFoto";
-            this.lbFoto.Size = new System.Drawing.Size(28, 13);
-            this.lbFoto.TabIndex = 10;
-            this.lbFoto.Text = "Foto";
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tlOtrosDatos.SetColumnSpan(this.tableLayoutPanel1, 2);
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.18239F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.94969F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.86793F));
-            this.tableLayoutPanel1.Controls.Add(this.lbFoto, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btBuscarFoto, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.pbFoto, 2, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 99);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(318, 93);
-            this.tableLayoutPanel1.TabIndex = 10;
+            this.tbBorrarFoto.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.tbBorrarFoto.AutoSize = true;
+            this.tbBorrarFoto.Location = new System.Drawing.Point(3, 63);
+            this.tbBorrarFoto.Name = "tbBorrarFoto";
+            this.tbBorrarFoto.Size = new System.Drawing.Size(35, 13);
+            this.tbBorrarFoto.TabIndex = 13;
+            this.tbBorrarFoto.Text = "Borrar";
             // 
             // pbFoto
             // 
@@ -395,9 +413,16 @@
             this.pbFoto.TabIndex = 12;
             this.pbFoto.TabStop = false;
             // 
-            // openFileDialog1
+            // btBorrarFoto
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.btBorrarFoto.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btBorrarFoto.BackgroundImage = global::ProyectoWF.Properties.Resources.eliminar_cancelar_icono_4935_128;
+            this.btBorrarFoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btBorrarFoto.Location = new System.Drawing.Point(63, 58);
+            this.btBorrarFoto.Name = "btBorrarFoto";
+            this.btBorrarFoto.Size = new System.Drawing.Size(25, 22);
+            this.btBorrarFoto.TabIndex = 7;
+            this.btBorrarFoto.UseVisualStyleBackColor = true;
             // 
             // FormularioProductos
             // 
@@ -416,9 +441,9 @@
             this.gbDirección.ResumeLayout(false);
             this.tlOtrosDatos.ResumeLayout(false);
             this.tlOtrosDatos.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).EndInit();
             this.ResumeLayout(false);
 
@@ -454,5 +479,7 @@
         private System.Windows.Forms.Button btBuscarFoto;
         private System.Windows.Forms.PictureBox pbFoto;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Label tbBorrarFoto;
+        private System.Windows.Forms.Button btBorrarFoto;
     }
 }
