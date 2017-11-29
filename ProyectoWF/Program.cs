@@ -7,7 +7,7 @@ namespace ProyectoWF
     internal static class Program
     {
 
-
+        public static Boolean esLogin;
         /// <summary>
         /// Punto de entrada principal para la aplicación.
         /// </summary>
@@ -18,12 +18,13 @@ namespace ProyectoWF
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new FormularioPedidos(0,2));
-            Boolean esLogin ;
+
             do
             {
                 esLogin = false;
-                Application.Run(new Login(ref esLogin));
+                Application.Run(new Login());
             } while (esLogin);
         }
+        
     }
 }

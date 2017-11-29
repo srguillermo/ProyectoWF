@@ -158,5 +158,17 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_icons_exit2_1564506.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if__p_copy_2560347 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if__e_2560315.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_074_ArchieveBox_183203 %281%29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

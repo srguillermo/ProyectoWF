@@ -41,7 +41,12 @@
             this.ventanasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.tsbClientes = new System.Windows.Forms.ToolStripButton();
+            this.tsbProveedores = new System.Windows.Forms.ToolStripButton();
+            this.tsbProductos = new System.Windows.Forms.ToolStripButton();
+            this.tsbEmpleados = new System.Windows.Forms.ToolStripButton();
             this.tsbPedidos = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbSalir = new System.Windows.Forms.ToolStripButton();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tssUsuario = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
@@ -153,7 +158,12 @@
             // 
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbClientes,
-            this.tsbPedidos});
+            this.tsbProveedores,
+            this.tsbProductos,
+            this.tsbEmpleados,
+            this.tsbPedidos,
+            this.toolStripSeparator1,
+            this.tsbSalir});
             this.toolStrip.Location = new System.Drawing.Point(0, 24);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Size = new System.Drawing.Size(1429, 25);
@@ -169,7 +179,40 @@
             this.tsbClientes.Size = new System.Drawing.Size(23, 22);
             this.tsbClientes.Text = "toolStripButton1";
             this.tsbClientes.ToolTipText = "Abrir clientes";
-            this.tsbClientes.Click += new System.EventHandler(this.tsbClientes_Click);
+            this.tsbClientes.Click += new System.EventHandler(this.tsb_Click);
+            // 
+            // tsbProveedores
+            // 
+            this.tsbProveedores.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbProveedores.Image = global::ProyectoWF.Properties.Resources.if_074_ArchieveBox_183203__1_;
+            this.tsbProveedores.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbProveedores.Name = "tsbProveedores";
+            this.tsbProveedores.Size = new System.Drawing.Size(23, 22);
+            this.tsbProveedores.Text = "toolStripButton3";
+            this.tsbProveedores.ToolTipText = "Abrir proveedores";
+            this.tsbProveedores.Click += new System.EventHandler(this.tsb_Click);
+            // 
+            // tsbProductos
+            // 
+            this.tsbProductos.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbProductos.Image = global::ProyectoWF.Properties.Resources.if__p_copy_2560347__1_;
+            this.tsbProductos.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbProductos.Name = "tsbProductos";
+            this.tsbProductos.Size = new System.Drawing.Size(23, 22);
+            this.tsbProductos.Text = "toolStripButton1";
+            this.tsbProductos.ToolTipText = "Abrir productos";
+            this.tsbProductos.Click += new System.EventHandler(this.tsb_Click);
+            // 
+            // tsbEmpleados
+            // 
+            this.tsbEmpleados.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbEmpleados.Image = global::ProyectoWF.Properties.Resources.if__e_2560315;
+            this.tsbEmpleados.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbEmpleados.Name = "tsbEmpleados";
+            this.tsbEmpleados.Size = new System.Drawing.Size(23, 22);
+            this.tsbEmpleados.Text = "toolStripButton2";
+            this.tsbEmpleados.ToolTipText = "Abrir empleados";
+            this.tsbEmpleados.Click += new System.EventHandler(this.tsb_Click);
             // 
             // tsbPedidos
             // 
@@ -180,7 +223,23 @@
             this.tsbPedidos.Size = new System.Drawing.Size(23, 22);
             this.tsbPedidos.Text = "toolStripButton1";
             this.tsbPedidos.ToolTipText = "Abrir pedidos";
-            this.tsbPedidos.Click += new System.EventHandler(this.tsbPedidos_Click);
+            this.tsbPedidos.Click += new System.EventHandler(this.tsb_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tsbSalir
+            // 
+            this.tsbSalir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbSalir.Image = global::ProyectoWF.Properties.Resources.if_icons_exit2_1564506;
+            this.tsbSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSalir.Name = "tsbSalir";
+            this.tsbSalir.Size = new System.Drawing.Size(23, 22);
+            this.tsbSalir.Text = "toolStripButton4";
+            this.tsbSalir.ToolTipText = "Salir del programa";
+            this.tsbSalir.Click += new System.EventHandler(this.tsbSalir_Click);
             // 
             // tssUsuario
             // 
@@ -316,6 +375,11 @@
         private System.Windows.Forms.ToolStripButton tsbRetraer;
         private System.Windows.Forms.ToolStripButton tsbClientes;
         private System.Windows.Forms.ToolStripButton tsbPedidos;
+        private System.Windows.Forms.ToolStripButton tsbProductos;
+        private System.Windows.Forms.ToolStripButton tsbEmpleados;
+        private System.Windows.Forms.ToolStripButton tsbProveedores;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton tsbSalir;
     }
 }
 

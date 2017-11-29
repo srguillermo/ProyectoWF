@@ -83,6 +83,36 @@ namespace ProyectoWF.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap if__e_2560315 {
+            get {
+                object obj = ResourceManager.GetObject("if__e_2560315", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if__p_copy_2560347__1_ {
+            get {
+                object obj = ResourceManager.GetObject("if__p_copy_2560347 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if_074_ArchieveBox_183203__1_ {
+            get {
+                object obj = ResourceManager.GetObject("if_074_ArchieveBox_183203 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap if_format_indent_more_29797 {
             get {
                 object obj = ResourceManager.GetObject("if_format-indent-more_29797", resourceCulture);
@@ -116,6 +146,16 @@ namespace ProyectoWF.Properties {
         internal static System.Drawing.Bitmap if_icon_person_stalker_211873__1_ {
             get {
                 object obj = ResourceManager.GetObject("if_icon-person-stalker_211873 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if_icons_exit2_1564506 {
+            get {
+                object obj = ResourceManager.GetObject("if_icons_exit2_1564506", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

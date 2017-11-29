@@ -28,11 +28,6 @@ namespace ProyectoWF {
             InitializeComponent();
             this.primaryKey = primaryKey;
             this.modo = modo;
-
-            lFd.Visible = false;
-            lFd2.Visible = false;
-            lFd3.Visible = false;
-            lFd4.Visible = false;
             mtbPrecioFinal.Enabled = false;
 
             if (modo == 0)
@@ -366,30 +361,10 @@ namespace ProyectoWF {
         private void btDarAlta_Click(object sender, EventArgs e)
 
         {
-            lFd.Visible = false;
-            lFd2.Visible = false;
-            lFd3.Visible = false;
-            lFd4.Visible = false;
-            bool puedoDarDeAlta = true;
-
-            if (cbViasEnvio.SelectedItem == null)
-            {
-                lFd.Visible = true;
-                lFd2.Visible = true;
-                lFd4.Visible = true;
-                puedoDarDeAlta = false;
-            }
-
-            if (tbNombreCliente.SelectedItem == null)
-            {
-                lFd.Visible = true;
-                lFd2.Visible = true;
-                lFd3.Visible = true;
-                puedoDarDeAlta = false;
-            }
 
 
-            if (puedoDarDeAlta)
+
+            if (tbNombreCliente.SelectedItem != null && cbViasEnvio.SelectedItem != null)
             {
                 if (modo == 0)
                 {

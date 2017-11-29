@@ -131,28 +131,36 @@ namespace ProyectoWF
 
         private void tvSecciones_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
+            String nodoSeleccionado = tvSecciones.SelectedNode.Text;
             switch (tvSecciones.SelectedNode.Text)
             {
                 case "Clientes":
-                    Console.WriteLine(tvSecciones.SelectedNode.Text);
+                    abrirClientes();
+                    Console.WriteLine(nodoSeleccionado);
                     break;
                 case "Proveedores":
-                    Console.WriteLine(tvSecciones.SelectedNode.Text);
+                    abrirProveedores();
+                    Console.WriteLine(nodoSeleccionado);
                     break;
                 case "Empleados":
-                    Console.WriteLine(tvSecciones.SelectedNode.Text);
+                    abrirEmpleados();
+                    Console.WriteLine(nodoSeleccionado);
                     break;
                 case "Productos":
-                    Console.WriteLine(tvSecciones.SelectedNode.Text);
+                    abrirProductos();
+                    Console.WriteLine(nodoSeleccionado);
                     break;
                 case "Agencias":
-                    Console.WriteLine(tvSecciones.SelectedNode.Text);
+                    abrirAgencias();
+                    Console.WriteLine(nodoSeleccionado);
                     break;
                 case "Categorias":
-                    Console.WriteLine(tvSecciones.SelectedNode.Text);
+                    abrirCategorias();
+                    Console.WriteLine(nodoSeleccionado);
                     break;
                 case "Pedidos":
-                    Console.WriteLine(tvSecciones.SelectedNode.Text);
+                    abrirPedidos();
+                    Console.WriteLine(nodoSeleccionado);
                     break;
 
             }
@@ -164,24 +172,31 @@ namespace ProyectoWF
             switch (opcionPulsada.Text)
             {
                 case "Clientes":
-                    Console.WriteLine(opcionPulsada.Text);
+                    abrirClientes();
+                    Console.WriteLine(opcionPulsada);
                     break;
                 case "Proveedores":
+                    abrirProveedores();
                     Console.WriteLine(opcionPulsada.Text);
                     break;
                 case "Empleados":
+                    abrirEmpleados();
                     Console.WriteLine(opcionPulsada.Text);
                     break;
                 case "Productos":
+                    abrirProductos();
                     Console.WriteLine(opcionPulsada.Text);
                     break;
                 case "Agencias":
+                    abrirAgencias();
                     Console.WriteLine(opcionPulsada.Text);
                     break;
                 case "Categorias":
+                    abrirCategorias();
                     Console.WriteLine(opcionPulsada.Text);
                     break;
                 case "Pedidos":
+                    abrirPedidos();
                     Console.WriteLine(opcionPulsada.Text);
                     break;
             }
@@ -189,17 +204,75 @@ namespace ProyectoWF
 
         private void toolStripStatusLabel1_Click(object sender, EventArgs e)
         {
-            EsLogin = true;
-            
+            Program.esLogin = true;
+
             this.Close();
         }
 
-        private void tsbClientes_Click(object sender, EventArgs e)
+        private void tsb_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Clientes");
+     
+            ToolStripButton opcionPulsada = (ToolStripButton)sender;
+            switch (opcionPulsada.Name)
+            {
+                case "tsbClientes":
+                    abrirClientes();
+                    Console.WriteLine(opcionPulsada.Name);
+                    break;
+                case "tsbProveedores":
+                    abrirProveedores();
+                    Console.WriteLine(opcionPulsada.Name);
+                    break;
+                case "tsbProductos":
+                    abrirProductos();
+                    Console.WriteLine(opcionPulsada.Name);
+                    break;
+                case "tsbEmpleados":
+                    abrirEmpleados();
+                    Console.WriteLine(opcionPulsada.Name);
+                    break;
+                case "tsbPedidos":
+                    abrirPedidos();
+                    Console.WriteLine(opcionPulsada.Name);
+                    break;
+            }
+
+        }
+
+        private void abrirCategorias()
+        {
+
+        }
+
+        private void abrirPedidos()
+        {
             FormularioPedidos formPedidos = new FormularioPedidos(1, 1);
             formPedidos.MdiParent = this;
             formPedidos.Show();
+        }
+
+        private void abrirClientes()
+        {
+
+        }
+
+        private void abrirAgencias()
+        {
+
+        }
+
+        private void abrirProveedores()
+        {
+
+        }
+
+        private void abrirEmpleados()
+        {
+
+        }
+
+        private void abrirProductos()
+        {
 
         }
 
@@ -217,7 +290,12 @@ namespace ProyectoWF
                     e.Cancel = true;
                 }
             }
-            
+
+        }
+
+        private void tsbSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
