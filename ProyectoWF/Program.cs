@@ -1,22 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProyectoWF
 {
-    static class Program
+
+    internal static class Program
     {
+
+        public static Boolean esLogin;
         /// <summary>
         /// Punto de entrada principal para la aplicación.
         /// </summary>
+        /// 
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            //Application.Run(new FormularioPedidos(0,2));
+
+            do
+            {
+                esLogin = false;
+                Application.Run(new Login());
+            } while (esLogin);
+            Conexion.cerrarConexion();
         }
+        
     }
 }
