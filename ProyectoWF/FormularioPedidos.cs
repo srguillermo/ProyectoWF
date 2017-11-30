@@ -113,34 +113,36 @@ namespace ProyectoWF
         {
             SqlCommand sqlComando = new SqlCommand("Select p.ShipVia,a.NombreCompania,PedidoFecha,FechaEntregado,RequiredFecha,ContactoNombre,c.Telefono,p.CiudadEntrega,p.DireccionEntrega,p.RegionEntrega,p.CodigoPostalEntrega,p.PaisEntrega from dbo.Pedidos p inner join dbo.Clientes c on c.ClienteId=p.ClienteID inner join dbo.Agencias a  on p.ShipVia=a.AgenciaID where PedidoID=@idPedido", Conexion.getConexion());
             sqlComando.Parameters.Add("@idPedido", SqlDbType.Int).Value = this.primaryKey;
-            SqlDataAdapter adapter = new SqlDataAdapter(sqlComando);
-            DataSet cuenta = new DataSet();
-            adapter.Fill(cuenta);
-
-            dtFechaPedido.Value = Convert.ToDateTime(cuenta.Tables[0].Rows[0]["PedidoFecha"].ToString());
-            dtFechaEntrega.Value = Convert.ToDateTime(cuenta.Tables[0].Rows[0]["FechaEntregado"].ToString());
-            dtFechaRequerida.Value = Convert.ToDateTime(cuenta.Tables[0].Rows[0]["RequiredFecha"].ToString());
-            tbNombreCliente.Text = cuenta.Tables[0].Rows[0]["ContactoNombre"].ToString();
-            tbTelefono.Text = cuenta.Tables[0].Rows[0]["Telefono"].ToString();
-            tbCiudad.Text = cuenta.Tables[0].Rows[0]["CiudadEntrega"].ToString();
-            tbDireccion.Text = cuenta.Tables[0].Rows[0]["DireccionEntrega"].ToString();
-            tbRegion.Text = cuenta.Tables[0].Rows[0]["RegionEntrega"].ToString();
-            tbCodigoPostal.Text = cuenta.Tables[0].Rows[0]["CodigoPostalEntrega"].ToString();
-            tbPais.Text = cuenta.Tables[0].Rows[0]["PaisEntrega"].ToString();
-            if (isEdicion)
+            using (SqlDataAdapter adapter = new SqlDataAdapter(sqlComando))
             {
-                for (int i = 0; i < idCAgenciaSegunPosicion.Count; i++)
+                DataSet cuenta = new DataSet();
+                adapter.Fill(cuenta);
+
+                dtFechaPedido.Value = Convert.ToDateTime(cuenta.Tables[0].Rows[0]["PedidoFecha"].ToString());
+                dtFechaEntrega.Value = Convert.ToDateTime(cuenta.Tables[0].Rows[0]["FechaEntregado"].ToString());
+                dtFechaRequerida.Value = Convert.ToDateTime(cuenta.Tables[0].Rows[0]["RequiredFecha"].ToString());
+                tbNombreCliente.Text = cuenta.Tables[0].Rows[0]["ContactoNombre"].ToString();
+                tbTelefono.Text = cuenta.Tables[0].Rows[0]["Telefono"].ToString();
+                tbCiudad.Text = cuenta.Tables[0].Rows[0]["CiudadEntrega"].ToString();
+                tbDireccion.Text = cuenta.Tables[0].Rows[0]["DireccionEntrega"].ToString();
+                tbRegion.Text = cuenta.Tables[0].Rows[0]["RegionEntrega"].ToString();
+                tbCodigoPostal.Text = cuenta.Tables[0].Rows[0]["CodigoPostalEntrega"].ToString();
+                tbPais.Text = cuenta.Tables[0].Rows[0]["PaisEntrega"].ToString();
+                if (isEdicion)
                 {
-                    Convert.ToInt16(cuenta.Tables[0].Rows[0]["ShipVia"].ToString());
-                    if (Convert.ToInt16(idCAgenciaSegunPosicion[i]) == Convert.ToInt16(cuenta.Tables[0].Rows[0]["ShipVia"]))
+                    for (int i = 0; i < idCAgenciaSegunPosicion.Count; i++)
                     {
-                        cbViasEnvio.SelectedIndex = i;
+                        Convert.ToInt16(cuenta.Tables[0].Rows[0]["ShipVia"].ToString());
+                        if (Convert.ToInt16(idCAgenciaSegunPosicion[i]) == Convert.ToInt16(cuenta.Tables[0].Rows[0]["ShipVia"]))
+                        {
+                            cbViasEnvio.SelectedIndex = i;
+                        }
                     }
                 }
-            }
-            else
-            {
-                cbViasEnvio.Text = cuenta.Tables[0].Rows[0]["NombreCompania"].ToString();
+                else
+                {
+                    cbViasEnvio.Text = cuenta.Tables[0].Rows[0]["NombreCompania"].ToString();
+                }
             }
         }
 
@@ -152,22 +154,24 @@ namespace ProyectoWF
         {
             SqlCommand sqlComando = new SqlCommand("Select pd.ProductoID,ProductoNombre,Cantidad,Descuento,pd.PrecioUnidad from dbo.PedidoDetalles pd inner join dbo.Productos p on p.ProductoID = pd.ProductoID where PedidoID =@idPedido", Conexion.getConexion());
             sqlComando.Parameters.Add("@idPedido", SqlDbType.Int).Value = idPedido;
-            SqlDataAdapter adapter = new SqlDataAdapter(sqlComando);
-            DataSet cuenta = new DataSet();
-            adapter.Fill(cuenta);
-            for (int i = 0; i < cuenta.Tables[0].Rows.Count; i++)
+            using (SqlDataAdapter adapter = new SqlDataAdapter(sqlComando))
             {
-                dgProductos.Rows.Insert(0);
-                ((DataGridViewComboBoxCell)dgProductos.Rows[0].Cells["nombreProd"]).Items.Add(cuenta.Tables[0].Rows[i]["ProductoNombre"].ToString());
-                ((DataGridViewComboBoxCell)dgProductos.Rows[0].Cells["nombreProd"]).Value = ((DataGridViewComboBoxCell)dgProductos.Rows[0].Cells["nombreProd"]).Items[0];
-                dgProductos.Rows[0].Cells["idProducto"].Value = cuenta.Tables[0].Rows[i]["ProductoID"].ToString();
-                dgProductos.Rows[0].Cells["cantidad"].Value = cuenta.Tables[0].Rows[i]["Cantidad"].ToString();
-                dgProductos.Rows[0].Cells["descuento"].Value = cuenta.Tables[0].Rows[i]["Descuento"].ToString();
-                dgProductos.Rows[0].Cells["precioUnidad"].Value = cuenta.Tables[0].Rows[i]["PrecioUnidad"];
-                double precio = Double.Parse(dgProductos.Rows[0].Cells["cantidad"].Value.ToString()) * Double.Parse(dgProductos.Rows[0].Cells["precioUnidad"].Value.ToString());
-                dgProductos.Rows[0].Cells["precio"].Value = precio - ((precio * Double.Parse(dgProductos.Rows[0].Cells["descuento"].Value.ToString()) / 100));
+                DataSet cuenta = new DataSet();
+                adapter.Fill(cuenta);
+                for (int i = 0; i < cuenta.Tables[0].Rows.Count; i++)
+                {
+                    dgProductos.Rows.Insert(0);
+                    ((DataGridViewComboBoxCell)dgProductos.Rows[0].Cells["nombreProd"]).Items.Add(cuenta.Tables[0].Rows[i]["ProductoNombre"].ToString());
+                    ((DataGridViewComboBoxCell)dgProductos.Rows[0].Cells["nombreProd"]).Value = ((DataGridViewComboBoxCell)dgProductos.Rows[0].Cells["nombreProd"]).Items[0];
+                    dgProductos.Rows[0].Cells["idProducto"].Value = cuenta.Tables[0].Rows[i]["ProductoID"].ToString();
+                    dgProductos.Rows[0].Cells["cantidad"].Value = cuenta.Tables[0].Rows[i]["Cantidad"].ToString();
+                    dgProductos.Rows[0].Cells["descuento"].Value = cuenta.Tables[0].Rows[i]["Descuento"].ToString();
+                    dgProductos.Rows[0].Cells["precioUnidad"].Value = cuenta.Tables[0].Rows[i]["PrecioUnidad"];
+                    double precio = Double.Parse(dgProductos.Rows[0].Cells["cantidad"].Value.ToString()) * Double.Parse(dgProductos.Rows[0].Cells["precioUnidad"].Value.ToString());
+                    dgProductos.Rows[0].Cells["precio"].Value = precio - ((precio * Double.Parse(dgProductos.Rows[0].Cells["descuento"].Value.ToString()) / 100));
+                }
+                calcularPrecioFinal();
             }
-            calcularPrecioFinal();
         }
 
         private void cbNombreCliente_Validating(object sender, CancelEventArgs e)
@@ -183,15 +187,17 @@ namespace ProyectoWF
             if (tbNombreCliente.SelectedItem != null)
             {
                 string comando = String.Format("Select * from dbo.Clientes where ClienteID=" + idClienteSegunPosicion[tbNombreCliente.SelectedIndex]);
-                SqlDataAdapter adapter = new SqlDataAdapter(comando, Conexion.getConexion());
-                DataSet cuenta = new DataSet();
-                adapter.Fill(cuenta);
-                tbDireccion.Text = cuenta.Tables[0].Rows[0]["Direccion"].ToString();
-                tbCiudad.Text = cuenta.Tables[0].Rows[0]["Ciudad"].ToString();
-                tbRegion.Text = cuenta.Tables[0].Rows[0]["Region"].ToString();
-                tbPais.Text = cuenta.Tables[0].Rows[0]["Pais"].ToString();
-                tbCodigoPostal.Text = cuenta.Tables[0].Rows[0]["CodigoPostal"].ToString();
-                tbTelefono.Text = cuenta.Tables[0].Rows[0]["Telefono"].ToString();
+                using (SqlDataAdapter adapter = new SqlDataAdapter(comando, Conexion.getConexion()))
+                {
+                    DataSet cuenta = new DataSet();
+                    adapter.Fill(cuenta);
+                    tbDireccion.Text = cuenta.Tables[0].Rows[0]["Direccion"].ToString();
+                    tbCiudad.Text = cuenta.Tables[0].Rows[0]["Ciudad"].ToString();
+                    tbRegion.Text = cuenta.Tables[0].Rows[0]["Region"].ToString();
+                    tbPais.Text = cuenta.Tables[0].Rows[0]["Pais"].ToString();
+                    tbCodigoPostal.Text = cuenta.Tables[0].Rows[0]["CodigoPostal"].ToString();
+                    tbTelefono.Text = cuenta.Tables[0].Rows[0]["Telefono"].ToString();
+                }
             }
         }
 
@@ -250,14 +256,16 @@ namespace ProyectoWF
         public void cargarProductosCbDataGridView()
         {
             string comando = "select ProductoID,ProductoNombre from dbo.Productos order by ProductoID";
-            SqlDataAdapter adapter = new SqlDataAdapter(comando, Conexion.getConexion());
-            DataSet cuenta = new DataSet();
-            adapter.Fill(cuenta);
-            idProductoSegunPosicion = new ArrayList();
-            for (int i = 0; i < cuenta.Tables[0].Rows.Count; i++)
+            using (SqlDataAdapter adapter = new SqlDataAdapter(comando, Conexion.getConexion()))
             {
-                idProductoSegunPosicion.Add(cuenta.Tables[0].Rows[i]["ProductoID"].ToString());
-                ((DataGridViewComboBoxColumn)dgProductos.Columns[1]).Items.Add(cuenta.Tables[0].Rows[i]["ProductoNombre"].ToString());
+                DataSet cuenta = new DataSet();
+                adapter.Fill(cuenta);
+                idProductoSegunPosicion = new ArrayList();
+                for (int i = 0; i < cuenta.Tables[0].Rows.Count; i++)
+                {
+                    idProductoSegunPosicion.Add(cuenta.Tables[0].Rows[i]["ProductoID"].ToString());
+                    ((DataGridViewComboBoxColumn)dgProductos.Columns[1]).Items.Add(cuenta.Tables[0].Rows[i]["ProductoNombre"].ToString());
+                }
             }
         }
 
@@ -269,13 +277,15 @@ namespace ProyectoWF
         private void cb_SelectedIndexChanged(object sender, EventArgs e)
         {
             string comando = "select PrecioUnidad from dbo.Productos where ProductoID=" + idProductoSegunPosicion[((ComboBox)sender).SelectedIndex];
-            SqlDataAdapter adapter = new SqlDataAdapter(comando, Conexion.getConexion());
-            DataSet cuenta = new DataSet();
-            adapter.Fill(cuenta);
-            dgProductos.CurrentRow.Cells["idProducto"].Value = idProductoSegunPosicion[((ComboBox)sender).SelectedIndex];
-            dgProductos.CurrentRow.Cells["precioUnidad"].Value = cuenta.Tables[0].Rows[0]["PrecioUnidad"].ToString();
-            dgProductos.CurrentRow.Cells["idProducto"].Value = idProductoSegunPosicion[((ComboBox)sender).SelectedIndex];
-            calculoCeldaPrecio();
+            using (SqlDataAdapter adapter = new SqlDataAdapter(comando, Conexion.getConexion()))
+            {
+                DataSet cuenta = new DataSet();
+                adapter.Fill(cuenta);
+                dgProductos.CurrentRow.Cells["idProducto"].Value = idProductoSegunPosicion[((ComboBox)sender).SelectedIndex];
+                dgProductos.CurrentRow.Cells["precioUnidad"].Value = cuenta.Tables[0].Rows[0]["PrecioUnidad"].ToString();
+                dgProductos.CurrentRow.Cells["idProducto"].Value = idProductoSegunPosicion[((ComboBox)sender).SelectedIndex];
+                calculoCeldaPrecio();
+            }
         }
 
         /// <summary>
@@ -393,34 +403,37 @@ namespace ProyectoWF
                 if (modo == 0)
                 {
                     actualizarPrecioAntesDeOperar();
-                    SqlCommand sqlCommand = new SqlCommand("insert into dbo.Pedidos(ClienteID,EmpleadoID,PedidoFecha,RequiredFecha,FechaEntregado,ShipVia,Freight,NombreEntrega,DireccionEntrega,CiudadEntrega,RegionEntrega,CodigoPostalEntrega,PaisEntrega) values(@idCliente,@idEmpleado,@join_date,@join_date2,@join_date3,@idAgencia," +
-                        "@precioFinal,@nombreCliente,@direccionCliente,@ciudadCliente,@regionCliente,@cpCliente,@paisCliente)", Conexion.getConexion());
-
-                    sqlCommand.Parameters.Add("@idCliente", SqlDbType.Int).Value = idClienteSegunPosicion[tbNombreCliente.SelectedIndex];
-                    sqlCommand.Parameters.Add("@idEmpleado", SqlDbType.Int).Value = primaryKey;
-                    sqlCommand.Parameters.Add("@idAgencia", SqlDbType.Int).Value = idCAgenciaSegunPosicion[cbViasEnvio.SelectedIndex];
-                    sqlCommand.Parameters.Add("@precioFinal", SqlDbType.Decimal).Value = precioFinal;
-                    sqlCommand.Parameters.Add("@nombreCliente", SqlDbType.VarChar).Value = tbNombreCliente.Text;
-                    sqlCommand.Parameters.Add("@direccionCliente", SqlDbType.VarChar).Value = tbDireccion.Text;
-                    sqlCommand.Parameters.Add("@ciudadCliente", SqlDbType.VarChar).Value = tbCiudad.Text;
-                    sqlCommand.Parameters.Add("@regionCliente", SqlDbType.VarChar).Value = tbRegion.Text;
-                    sqlCommand.Parameters.Add("@cpCliente", SqlDbType.VarChar).Value = tbCodigoPostal.Text;
-                    sqlCommand.Parameters.Add("@paisCliente", SqlDbType.VarChar).Value = tbPais.Text;
-                    sqlCommand.Parameters.Add("@join_date", SqlDbType.Date).Value = DateTime.Now;
-                    sqlCommand.Parameters.Add("@join_date2", SqlDbType.Date).Value = dtFechaRequerida.Value;
-                    sqlCommand.Parameters.Add("@join_date3", SqlDbType.Date).Value = dtFechaEntrega.Value;
-
-                    sqlCommand.ExecuteNonQuery();
-
-                    for (int i = 0; i < dgProductos.RowCount; i++)
+                    using (SqlCommand sqlCommand = new SqlCommand("insert into dbo.Pedidos(ClienteID,EmpleadoID,PedidoFecha,RequiredFecha,FechaEntregado,ShipVia,Freight,NombreEntrega,DireccionEntrega,CiudadEntrega,RegionEntrega,CodigoPostalEntrega,PaisEntrega) values(@idCliente,@idEmpleado,@join_date,@join_date2,@join_date3,@idAgencia," +
+                        "@precioFinal,@nombreCliente,@direccionCliente,@ciudadCliente,@regionCliente,@cpCliente,@paisCliente)", Conexion.getConexion()))
                     {
-                        sqlCommand = new SqlCommand("insert into");
-                        sqlCommand.Parameters.Add("@idCliente", SqlDbType.Int).Value = dgProductos.Rows[i].Cells["idProducto"].Value; ;
+                        sqlCommand.Parameters.Add("@idCliente", SqlDbType.Int).Value = idClienteSegunPosicion[tbNombreCliente.SelectedIndex];
                         sqlCommand.Parameters.Add("@idEmpleado", SqlDbType.Int).Value = primaryKey;
                         sqlCommand.Parameters.Add("@idAgencia", SqlDbType.Int).Value = idCAgenciaSegunPosicion[cbViasEnvio.SelectedIndex];
                         sqlCommand.Parameters.Add("@precioFinal", SqlDbType.Decimal).Value = precioFinal;
                         sqlCommand.Parameters.Add("@nombreCliente", SqlDbType.VarChar).Value = tbNombreCliente.Text;
+                        sqlCommand.Parameters.Add("@direccionCliente", SqlDbType.VarChar).Value = tbDireccion.Text;
+                        sqlCommand.Parameters.Add("@ciudadCliente", SqlDbType.VarChar).Value = tbCiudad.Text;
+                        sqlCommand.Parameters.Add("@regionCliente", SqlDbType.VarChar).Value = tbRegion.Text;
+                        sqlCommand.Parameters.Add("@cpCliente", SqlDbType.VarChar).Value = tbCodigoPostal.Text;
+                        sqlCommand.Parameters.Add("@paisCliente", SqlDbType.VarChar).Value = tbPais.Text;
+                        sqlCommand.Parameters.Add("@join_date", SqlDbType.Date).Value = DateTime.Now;
+                        sqlCommand.Parameters.Add("@join_date2", SqlDbType.Date).Value = dtFechaRequerida.Value;
+                        sqlCommand.Parameters.Add("@join_date3", SqlDbType.Date).Value = dtFechaEntrega.Value;
+
+                        sqlCommand.ExecuteNonQuery();
                     }
+                    for (int i = 0; i < dgProductos.RowCount; i++)
+                    {
+                        using (SqlCommand sqlCommand = new SqlCommand("insert into"))
+                        {
+                            sqlCommand.Parameters.Add("@idCliente", SqlDbType.Int).Value = dgProductos.Rows[i].Cells["idProducto"].Value; ;
+                            sqlCommand.Parameters.Add("@idEmpleado", SqlDbType.Int).Value = primaryKey;
+                            sqlCommand.Parameters.Add("@idAgencia", SqlDbType.Int).Value = idCAgenciaSegunPosicion[cbViasEnvio.SelectedIndex];
+                            sqlCommand.Parameters.Add("@precioFinal", SqlDbType.Decimal).Value = precioFinal;
+                            sqlCommand.Parameters.Add("@nombreCliente", SqlDbType.VarChar).Value = tbNombreCliente.Text;
+                        }
+                    }
+
                 }
                 else
                 {
@@ -462,39 +475,44 @@ namespace ProyectoWF
             transaction = Conexion.getConexion().BeginTransaction("SampleTransaction");
             try
             {
-                SqlCommand sqlCommand = new SqlCommand("update dbo.Pedidos set ClienteID=@idCliente,RequiredFecha=@join_date2,FechaEntregado=@join_date3,ShipVia=@idAgencia,Freight=@precioFinal,NombreEntrega=@nombreCliente,DireccionEntrega=@direccionCliente,CiudadEntrega=@ciudadCliente,RegionEntrega=@regionCliente,CodigoPostalEntrega=@cpCliente,PaisEntrega=@paisCliente where PedidoID=@idPedido", Conexion.getConexion());
-                sqlCommand.Transaction = transaction;
-                Console.WriteLine(cbViasEnvio.SelectedIndex);
-                Console.WriteLine(idCAgenciaSegunPosicion.Count);
-                sqlCommand.Parameters.Add("@idCliente", SqlDbType.Int).Value = idClienteSegunPosicion[tbNombreCliente.SelectedIndex];
-                sqlCommand.Parameters.Add("@idEmpleado", SqlDbType.Int).Value = primaryKey;
-                sqlCommand.Parameters.Add("@idAgencia", SqlDbType.Int).Value = idCAgenciaSegunPosicion[cbViasEnvio.SelectedIndex];
-                sqlCommand.Parameters.Add("@precioFinal", SqlDbType.Decimal).Value = precioFinal;
-                sqlCommand.Parameters.Add("@nombreCliente", SqlDbType.VarChar).Value = tbNombreCliente.Text;
-                sqlCommand.Parameters.Add("@direccionCliente", SqlDbType.VarChar).Value = tbDireccion.Text;
-                sqlCommand.Parameters.Add("@ciudadCliente", SqlDbType.VarChar).Value = tbCiudad.Text;
-                sqlCommand.Parameters.Add("@regionCliente", SqlDbType.VarChar).Value = tbRegion.Text;
-                sqlCommand.Parameters.Add("@cpCliente", SqlDbType.VarChar).Value = tbCodigoPostal.Text;
-                sqlCommand.Parameters.Add("@paisCliente", SqlDbType.VarChar).Value = tbPais.Text;
-                sqlCommand.Parameters.Add("@join_date", SqlDbType.Date).Value = DateTime.Now;
-                sqlCommand.Parameters.Add("@join_date2", SqlDbType.Date).Value = dtFechaRequerida.Value;
-                sqlCommand.Parameters.Add("@join_date3", SqlDbType.Date).Value = dtFechaEntrega.Value;
-                sqlCommand.Parameters.Add("@idPedido", SqlDbType.Int).Value = this.primaryKey;
-                sqlCommand.ExecuteNonQuery();
+                using (SqlCommand sqlCommand = new SqlCommand("update dbo.Pedidos set ClienteID=@idCliente,RequiredFecha=@join_date2,FechaEntregado=@join_date3,ShipVia=@idAgencia,Freight=@precioFinal,NombreEntrega=@nombreCliente,DireccionEntrega=@direccionCliente,CiudadEntrega=@ciudadCliente,RegionEntrega=@regionCliente,CodigoPostalEntrega=@cpCliente,PaisEntrega=@paisCliente where PedidoID=@idPedido", Conexion.getConexion()))
+                {
+                    sqlCommand.Transaction = transaction;
+                    Console.WriteLine(cbViasEnvio.SelectedIndex);
+                    Console.WriteLine(idCAgenciaSegunPosicion.Count);
+                    sqlCommand.Parameters.Add("@idCliente", SqlDbType.Int).Value = idClienteSegunPosicion[tbNombreCliente.SelectedIndex];
+                    sqlCommand.Parameters.Add("@idEmpleado", SqlDbType.Int).Value = primaryKey;
+                    sqlCommand.Parameters.Add("@idAgencia", SqlDbType.Int).Value = idCAgenciaSegunPosicion[cbViasEnvio.SelectedIndex];
+                    sqlCommand.Parameters.Add("@precioFinal", SqlDbType.Decimal).Value = precioFinal;
+                    sqlCommand.Parameters.Add("@nombreCliente", SqlDbType.VarChar).Value = tbNombreCliente.Text;
+                    sqlCommand.Parameters.Add("@direccionCliente", SqlDbType.VarChar).Value = tbDireccion.Text;
+                    sqlCommand.Parameters.Add("@ciudadCliente", SqlDbType.VarChar).Value = tbCiudad.Text;
+                    sqlCommand.Parameters.Add("@regionCliente", SqlDbType.VarChar).Value = tbRegion.Text;
+                    sqlCommand.Parameters.Add("@cpCliente", SqlDbType.VarChar).Value = tbCodigoPostal.Text;
+                    sqlCommand.Parameters.Add("@paisCliente", SqlDbType.VarChar).Value = tbPais.Text;
+                    sqlCommand.Parameters.Add("@join_date", SqlDbType.Date).Value = DateTime.Now;
+                    sqlCommand.Parameters.Add("@join_date2", SqlDbType.Date).Value = dtFechaRequerida.Value;
+                    sqlCommand.Parameters.Add("@join_date3", SqlDbType.Date).Value = dtFechaEntrega.Value;
+                    sqlCommand.Parameters.Add("@idPedido", SqlDbType.Int).Value = this.primaryKey;
+                    sqlCommand.ExecuteNonQuery();
+                }
 
                 for (int i = 0; i < dgProductos.RowCount; i++)
                 {
-                    sqlCommand = new SqlCommand("update dbo.PedidoDetalles set Cantidad=@cantidad,Descuento=@descuento where PedidoID=@idPedido and ProductoID=@idProducto", Conexion.getConexion());
-                    sqlCommand.Transaction = transaction;
-                    sqlCommand.Parameters.Add("@idProducto", SqlDbType.Int).Value = dgProductos.Rows[i].Cells["idProducto"].Value;
-                    sqlCommand.Parameters.Add("@cantidad", SqlDbType.Int).Value = dgProductos.Rows[i].Cells["cantidad"].Value;
-                    sqlCommand.Parameters.Add("@descuento", SqlDbType.Decimal).Value = dgProductos.Rows[i].Cells["descuento"].Value;
-                    sqlCommand.Parameters.Add("@idPedido", SqlDbType.Int).Value = this.primaryKey;
-                    sqlCommand.ExecuteNonQuery();
+                    using (SqlCommand sqlCommand = new SqlCommand("update dbo.PedidoDetalles set Cantidad=@cantidad,Descuento=@descuento where PedidoID=@idPedido and ProductoID=@idProducto", Conexion.getConexion()))
+                    {
+                        sqlCommand.Transaction = transaction;
+                        sqlCommand.Parameters.Add("@idProducto", SqlDbType.Int).Value = dgProductos.Rows[i].Cells["idProducto"].Value;
+                        sqlCommand.Parameters.Add("@cantidad", SqlDbType.Int).Value = dgProductos.Rows[i].Cells["cantidad"].Value;
+                        sqlCommand.Parameters.Add("@descuento", SqlDbType.Decimal).Value = dgProductos.Rows[i].Cells["descuento"].Value;
+                        sqlCommand.Parameters.Add("@idPedido", SqlDbType.Int).Value = this.primaryKey;
+                        sqlCommand.ExecuteNonQuery();
+                    }
                 }
                 transaction.Commit();
                 MessageBox.Show("Pedido actualizado correctamente", "Actualización de pedido", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
+
             }
             catch (SqlException)
             {

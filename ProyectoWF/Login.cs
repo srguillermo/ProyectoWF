@@ -52,22 +52,24 @@ namespace ProyectoWF
                 command = new SqlCommand("select * from dbo.Empleados where Usuario=HASHBYTES('SHA2_512',@usuario) and Password=HASHBYTES('SHA2_512',@password)", Conexion.getConexion());
                 command.Parameters.Add("@usuario", SqlDbType.VarChar).Value = tbUsuario.Text;
                 command.Parameters.Add("@password", SqlDbType.VarChar).Value = tbContrasena.Text;
-                adapter = new SqlDataAdapter(command);
-                dataSet = new DataSet();
-                adapter.Fill(dataSet);
-                Console.WriteLine(dataSet.Tables[0].Rows.Count);
-                if (dataSet.Tables[0].Rows.Count == 1)
+                using (adapter = new SqlDataAdapter(command))
                 {
-                    this.Hide();
-                    tbContrasena.Dispose();
-                    new FormularioPrincipal(tbUsuario.Text).ShowDialog();
-                    this.Close();
+                    dataSet = new DataSet();
+                    adapter.Fill(dataSet);
+                    Console.WriteLine(dataSet.Tables[0].Rows.Count);
+                    if (dataSet.Tables[0].Rows.Count == 1)
+                    {
+                        this.Hide();
+                        tbContrasena.Dispose();
+                        new FormularioPrincipal(tbUsuario.Text).ShowDialog();
+                        this.Close();
 
-                }
-                else
-                {
-                    MessageBox.Show("La contraseña introducida es incorrecta", "¡Error Usuario!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    lErrorCon.Visible = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("La contraseña introducida es incorrecta", "¡Error Usuario!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        lErrorCon.Visible = true;
+                    }
                 }
 
             }
