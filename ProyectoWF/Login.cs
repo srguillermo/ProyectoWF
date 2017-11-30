@@ -20,6 +20,9 @@ namespace ProyectoWF
         public Login()
         {
             InitializeComponent();
+            tbContrasena.PasswordChar = '*';
+            lErrorUsu.Visible = false;
+            lErrorCon.Visible = false;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -27,13 +30,13 @@ namespace ProyectoWF
 
         }
 
+        /// <summary>
+        /// Este método hace las comprobaciones necesarias para hacer el login correcto, en ese caso abre el formulario principal
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btIniciarSesion_Click(object sender, EventArgs e)
         {
-            /* byte[] prueba = { (byte)'h', (byte)'o', (byte)'l', (byte)'a' };
-             SHA512 sha = new SHA512Managed();
-
-             SecureString se = new SecureString();
-             // se.AppendChar(sha.ComputeHash(prueba));*/
 
             lErrorUsu.Visible = false;
             lErrorCon.Visible = false;

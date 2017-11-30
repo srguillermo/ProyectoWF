@@ -276,7 +276,7 @@
             this.tsbRetraer});
             this.toolStrip1.Location = new System.Drawing.Point(0, 49);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(24, 802);
+            this.toolStrip1.Size = new System.Drawing.Size(32, 802);
             this.toolStrip1.TabIndex = 9;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -286,7 +286,7 @@
             this.tsbExpandir.Image = ((System.Drawing.Image)(resources.GetObject("tsbExpandir.Image")));
             this.tsbExpandir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbExpandir.Name = "tsbExpandir";
-            this.tsbExpandir.Size = new System.Drawing.Size(21, 20);
+            this.tsbExpandir.Size = new System.Drawing.Size(29, 20);
             this.tsbExpandir.Text = "toolStripButton2";
             this.tsbExpandir.ToolTipText = "Expandir menú";
             this.tsbExpandir.Click += new System.EventHandler(this.tsbExpandir_Click);
@@ -297,14 +297,14 @@
             this.tsbRetraer.Image = ((System.Drawing.Image)(resources.GetObject("tsbRetraer.Image")));
             this.tsbRetraer.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbRetraer.Name = "tsbRetraer";
-            this.tsbRetraer.Size = new System.Drawing.Size(21, 20);
+            this.tsbRetraer.Size = new System.Drawing.Size(29, 20);
             this.tsbRetraer.Text = "toolStripButton3";
             this.tsbRetraer.ToolTipText = "Esconder menú";
             this.tsbRetraer.Click += new System.EventHandler(this.tsbRetraer_Click);
             // 
             // splitter
             // 
-            this.splitter.Location = new System.Drawing.Point(24, 49);
+            this.splitter.Location = new System.Drawing.Point(32, 49);
             this.splitter.Name = "splitter";
             this.splitter.Size = new System.Drawing.Size(132, 802);
             this.splitter.TabIndex = 10;
@@ -336,7 +336,6 @@
             this.Name = "FormularioPrincipal";
             this.Text = "MDIParent1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormularioPrincipal_FormClosing);
-            this.Load += new System.EventHandler(this.MDIParent1_Load);
             this.msOpcionesFormPrincipal.ResumeLayout(false);
             this.msOpcionesFormPrincipal.PerformLayout();
             this.toolStrip.ResumeLayout(false);

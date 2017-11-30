@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProyectoWF
@@ -25,6 +19,15 @@ namespace ProyectoWF
             tsbExpandir.Visible = false;
             tssUsuario.Spring = true;
             tssUsuario.Alignment = ToolStripItemAlignment.Right;
+
+            inicializarNodosDelTreeView();
+        }
+
+        /// <summary>
+        /// Este método inicializa todos los nodos que queremos introducir en el treeView
+        /// </summary>
+        private void inicializarNodosDelTreeView()
+        {
             TreeNode nodo = new TreeNode();
             nodo.Text = "Maestro";
             TreeNode nodoClientes = new TreeNode();
@@ -53,56 +56,11 @@ namespace ProyectoWF
             nodoPedidos.Text = "Pedidos";
             tvSecciones.Nodes.Add(nodoPedidos);
             tvSecciones.ExpandAll();
-
-
-        }
-
-        private void ShowNewForm(object sender, EventArgs e)
-        {
-
-            Form childForm = new Form();
-            childForm.MdiParent = this;
-            childForm.Text = "Ventana " + childFormNumber++;
-            childForm.Show();
-        }
-
-        private void OpenFile(object sender, EventArgs e)
-        {
-            splitter.Visible = false;
-            tvSecciones.Visible = false;
-        }
-
-        private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            saveFileDialog.Filter = "Archivos de texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*";
-            if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
-            {
-                string FileName = saveFileDialog.FileName;
-            }
         }
 
         private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-
-
-
-
-        private void CloseAllToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            foreach (Form childForm in MdiChildren)
-            {
-                childForm.Close();
-            }
-        }
-
-        private void MDIParent1_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -111,6 +69,11 @@ namespace ProyectoWF
             tvSecciones.Visible = true;
         }
 
+        /// <summary>
+        /// Retrae el treeView haciendolo invisible
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tsbRetraer_Click(object sender, EventArgs e)
         {
             splitter.Visible = false;
@@ -119,6 +82,11 @@ namespace ProyectoWF
             tsbExpandir.Visible = true;
         }
 
+        /// <summary>
+        /// Pone visible el treeView
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tsbExpandir_Click(object sender, EventArgs e)
         {
             splitter.Visible = true;
@@ -127,8 +95,11 @@ namespace ProyectoWF
             tsbExpandir.Visible = false;
         }
 
-
-
+        /// <summary>
+        /// Cuando se hace doble click en un nodo del treeView se abre el formulario correspondiente al nodo pulsado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tvSecciones_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             String nodoSeleccionado = tvSecciones.SelectedNode.Text;
@@ -138,34 +109,44 @@ namespace ProyectoWF
                     abrirClientes();
                     Console.WriteLine(nodoSeleccionado);
                     break;
+
                 case "Proveedores":
                     abrirProveedores();
                     Console.WriteLine(nodoSeleccionado);
                     break;
+
                 case "Empleados":
                     abrirEmpleados();
                     Console.WriteLine(nodoSeleccionado);
                     break;
+
                 case "Productos":
                     abrirProductos();
                     Console.WriteLine(nodoSeleccionado);
                     break;
+
                 case "Agencias":
                     abrirAgencias();
                     Console.WriteLine(nodoSeleccionado);
                     break;
+
                 case "Categorias":
                     abrirCategorias();
                     Console.WriteLine(nodoSeleccionado);
                     break;
+
                 case "Pedidos":
                     abrirPedidos();
                     Console.WriteLine(nodoSeleccionado);
                     break;
-
             }
         }
 
+        /// <summary>
+        /// Cuando se hace  click en una opción del menu se abre el formulario correspondiente a la opción pulsada
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void msOpcionesFormPrincipal_Click(object sender, EventArgs e)
         {
             ToolStripMenuItem opcionPulsada = (ToolStripMenuItem)sender;
@@ -175,26 +156,32 @@ namespace ProyectoWF
                     abrirClientes();
                     Console.WriteLine(opcionPulsada);
                     break;
+
                 case "Proveedores":
                     abrirProveedores();
                     Console.WriteLine(opcionPulsada.Text);
                     break;
+
                 case "Empleados":
                     abrirEmpleados();
                     Console.WriteLine(opcionPulsada.Text);
                     break;
+
                 case "Productos":
                     abrirProductos();
                     Console.WriteLine(opcionPulsada.Text);
                     break;
+
                 case "Agencias":
                     abrirAgencias();
                     Console.WriteLine(opcionPulsada.Text);
                     break;
+
                 case "Categorias":
                     abrirCategorias();
                     Console.WriteLine(opcionPulsada.Text);
                     break;
+
                 case "Pedidos":
                     abrirPedidos();
                     Console.WriteLine(opcionPulsada.Text);
@@ -202,6 +189,12 @@ namespace ProyectoWF
             }
         }
 
+
+        /// <summary>
+        /// Este método cierra la "sesión" del usuario, poniendo el booleano estático a true(ese booleano sirve para que en vez de cerrarse el programa por completo se vuelva a abrir el login)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void toolStripStatusLabel1_Click(object sender, EventArgs e)
         {
             Program.esLogin = true;
@@ -209,9 +202,13 @@ namespace ProyectoWF
             this.Close();
         }
 
+        /// <summary>
+        /// Cuando se hace  click en una opción de la barra de tareas se abre el formulario correspondiente a la opción pulsada
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tsb_Click(object sender, EventArgs e)
         {
-     
             ToolStripButton opcionPulsada = (ToolStripButton)sender;
             switch (opcionPulsada.Name)
             {
@@ -219,29 +216,31 @@ namespace ProyectoWF
                     abrirClientes();
                     Console.WriteLine(opcionPulsada.Name);
                     break;
+
                 case "tsbProveedores":
                     abrirProveedores();
                     Console.WriteLine(opcionPulsada.Name);
                     break;
+
                 case "tsbProductos":
                     abrirProductos();
                     Console.WriteLine(opcionPulsada.Name);
                     break;
+
                 case "tsbEmpleados":
                     abrirEmpleados();
                     Console.WriteLine(opcionPulsada.Name);
                     break;
+
                 case "tsbPedidos":
                     abrirPedidos();
                     Console.WriteLine(opcionPulsada.Name);
                     break;
             }
-
         }
 
         private void abrirCategorias()
         {
-
         }
 
         private void abrirPedidos()
@@ -253,27 +252,22 @@ namespace ProyectoWF
 
         private void abrirClientes()
         {
-
         }
 
         private void abrirAgencias()
         {
-
         }
 
         private void abrirProveedores()
         {
-
         }
 
         private void abrirEmpleados()
         {
-
         }
 
         private void abrirProductos()
         {
-
         }
 
         private void tsbPedidos_Click(object sender, EventArgs e)
@@ -281,6 +275,11 @@ namespace ProyectoWF
             Console.WriteLine("Pedidos");
         }
 
+        /// <summary>
+        /// Cuando se va a cerrar el formulario principal se comprueba si hay fomularios abiertos, el caso positivo se notifica a el usuario si quiere salir o no
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FormularioPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (this.MdiChildren.Count() > 0)
@@ -290,7 +289,6 @@ namespace ProyectoWF
                     e.Cancel = true;
                 }
             }
-
         }
 
         private void tsbSalir_Click(object sender, EventArgs e)
