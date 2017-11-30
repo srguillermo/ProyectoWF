@@ -24,6 +24,7 @@ namespace ProyectoWF
                 esLogin = false;
                 Application.Run(new Login());
             } while (esLogin);
+            Conexion.cerrarConexion();
         }
         
     }
