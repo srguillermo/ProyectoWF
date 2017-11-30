@@ -12,6 +12,23 @@ using System.Windows.Forms;
 
 namespace ProyectoWF
 {
+    //////////////////////////////
+    //  Autor: Cristian de Gea Pintor
+    //  Versión: 1.0 30/11/2017
+    //////////////////////////////
+    //        Métodos
+    //////////////////////////////
+    //  cargarOpciones()
+    //  cargarProducto()
+    //  cargarComboBox(SqlCommand cadena, ComboBox cb)
+    //  buscarProveedor(int pk, String nombreCompania)
+    //  buscarCategoria(int pk, String nombreCategoria)
+    //  btBuscarFoto_Click()
+    //  btBorrarFoto_Click()
+    //  btCancelar_Click()
+    //  btAceptar_Click()
+    //  FormularioProductos_FormClosing()
+    //  DatosObligatorios()
     public partial class FormularioProductos : Form
     {
         private int modo;
@@ -22,6 +39,14 @@ namespace ProyectoWF
         public FormularioProductos()
         {
         }
+        // @param modo: Recibimos el modo de inicio del formulario (0: Alta, 1: Modificación, 2: Vista)
+        // @param primaryKey: ID del producto para modificar. Cargaremos todos los datos a partir de el.
+        // getConexion(): Llamamos al método estático de la clase Conexion, iniciamos una conexión si no se ha hecho ya.
+        // @var cadenaInsert: Insert preparada de los datos de los productos. Se le pasa la conexión.
+        // @var cadenaUpdate: Modificación de los productos a partir de la PK recibida en la creación del formulario.
+        // @var cadenaCategorias: Devuelve todas las categorías.
+        // @var cadenaProveedores: Devuelve todos los proveedores.
+        // @var cadenaSelect: Devuelve todos los datos de los productos a partir de la PK.
         public FormularioProductos(int modo, int primaryKey) {
             InitializeComponent();
             this.modo = modo;
@@ -43,7 +68,8 @@ namespace ProyectoWF
 
             
         }
-
+        // Se añaden tooltips en los controles.
+        // La opción de borrar foto se oculta por defecto.
         private void cargarOpciones() {
             toolTip1.SetToolTip(tbNombre, "Nombre del producto.");
             toolTip1.SetToolTip(tbCantidad, "Cantidad del producto.");
@@ -52,7 +78,10 @@ namespace ProyectoWF
             toolTip1.SetToolTip(cbProveedor, "Proveedor del producto.");
             toolTip1.SetToolTip(tbStock, "Unidades en existencias.");
             toolTip1.SetToolTip(pbFoto, "Imagen del producto.");
-
+            toolTip1.SetToolTip(btBuscarFoto, "Busca una foto en el equipo.");
+            toolTip1.SetToolTip(btBorrarFoto, "Borra la foto mostrada.");
+            tbBorrarFoto.Visible = false;
+            btBorrarFoto.Visible = false;
             cargarComboBox(cadenaProveedores, cbProveedor);
             cargarComboBox(cadenaCategorias, cbCategoria);
             
@@ -110,6 +139,10 @@ namespace ProyectoWF
                         imageData = (byte[])dr[7];
                         pbFoto.Image = Image.FromStream(new MemoryStream(imageData));
                     }
+                    if (pbFoto.Image != null) {
+                        tbBorrarFoto.Visible = true;
+                        btBorrarFoto.Visible = true;
+                    }
 
                 }
 
@@ -119,7 +152,7 @@ namespace ProyectoWF
         private void cargarComboBox(SqlCommand cadena, ComboBox cb) {
             
             SqlDataReader dr = cadena.ExecuteReader();
-
+            cb.Items.Add("");
             while (dr.Read()) {
                 cb.Items.Add(dr[0]);
             }
@@ -202,7 +235,16 @@ namespace ProyectoWF
             if (openFileDialog1.ShowDialog() == DialogResult.OK) {
                 imagen = openFileDialog1.FileName;
                 pbFoto.Image = new Bitmap(openFileDialog1.FileName);
+                tbBorrarFoto.Visible = true;
+                btBorrarFoto.Visible = true;
             }
+        }
+
+        private void btBorrarFoto_Click(object sender, EventArgs e)
+        {
+            pbFoto.Image = null;
+            tbBorrarFoto.Visible = false;
+            btBorrarFoto.Visible = false;
         }
 
         private void btCancelar_Click(object sender, EventArgs e)
@@ -285,9 +327,17 @@ namespace ProyectoWF
                     cadenaUpdate.Parameters.AddWithValue("precio", tbPrecio.Text);
                     cadenaUpdate.Parameters.AddWithValue("stock", tbStock.Text);
                     cadenaUpdate.Parameters.AddWithValue("id", pk);
-                    byte[] imageData;
-                    imageData = File.ReadAllBytes(@imagen);
-                    cadenaUpdate.Parameters.Add("imagen", SqlDbType.Image).Value = imageData;
+                    if (pbFoto.Image != null)
+                    {
+                        byte[] imageData;
+                        imageData = File.ReadAllBytes(@imagen);
+                        cadenaUpdate.Parameters.Add("imagen", SqlDbType.Image).Value = imageData;
+                    }
+                    else
+                    {
+                        
+                        cadenaUpdate.Parameters.Add("imagen", SqlDbType.Image).Value = DBNull.Value;
+                    }
                     int res = cadenaUpdate.ExecuteNonQuery();
 
                     if (res > 0)
