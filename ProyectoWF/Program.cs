@@ -17,7 +17,8 @@ namespace ProyectoWF
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new FormularioPedidos(0,2));
+
+
 
             do
             {
@@ -25,6 +26,7 @@ namespace ProyectoWF
                 Application.Run(new Login());
             } while (esLogin);
             Conexion.cerrarConexion();
+
         }
         
     }
