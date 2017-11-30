@@ -70,6 +70,10 @@ namespace ProyectoWF
         }
         // Se añaden tooltips en los controles.
         // La opción de borrar foto se oculta por defecto.
+        // Se cargan los comboBox.
+        // Dependiendo del valor de modo que recibamos abrimos un tipo de formulario u otro.
+        // Si el modo es 1 (modificación), se carga el producto con la PK pasada por el constructor del formulario.
+        // Si el modo es 2 (vista de detalle), todos los campos se desactivan para que no se puedan editar y además se carga el producto.
         private void cargarOpciones() {
             toolTip1.SetToolTip(tbNombre, "Nombre del producto.");
             toolTip1.SetToolTip(tbCantidad, "Cantidad del producto.");
@@ -112,7 +116,11 @@ namespace ProyectoWF
 
             }
         }
-
+        // Se limpian los parámetros de la consulta preparada.
+        // Se añade la PK del producto como parámetro.
+        // Rellenamos un DataReader con el resultado de la select.
+        // Si la consulta tiene filas, lo leemos y sacamos los respectivos datos de cada columna.
+        // Si los datos son nulos, no los cogemos.
         private void cargarProducto() {
             cadenaSelect.Parameters.Clear();
             cadenaSelect.Parameters.AddWithValue("id", pk);
@@ -149,6 +157,10 @@ namespace ProyectoWF
             }
             dr.Close();
         }
+        // @param cadena: Podemos recibir dos tipos de cadena, una para el comboBox de proveedores
+        // y otra para el comboBox de categorias.
+        // @param cb: ComboBox que queremos rellenar.
+        // Se carga el DataReader con todos los datos de la consulta.
         private void cargarComboBox(SqlCommand cadena, ComboBox cb) {
             
             SqlDataReader dr = cadena.ExecuteReader();
@@ -159,7 +171,7 @@ namespace ProyectoWF
             dr.Close();
             
         }
-
+        // Este método servirá para recibir 
         private String buscarProveedor(int pk, String nombreCompania) {
             SqlCommand cadena = new SqlCommand("SELECT ProveedorID, nombreCompania FROM Proveedores WHERE @id = ProveedorID OR @nombreCompania = nombreCompania", Conexion.conexion);
             cadena.Parameters.Clear();
