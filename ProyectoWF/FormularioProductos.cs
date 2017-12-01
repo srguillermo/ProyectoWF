@@ -171,7 +171,12 @@ namespace ProyectoWF
             dr.Close();
             
         }
-        // Este método servirá para recibir 
+        // Este método servirá para recibir información sobre un proveedor por parámetro.
+        // Si se llama al método pasándole la PK, sacará el nombre. 
+        // Si por el contrario se le pasa el nombre, nos dará su PK.
+        // Esto se hace porque en el comboBox se muestran los nombres de los proveedores y no su PK.
+        // Y al dar de alta o modificar un producto, necesitamos su PK y no el nombre.
+        // Por otro lado, también nos sirve para recuperar el nombre a partir de la PK.
         private String buscarProveedor(int pk, String nombreCompania) {
             SqlCommand cadena = new SqlCommand("SELECT ProveedorID, nombreCompania FROM Proveedores WHERE @id = ProveedorID OR @nombreCompania = nombreCompania", Conexion.conexion);
             cadena.Parameters.Clear();
@@ -205,7 +210,7 @@ namespace ProyectoWF
             dr.Close();
             return "";
         }
-
+        // Mismo método pero para las categorías.
         private String buscarCategoria(int pk, String nombreCategoria)
         {
             SqlCommand cadena = new SqlCommand("SELECT CategoriaID, NombreCategoria FROM Categorias WHERE @id = CategoriaID OR @nombreCategoria = nombreCategoria", Conexion.conexion);
@@ -240,7 +245,9 @@ namespace ProyectoWF
             dr.Close();
             return "";
         }
-
+        // Al hacer click en el botón, se abrirá el explorador de archivos.
+        // Se le ha aplicado un filtro de extensiones de imágenes.
+        // Al añadir una imagen al formulario, los componentes de borrado se hacen visibles.
         private void btBuscarFoto_Click(object sender, EventArgs e)
         {
             openFileDialog1.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
@@ -251,14 +258,14 @@ namespace ProyectoWF
                 btBorrarFoto.Visible = true;
             }
         }
-
+        // Si pulsamos sobre el botón de borrar foto, la borramos y ponemos los componentes invisibles.
         private void btBorrarFoto_Click(object sender, EventArgs e)
         {
             pbFoto.Image = null;
             tbBorrarFoto.Visible = false;
             btBorrarFoto.Visible = false;
         }
-
+        // Al pulsar sobre Cancelar, cerramos el formulario y la conexión a la base de datos.
         private void btCancelar_Click(object sender, EventArgs e)
         {
             Conexion.cerrarConexion();
@@ -363,13 +370,13 @@ namespace ProyectoWF
                 Dispose();
             }
         }
-
+        // Al igual que el botón Cancelar, cerramos el formulario y la conexión a la DB.
         private void FormularioProductos_FormClosing(object sender, FormClosingEventArgs e)
         {
             Conexion.cerrarConexion();
             Dispose();
         }
-
+        // Comprobación de campos obligatorios en la modificación y alta de productos.
         private Boolean DatosObligatorios() {
             if (!tbNombre.Text.Equals("")) {
                 return true;
