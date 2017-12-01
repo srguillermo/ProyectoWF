@@ -301,8 +301,15 @@ namespace ProyectoWF
                     else
                         cadenaInsert.Parameters.AddWithValue("cantidad", DBNull.Value);
 
-                    cadenaInsert.Parameters.AddWithValue("precio", tbPrecio.Text);
-                    cadenaInsert.Parameters.AddWithValue("stock", tbStock.Text);
+                    if (!tbPrecio.Text.Equals(""))
+                        cadenaInsert.Parameters.AddWithValue("precio", tbPrecio.Text);
+                    else
+                        cadenaInsert.Parameters.AddWithValue("precio", DBNull.Value);
+                    MessageBox.Show(tbPrecio.Text);
+                    if (!tbStock.Text.Equals(""))
+                        cadenaInsert.Parameters.AddWithValue("stock", tbStock.Text);
+                    else
+                        cadenaInsert.Parameters.AddWithValue("stock", DBNull.Value);
                     byte[] imageData;
                     imageData = File.ReadAllBytes(@imagen);
                     cadenaInsert.Parameters.Add("imagen", SqlDbType.Image).Value = imageData;
@@ -342,9 +349,15 @@ namespace ProyectoWF
                         cadenaUpdate.Parameters.AddWithValue("cantidad", tbCantidad.Text);
                     else
                         cadenaUpdate.Parameters.AddWithValue("cantidad", DBNull.Value);
-
-                    cadenaUpdate.Parameters.AddWithValue("precio", tbPrecio.Text);
-                    cadenaUpdate.Parameters.AddWithValue("stock", tbStock.Text);
+                    if (!tbPrecio.Text.Equals("")) 
+                        cadenaUpdate.Parameters.AddWithValue("precio", tbPrecio.Text);
+                    else
+                        cadenaUpdate.Parameters.AddWithValue("precio", DBNull.Value);
+                    MessageBox.Show(tbPrecio.Text);
+                    if (!tbStock.Text.Equals(""))
+                        cadenaUpdate.Parameters.AddWithValue("stock", tbStock.Text);
+                    else
+                        cadenaUpdate.Parameters.AddWithValue("stock", DBNull.Value);
                     cadenaUpdate.Parameters.AddWithValue("id", pk);
                     if (pbFoto.Image != null)
                     {
@@ -353,8 +366,7 @@ namespace ProyectoWF
                         cadenaUpdate.Parameters.Add("imagen", SqlDbType.Image).Value = imageData;
                     }
                     else
-                    {
-                        
+                    {   
                         cadenaUpdate.Parameters.Add("imagen", SqlDbType.Image).Value = DBNull.Value;
                     }
                     int res = cadenaUpdate.ExecuteNonQuery();
@@ -382,6 +394,13 @@ namespace ProyectoWF
                 return true;
             }
             return false;
+        }
+        private void tb_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

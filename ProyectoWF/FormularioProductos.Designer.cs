@@ -147,6 +147,7 @@
             this.tbCantidad.Name = "tbCantidad";
             this.tbCantidad.Size = new System.Drawing.Size(186, 20);
             this.tbCantidad.TabIndex = 1;
+            this.tbCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_KeyPress);
             // 
             // lbCantidad
             // 
@@ -206,6 +207,7 @@
             this.tbPrecio.Name = "tbPrecio";
             this.tbPrecio.Size = new System.Drawing.Size(186, 20);
             this.tbPrecio.TabIndex = 2;
+            this.tbPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_KeyPress);
             // 
             // tbStock
             // 
@@ -214,6 +216,7 @@
             this.tbStock.Name = "tbStock";
             this.tbStock.Size = new System.Drawing.Size(186, 20);
             this.tbStock.TabIndex = 3;
+            this.tbStock.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_KeyPress);
             // 
             // gbDirección
             // 
