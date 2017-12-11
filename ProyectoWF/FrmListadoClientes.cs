@@ -46,18 +46,24 @@ namespace ProyectoWF
         BindingSource bs;
         SqlCommand cmd;
         int modo;
+        private int anchoMdi = 1200;
+
+        private int anchoMinimo = 600;
+        private int altoMinimo = 400;
         
 
-        public FrmListadoClientes()
+        public FrmListadoClientes(int ancho)
         {
+            
             InitializeComponent();
             cadena = ConfigurationManager.ConnectionStrings["ProyectoWF"].ConnectionString;//cadena de conexion en App.conf
             con = Conexion.getConexion();
             bs = new BindingSource();
             splitContainer1.IsSplitterFixed = true;
             cargar(dataGridView1);
-            //dataGridView1.Columns["ClienteID"].Visible = false;
-            dataGridView1.Columns["Logo"].Visible = false;   
+            dataGridView1.Columns["ClienteID"].Visible = false;
+            dataGridView1.Columns["Logo"].Visible = false;
+            ajustarFormulario(ancho);
         }
 
         private void cargar(DataGridView dgv)
@@ -77,6 +83,7 @@ namespace ProyectoWF
             }
         }
 
+
         private void buttonBusqueda_Click(object sender, EventArgs e)
         {
             if (splitContainer1.Panel1Collapsed)
@@ -93,6 +100,7 @@ namespace ProyectoWF
             }
         }
 
+        //Filtrado de busqueda
         private void txtCampos_TextChanged(object sender, EventArgs e)
         {
             int iEntro = 0;
@@ -143,6 +151,7 @@ namespace ProyectoWF
             dataGridView1.DataSource = bs;
         }
 
+        //Borrar
         private void btBorrar_Click(object sender, EventArgs e)
         {
             int count=0;
@@ -176,21 +185,23 @@ namespace ProyectoWF
             }
         }
 
+        //boton de cerrar
         private void btCerrar_Click(object sender, EventArgs e)
         {
             Close();
         }
 
+        //Boton de crear nuevo
         private void btNuevo_Click(object sender, EventArgs e)
         {
-            modo=0;
-            int clave= 0;
-           
-                FormAltaPrueba f = new FormAltaPrueba(modo, clave);
-                f.FormClosed += new FormClosedEventHandler(formAltaPrueba_FormClosed);
-                f.ShowDialog();
+            modo = 0;
+            int clave = 0;
+            FormCliente f = new FormCliente(modo, clave);
+            f.FormClosed += new FormClosedEventHandler(formCliente_FormClosed);
+            f.ShowDialog();
         }
 
+        //boton de modificar
         private void btModificar_Click(object sender, EventArgs e)
         {
             modo = 1;
@@ -217,12 +228,14 @@ namespace ProyectoWF
                 //    {
                 //        clave = (int)fila.Cells["ClienteID"].Value;
                 //    }
-                FormAltaPrueba f = new FormAltaPrueba(modo,clave);
+                FormCliente f = new FormCliente(modo,clave);
+                f.FormClosed += new FormClosedEventHandler(formCliente_FormClosed);
                 f.ShowDialog();
             }
             
         }
 
+        //detalles
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             modo = 2;
@@ -231,14 +244,37 @@ namespace ProyectoWF
             indice = dataGridView1.SelectedCells[0].RowIndex;
             clave = (int)dataGridView1.Rows[indice].Cells["ClienteID"].Value;
 
-            FormAltaPrueba f = new FormAltaPrueba(modo, clave);
+            FormCliente f = new FormCliente(modo, clave);
             f.ShowDialog();
         }
 
-
-        private void formAltaPrueba_FormClosed(object sender, FormClosedEventArgs e) {
+        //comportamiento al cierre
+        private void formCliente_FormClosed(object sender, FormClosedEventArgs e) {
             cargar(dataGridView1);
         }
-        
+
+        //ajustar tamaño del formulario al mdi container
+        public void ajustarFormulario(int anchoNuevoMdi)
+        {
+            splitContainer1.Panel1Collapsed = true;
+            double porcentaje = (double)anchoNuevoMdi / (double)anchoMdi;
+            anchoMdi = anchoNuevoMdi;
+            
+
+            int ancho = (int)(this.Width * porcentaje);
+            int alto = (int)(this.Height * porcentaje);
+
+            if (ancho > this.anchoMinimo && alto > this.altoMinimo)
+            {
+                
+                this.Width = ancho;
+                this.Height = alto;
+            }
+            else {
+                this.Width = anchoMinimo;
+                this.Height = altoMinimo;
+            }
+
+        }
     }
 }

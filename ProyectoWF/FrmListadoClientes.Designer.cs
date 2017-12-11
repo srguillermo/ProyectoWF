@@ -72,7 +72,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel1);
-            this.splitContainer1.Size = new System.Drawing.Size(1179, 814);
+            this.splitContainer1.Size = new System.Drawing.Size(1182, 673);
             this.splitContainer1.SplitterDistance = 120;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 0;
@@ -184,6 +184,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.btNuevo, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.btModificar, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.btBorrar, 3, 0);
@@ -198,14 +199,14 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1179, 814);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1182, 673);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // btNuevo
             // 
             this.btNuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btNuevo.Image = global::ProyectoWF.Properties.Resources.nuevo;
-            this.btNuevo.Location = new System.Drawing.Point(979, 16);
+            this.btNuevo.Location = new System.Drawing.Point(982, 16);
             this.btNuevo.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
             this.btNuevo.Name = "btNuevo";
             this.btNuevo.Size = new System.Drawing.Size(30, 23);
@@ -217,7 +218,7 @@
             // 
             this.btModificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btModificar.Image = global::ProyectoWF.Properties.Resources.editar;
-            this.btModificar.Location = new System.Drawing.Point(1035, 16);
+            this.btModificar.Location = new System.Drawing.Point(1038, 16);
             this.btModificar.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
             this.btModificar.Name = "btModificar";
             this.btModificar.Size = new System.Drawing.Size(30, 23);
@@ -229,7 +230,7 @@
             // 
             this.btBorrar.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btBorrar.Image = global::ProyectoWF.Properties.Resources.eliminar;
-            this.btBorrar.Location = new System.Drawing.Point(1091, 16);
+            this.btBorrar.Location = new System.Drawing.Point(1094, 16);
             this.btBorrar.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
             this.btBorrar.Name = "btBorrar";
             this.btBorrar.Size = new System.Drawing.Size(30, 23);
@@ -239,7 +240,7 @@
             // 
             // btCerrar
             // 
-            this.btCerrar.Location = new System.Drawing.Point(1091, 770);
+            this.btCerrar.Location = new System.Drawing.Point(1094, 629);
             this.btCerrar.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
             this.btCerrar.Name = "btCerrar";
             this.btCerrar.Size = new System.Drawing.Size(75, 32);
@@ -253,7 +254,9 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeColumns = false;
             this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanel1.SetColumnSpan(this.dataGridView1, 4);
@@ -262,7 +265,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1153, 678);
+            this.dataGridView1.Size = new System.Drawing.Size(1156, 537);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
@@ -286,10 +289,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1179, 814);
+            this.ClientSize = new System.Drawing.Size(1182, 673);
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MinimumSize = new System.Drawing.Size(800, 300);
             this.Name = "FrmListadoClientes";
             this.Text = "Form1";
             this.splitContainer1.Panel1.ResumeLayout(false);

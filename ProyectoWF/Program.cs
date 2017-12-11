@@ -16,7 +16,8 @@ namespace ProyectoWF
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmListadoClientes());
+            //ancho 
+            Application.Run(new FrmListadoClientes(1000));
         }
     }
 }
