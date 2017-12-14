@@ -18,8 +18,6 @@ namespace ProyectoWF
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-
-
             do
             {
                 esLogin = false;

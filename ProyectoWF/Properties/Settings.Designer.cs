@@ -26,6 +26,7 @@ namespace ProyectoWF.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+
         public string Conexion {
             get {
                 return ((string)(this["Conexion"]));
