@@ -46,9 +46,12 @@ namespace ProyectoWF
         BindingSource bs;
         SqlCommand cmd;
         int modo;
-        
+        private int anchoMdi = 1200;
+        private int anchoMinimo = 600;
+        private int altoMinimo = 400;
 
-        public FrmListadoEmpleados()
+
+        public FrmListadoEmpleados(int ancho)
         {
             InitializeComponent();
             cadena = ConfigurationManager.ConnectionStrings["ProyectoWF"].ConnectionString;//cadena de conexion en App.conf
@@ -60,6 +63,7 @@ namespace ProyectoWF
             dataGridView1.Columns["Foto"].Visible = false;
             dataGridView1.Columns["FotoPath"].Visible = false;
             dataGridView1.Columns["Password"].Visible = false;
+            ajustarFormulario(ancho);
 
         }
 
@@ -242,6 +246,30 @@ namespace ProyectoWF
         private void formAltaPrueba_FormClosed(object sender, FormClosedEventArgs e) {
             cargar(dataGridView1);
         }
-        
+        //metodo
+        //ajustar tamaño del formulario al mdi container
+        public void ajustarFormulario(int anchoNuevoMdi)
+        {
+            splitContainer1.Panel1Collapsed = true;
+            double porcentaje = (double)anchoNuevoMdi / (double)anchoMdi;
+            anchoMdi = anchoNuevoMdi;
+
+
+            int ancho = (int)(this.Width * porcentaje);
+            int alto = (int)(this.Height * porcentaje);
+
+            if (ancho > this.anchoMinimo && alto > this.altoMinimo)
+            {
+
+                this.Width = ancho;
+                this.Height = alto;
+            }
+            else
+            {
+                this.Width = anchoMinimo;
+                this.Height = altoMinimo;
+            }
+
+        }
     }
 }
