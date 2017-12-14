@@ -1,14 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="ProyectoWFDataSet" targetNamespace="http://tempuri.org/ProyectoWFDataSet.xsd" xmlns:mstns="http://tempuri.org/ProyectoWFDataSet.xsd" xmlns="http://tempuri.org/ProyectoWFDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+<xs:schema id="ProyectoWFDataSet" targetNamespace="http://tempuri.org/ProyectoWFDataSet1.xsd" xmlns:mstns="http://tempuri.org/ProyectoWFDataSet1.xsd" xmlns="http://tempuri.org/ProyectoWFDataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-
-          <Connection ConnectionStringObject="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\ProyectoWF.mdf;Integrated Security=True;Connect Timeout=30" IsAppSettingsProperty="false" Modifier="Assembly" Name="ProyectoWF.mdf" ParameterPrefix="@" Provider="System.Data.SqlClient" />
-        </Connections>
-        <Tables />
-
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ProyectoWFConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ProyectoWFConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.ProyectoWF.Properties.Settings.GlobalReference.Default.ProyectoWFConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
@@ -766,18 +761,12 @@ SELECT ProveedorID, NombreCompania, ContactNombre, ContactTitle, Direccion, Ciud
             <Sources />
           </TableAdapter>
         </Tables>
-
         <Sources />
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
   <xs:element name="ProyectoWFDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="ProyectoWFDataSet" msprop:Generator_UserDSName="ProyectoWFDataSet">
     <xs:complexType>
-
-      <xs:choice minOccurs="0" maxOccurs="unbounded" />
-    </xs:complexType>
-  </xs:element>
-
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="Agencias" msprop:Generator_TableClassName="AgenciasDataTable" msprop:Generator_TableVarName="tableAgencias" msprop:Generator_TablePropName="Agencias" msprop:Generator_RowDeletingName="AgenciasRowDeleting" msprop:Generator_RowChangingName="AgenciasRowChanging" msprop:Generator_RowEvHandlerName="AgenciasRowChangeEventHandler" msprop:Generator_RowDeletedName="AgenciasRowDeleted" msprop:Generator_UserTableName="Agencias" msprop:Generator_RowChangedName="AgenciasRowChanged" msprop:Generator_RowEvArgName="AgenciasRowChangeEvent" msprop:Generator_RowClassName="AgenciasRow">
           <xs:complexType>
@@ -1214,5 +1203,4 @@ SELECT ProveedorID, NombreCompania, ContactNombre, ContactTitle, Direccion, Ciud
       <msdata:Relationship name="FK_Productos_Proveedors" msdata:parent="Proveedores" msdata:child="Productos" msdata:parentkey="ProveedorID" msdata:childkey="ProveedorID" msprop:Generator_UserChildTable="Productos" msprop:Generator_ChildPropName="GetProductosRows" msprop:Generator_UserRelationName="FK_Productos_Proveedors" msprop:Generator_RelationVarName="relationFK_Productos_Proveedors" msprop:Generator_UserParentTable="Proveedores" msprop:Generator_ParentPropName="ProveedoresRow" />
     </xs:appinfo>
   </xs:annotation>
-
 </xs:schema>
