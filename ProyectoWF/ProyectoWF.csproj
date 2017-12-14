@@ -66,6 +66,17 @@
   <ItemGroup>
     <Compile Include="Conexion.cs" />
 
+    <Compile Include="FormularioProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioProductos.Designer.cs">
+      <DependentUpon>FormularioProductos.cs</DependentUpon>
+    </Compile>
+
+    <EmbeddedResource Include="FormularioProductos.resx">
+      <DependentUpon>FormularioProductos.cs</DependentUpon>
+
+
     <Compile Include="FrmListadoClientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +127,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+
 
 
     </EmbeddedResource>
@@ -225,6 +237,24 @@
     <Content Include="Imagenes\editar.png" />
     <Content Include="Imagenes\eliminar.png" />
     <Content Include="Imagenes\nuevo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\índice.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eliminar-cancelar-icono-4935-128.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

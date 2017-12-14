@@ -64,6 +64,11 @@ namespace ProyectoWF.Properties {
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
 
+        internal static System.Drawing.Bitmap eliminar_cancelar_icono_4935_128 {
+            get {
+                object obj = ResourceManager.GetObject("eliminar-cancelar-icono-4935-128", resourceCulture);
+
+
         internal static System.Drawing.Bitmap buscar {
             get {
                 object obj = ResourceManager.GetObject("buscar", resourceCulture);
@@ -179,6 +184,7 @@ namespace ProyectoWF.Properties {
         internal static System.Drawing.Bitmap if_icons_exit2_1564506 {
             get {
                 object obj = ResourceManager.GetObject("if_icons_exit2_1564506", resourceCulture);
+
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -186,6 +192,11 @@ namespace ProyectoWF.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+
+        internal static System.Drawing.Bitmap índice {
+            get {
+                object obj = ResourceManager.GetObject("índice", resourceCulture);
+
         internal static System.Drawing.Bitmap if_plus_103681 {
             get {
                 object obj = ResourceManager.GetObject("if_plus_103681", resourceCulture);

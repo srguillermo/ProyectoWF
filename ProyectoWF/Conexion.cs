@@ -1,4 +1,5 @@
 
+﻿using System;
 using System.Configuration;
 using System.Data.SqlClient;
 
@@ -9,6 +10,7 @@ namespace ProyectoWF {
 
         public static string cadena = ConfigurationManager.ConnectionStrings["proyectoWF"].ConnectionString;
         
+
 
         public static SqlConnection conexion;
 
@@ -34,7 +36,9 @@ namespace ProyectoWF {
             }
             catch (Exception e)
             {
+
                 Console.WriteLine("error");
+
             }
 
             return conexion;
@@ -50,7 +54,9 @@ namespace ProyectoWF {
             }
             catch (Exception e)
             {
+
                 Console.WriteLine("error");
+
             }
         }
 

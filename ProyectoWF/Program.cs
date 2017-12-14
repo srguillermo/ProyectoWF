@@ -18,12 +18,14 @@ namespace ProyectoWF
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+
             do
             {
                 esLogin = false;
                 Application.Run(new Login());
             } while (esLogin);
             Conexion.cerrarConexion();
+
 
         }
         
