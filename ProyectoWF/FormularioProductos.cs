@@ -271,7 +271,9 @@ namespace ProyectoWF
             Conexion.cerrarConexion();
             Close();
         }
-
+        // Al pulsar sobre aceptar, dependiendo del modo en que estemos, haremos una cosa u otra.
+        // Si faltan datos obligatorios mostraremos un mensaje de advertencia.
+        // Modo 0(Alta): Añadimos 
         private void btAceptar_Click(object sender, EventArgs e)
         {
             if (modo == 0)
