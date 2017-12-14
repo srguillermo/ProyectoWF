@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace ProyectoWF
 {
-    public partial class FormAltaPrueba : Form
+    public partial class FormularioEmpleados : Form
     {
-        public FormAltaPrueba(int modo, int clave)
+        public FormularioEmpleados(int modo, int clave)
         {
             InitializeComponent();
             txtPrueba.Text = clave + "," + modo;

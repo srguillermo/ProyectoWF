@@ -3,14 +3,14 @@
  * AUTOR:Guillermo Sevilla Mendez
  * 
  * CLASE: FrmListadoEmpleados
- * FUNCION: Mostrar relacion de clientes y gestion de los mismos
+ * FUNCION: Mostrar relacion de empleados y gestion de los mismos
  * 
  * VERSION:1.0
  * 
  * ***************************************************************************************************************
  * METODOS
  * ********
- * --public FrmListadoEmpleados()
+ * --public FrmListadoEmpleados(int ancho)
  * --private void cargar(DataGridView dgv)
  * --private void buttonBusqueda_Click(object sender, EventArgs e)
  * --private void txtCampos_TextChanged(object sender, EventArgs e)
@@ -18,6 +18,9 @@
  * --private void btModificar_Click(object sender, EventArgs e)
  * --private void btBorrar_Click(object sender, EventArgs e)
  * --private void btCerrar_Click(object sender, EventArgs e)
+ * --private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+ * --private void formAltaPrueba_FormClosed(object sender, FormClosedEventArgs e)
+ * --public void ajustarFormulario(int anchoNuevoMdi)
  * 
  * 
  * ****************************************************************************************************************/
@@ -193,7 +196,7 @@ namespace ProyectoWF
             modo=0;
             int clave= 0;
            
-                FormAltaPrueba f = new FormAltaPrueba(modo, clave);
+                FormularioEmpleados f = new FormularioEmpleados(modo, clave);
                 f.FormClosed += new FormClosedEventHandler(formAltaPrueba_FormClosed);
                 f.ShowDialog();
         }
@@ -224,7 +227,7 @@ namespace ProyectoWF
                 //    {
                 //        clave = (int)fila.Cells["ClienteID"].Value;
                 //    }
-                FormAltaPrueba f = new FormAltaPrueba(modo,clave);
+                FormularioEmpleados f = new FormularioEmpleados(modo,clave);
                 f.ShowDialog();
             }
             
@@ -238,7 +241,7 @@ namespace ProyectoWF
             indice = dataGridView1.SelectedCells[0].RowIndex;
             clave = (int)dataGridView1.Rows[indice].Cells["EmpleadoID"].Value;
 
-            FormAltaPrueba f = new FormAltaPrueba(modo, clave);
+            FormularioEmpleados f = new FormularioEmpleados(modo, clave);
             f.ShowDialog();
         }
 
@@ -246,7 +249,7 @@ namespace ProyectoWF
         private void formAltaPrueba_FormClosed(object sender, FormClosedEventArgs e) {
             cargar(dataGridView1);
         }
-        //metodo
+
         //ajustar tamaño del formulario al mdi container
         public void ajustarFormulario(int anchoNuevoMdi)
         {

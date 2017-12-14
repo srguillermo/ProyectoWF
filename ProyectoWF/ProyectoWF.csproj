@@ -50,11 +50,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conexion.cs" />
-    <Compile Include="FormAltaPrueba.cs">
+    <Compile Include="FormularioEmpleados.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAltaPrueba.Designer.cs">
-      <DependentUpon>FormAltaPrueba.cs</DependentUpon>
+    <Compile Include="FormularioEmpleados.Designer.cs">
+      <DependentUpon>FormularioEmpleados.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmListadoEmpleados.cs">
       <SubType>Form</SubType>
@@ -69,8 +69,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ProyectoWFDataSet1.xsd</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FormAltaPrueba.resx">
-      <DependentUpon>FormAltaPrueba.cs</DependentUpon>
+    <EmbeddedResource Include="FormularioEmpleados.resx">
+      <DependentUpon>FormularioEmpleados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmListadoEmpleados.resx">
       <DependentUpon>FrmListadoEmpleados.cs</DependentUpon>

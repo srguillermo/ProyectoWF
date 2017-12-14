@@ -1,6 +1,6 @@
 ﻿namespace ProyectoWF
 {
-    partial class FormAltaPrueba
+    partial class FormularioEmpleados
     {
         /// <summary>
         /// Required designer variable.
